@@ -1,0 +1,26 @@
+{
+  "name": "vendure",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "run:server": "ts-node ./src/index.ts",
+    "run:worker": "ts-node ./src/index-worker.ts",
+    "start": "concurrently yarn:run:*",
+    "build": "tsc",
+    "migration:generate": "ts-node migration generate",
+    "migration:run": "ts-node migration run",
+    "migration:revert": "ts-node migration revert"
+  },
+  "dependencies": {
+    "@vendure/admin-ui-plugin": "1.4.5",
+    "@vendure/asset-server-plugin": "1.4.5",
+    "@vendure/core": "1.4.5",
+    "@vendure/email-plugin": "1.4.5",
+    "better-sqlite3": "7.5.0",
+    "typescript": "4.3.5"
+  },
+  "devDependencies": {
+    "concurrently": "7.0.0",
+    "ts-node": "10.4.0"
+  }
+}
