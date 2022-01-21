@@ -20,15 +20,21 @@
 </script>
 
 <div
-  class="grid gap-10 md:grid-cols-4 md:px-10 lg:grid-cols-6 lg:-mx-52"
+  class="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
 >
   {#each items as item}
-    <img
-      class=""
-      src={item.productAsset.preview}
-      alt={item.productName}
-    />
-    <p>{item.productName}</p>
-    <p>{item.priceWithTax.max}</p>
+    <div>
+      <div>
+        <a href={item.slug} class="">
+          <img
+            class="object-cover"
+            src={`${item.productAsset.preview}?w=200&h=200`}
+            alt={item.productName}
+          />
+        </a>
+      </div>
+      <p>{item.productName}</p>
+      <p>{item.priceWithTax.max}</p>
+    </div>
   {/each}
 </div>
