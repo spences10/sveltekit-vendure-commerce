@@ -23,3 +23,24 @@ export const GET_TOP_SELLERS = gql`
     }
   }
 `
+
+export const GET_COLLECTIONS = gql`
+  query GetCollections($options: CollectionListOptions) {
+    collections(options: $options) {
+      items {
+        id
+        name
+        slug
+        parent {
+          id
+          slug
+          name
+        }
+        featuredAsset {
+          id
+          preview
+        }
+      }
+    }
+  }
+`
