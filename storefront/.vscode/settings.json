@@ -4,5 +4,6 @@
     "titleBar.inactiveBackground": "#ff40009c",
     "titleBar.activeForeground": "#15202b",
     "titleBar.inactiveForeground": "#15202b99"
-  }
+  },
+  "cSpell.words": ["VITE"]
 }
