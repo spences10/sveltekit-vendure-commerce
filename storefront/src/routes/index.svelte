@@ -2,6 +2,7 @@
   import CategoryBanner from '$lib/components/category-banner.svelte'
   import { client } from '$lib/graphql/graphql-client'
   import { GET_TOP_SELLERS } from '$lib/graphql/queries'
+  import { collectionsStore } from '../stores/collections'
 
   export const load = async () => {
     const {
@@ -18,9 +19,15 @@
 
 <script>
   export let items
+
+  const bannerItems = $collectionsStore
+
+  const collections = bannerItems.filter(
+    item => item.parent.name === '__root_collection__'
+  )
 </script>
 
-<CategoryBanner />
+<CategoryBanner {collections} />
 
 <h3 class="text-5xl text-neutral mb-8">Top Sellers</h3>
 
