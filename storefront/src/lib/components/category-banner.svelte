@@ -10,7 +10,8 @@
       <div class="card shadow-xl image-full">
         <figure>
           <img
-            src={collection.featuredAsset.preview}
+            class='object-cover'
+            src={`${collection.featuredAsset.preview}?w=200&h=110`}
             alt={collection.name}
           />
         </figure>
