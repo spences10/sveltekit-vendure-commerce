@@ -1,20 +1,22 @@
 <script>
-  import { collectionsStore } from '../../stores/collections'
-
-  const items = $collectionsStore
-
-  const collections = items.filter(
-    item => item.parent.name === '__root_collection__'
-  )
+  export let collections
 </script>
 
 <nav
   class="navbar shadow-lg bg-neutral text-neutral-content sticky top-0 z-10"
 >
   <div class="px-2 mx-2 navbar-start">
+    <a sveltekit:prefetch href={`/`}>
+      <img
+        class="h-8"
+        src="/cube-logo-line-icon-nostroke.png"
+        alt="vendure logo"
+      />
+    </a>
     <div class="items-stretch hidden px-2 mx-2 lg:flex">
       {#each collections as collection}
         <a
+          sveltekit:prefetch
           href={`/category/${collection.slug}`}
           class="btn btn-ghost btn-sm rounded-btn"
         >
