@@ -19,6 +19,8 @@
       </h1>
     </div>
   </div>
+{:else if key.includes(`/product/`)}
+  <div />
 {:else}
   <div
     class="hero min-h-[20vh] lg:min-h-[40vh] mb-10"
