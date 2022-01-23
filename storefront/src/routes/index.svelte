@@ -2,16 +2,19 @@
   import CategoryBanner from '$lib/components/category-banner.svelte'
   import { client } from '$lib/graphql/graphql-client'
   import { GET_TOP_SELLERS } from '$lib/graphql/queries'
-  import { collectionsStore } from '../stores/collections'
 
-  export const load = async () => {
+  export const load = async ({ fetch }) => {
     const {
       search: { items },
     } = await client.request(GET_TOP_SELLERS)
 
+    const res = await fetch(`/api/get-collections.json`)
+    const allCollections = await res.json()
+
     return {
       props: {
         items,
+        allCollections,
       },
     }
   }
@@ -19,10 +22,9 @@
 
 <script>
   export let items
+  export let allCollections
 
-  const bannerItems = $collectionsStore
-
-  const collections = bannerItems.filter(
+  $: collections = allCollections.filter(
     item => item.parent.name === '__root_collection__'
   )
 </script>
