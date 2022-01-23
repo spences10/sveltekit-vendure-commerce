@@ -25,7 +25,7 @@
 </script>
 
 <Navbar {collections} />
-<Hero {key} />
+<Hero {key} {allCollections} />
 <main class="container max-w-6xl mx-auto px-4 mb-20">
   <slot />
 </main>
