@@ -13,7 +13,7 @@
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
     "autoprefixer": "^10.4.2",
-    "daisyui": "^1.24.3",
+    "daisyui": "^1.25.0",
     "graphql": "^16.2.0",
     "graphql-request": "^3.7.0",
     "postcss": "^8.4.5",
