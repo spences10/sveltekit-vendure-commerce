@@ -83,3 +83,54 @@ export const SEARCH_PRODUCTS = gql`
     }
   }
 `
+
+export const ASSET_FRAGMENT = gql`
+  fragment Asset on Asset {
+    id
+    width
+    height
+    name
+    preview
+    focalPoint {
+      x
+      y
+    }
+  }
+`
+
+export const GET_PRODUCT_DETAIL = gql`
+  query GetProductDetail($slug: String!) {
+    product(slug: $slug) {
+      id
+      name
+      description
+      variants {
+        id
+        name
+        options {
+          code
+          name
+        }
+        price
+        priceWithTax
+        sku
+      }
+      featuredAsset {
+        ...Asset
+      }
+      assets {
+        ...Asset
+      }
+      collections {
+        id
+        slug
+        breadcrumbs {
+          id
+          name
+          slug
+        }
+      }
+    }
+  }
+  ${ASSET_FRAGMENT}
+`
