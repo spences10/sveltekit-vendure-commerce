@@ -8,7 +8,9 @@
     const res = await fetch(`/api/get-collections.json`)
     const allCollections = await res.json()
     const { slug } = params
-    const variables = { input: { collectionSlug: slug } }
+    const variables = {
+      input: { collectionSlug: slug, groupByProduct: true },
+    }
     const {
       search: { items },
     } = await client.request(SEARCH_PRODUCTS, variables)
