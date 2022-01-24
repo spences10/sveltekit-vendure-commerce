@@ -15,6 +15,7 @@
   import Footer from '$lib/components/footer.svelte'
   import Hero from '$lib/components/hero.svelte'
   import Navbar from '$lib/components/navbar.svelte'
+import PageTransition from '$lib/components/page-transition.svelte';
   import '../app.css'
 
   export let key
@@ -25,9 +26,11 @@
   )
 </script>
 
-<Navbar {collections} />
-<Hero {key} {allCollections} />
-<main class="container max-w-6xl mx-auto px-4 mb-20">
-  <slot />
-</main>
-<Footer />
+<PageTransition refresh={key}>
+  <Navbar {collections} />
+  <Hero {key} {allCollections} />
+  <main class="container max-w-6xl mx-auto px-4 mb-20">
+    <slot />
+  </main>
+  <Footer />
+</PageTransition>
