@@ -19,7 +19,7 @@
       <span class="footer-title">About</span>
       <a href="/" class="link link-hover">About Us</a>
       <a href="/" class="link link-hover">Contact Us</a>
-      <a href="/" class="link link-hover">Provacy Notice</a>
+      <a href="/" class="link link-hover">Privacy Notice</a>
     </div>
     <div>
       <span class="footer-title">Social</span>
@@ -38,7 +38,7 @@
   </div>
   <div class="flex text-center justify-center pb-20 text-base">
     <div>
-      <p class='mb-4'>
+      <p class="mb-4">
         Built with 💜 by
         <a class="link" href="https://scottspence.com">
           Scott Spence
