@@ -20,41 +20,77 @@
 
 <script>
   export let product
+
+  let { breadcrumbs } =
+    product.collections[product.collections.length - 1]
 </script>
 
-<div class="flex ">
+<div class="my-5">
+  {#each breadcrumbs as breadcrumb, index}
+    {#if breadcrumb.slug === '__root_collection__'}
+      <a class="link link-primary mr-2" href="/">Home</a>
+    {:else}
+      <span class="before:mr-2 before:content-['/']" />
+      <a
+        class="link link-primary mr-2"
+        href={`/category/${breadcrumb.slug}`}
+      >
+        {breadcrumb.name}
+      </a>
+    {/if}
+  {/each}
+</div>
+
+<div class="flex">
   <div class="basis-full">
-    <img src={product.featuredAsset.preview} alt="" />
+    <img
+      src={product.featuredAsset.preview}
+      alt={product.featuredAsset.name}
+    />
   </div>
-  <div class="basis-full">
-    <select
-      class="select select-bordered select-primary w-full max-w-xs"
-      name=""
-      id=""
-    >
-      {#each product.variants as variant}
-        <option value="">
-          {variant.name}
-        </option>
-      {/each}
-    </select>
-    <div class='flex align-bottom'>
-      <p class='inline-block h-50 bg-red-500 align-bottom'>Yo yo </p>
-      <div class="relative block">
-        <input
-          type="number"
-          min="0"
-          max="99"
-          placeholder="Search"
-          class="w-full pr-16 input input-primary input-bordered"
-        />
-        <button
-          class="absolute top-0 right-0 rounded-l-none btn btn-primary"
-          >go</button
+  <div class="basis-full ml-8">
+    <h2 class="text-5xl text-neutral mb-8">{product.name}</h2>
+    {#if product.variants.length > 1}
+      <select
+        class="select select-bordered select-primary w-full max-w-xs mb-2"
+        name=""
+        id=""
+      >
+        {#each product.variants as variant}
+          <option value="">
+            {variant.name}
+          </option>
+        {/each}
+      </select>
+    {/if}
+    <div class="flex items-center justify-between my-4">
+      <p class="inline-block align-bottom text-2xl text-neutral">
+        {product.variants[0].sku}
+      </p>
+      <div class="flex items-center">
+        <p
+          class="inline-block align-bottom text-2xl text-neutral mr-4"
         >
+          {product.variants[0].priceWithTax}
+        </p>
+        <div class="relative block">
+          <input
+            type="number"
+            min="0"
+            max="99"
+            placeholder="1"
+            class="input input-primary input-bordered"
+          />
+          <button
+            class="absolute top-0 right-0 rounded-l-none btn btn-primary"
+          >
+            Add To Cart
+          </button>
+        </div>
       </div>
+    </div>
+    <div class="text-lg">
+      {product.description}
     </div>
   </div>
 </div>
-
-<pre>{JSON.stringify(product, null, 2)}</pre>
