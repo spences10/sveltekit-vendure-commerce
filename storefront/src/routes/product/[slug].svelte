@@ -23,10 +23,11 @@
 
   let { breadcrumbs } =
     product.collections[product.collections.length - 1]
+  let selected
 </script>
 
 <div class="my-5">
-  {#each breadcrumbs as breadcrumb, index}
+  {#each breadcrumbs as breadcrumb}
     {#if breadcrumb.slug === '__root_collection__'}
       <a class="link link-primary mr-2" href="/">Home</a>
     {:else}
@@ -52,12 +53,13 @@
     <h2 class="text-5xl text-neutral mb-8">{product.name}</h2>
     {#if product.variants.length > 1}
       <select
+        bind:value={selected}
         class="select select-bordered select-primary w-full max-w-xs mb-2"
         name=""
         id=""
       >
         {#each product.variants as variant}
-          <option value="">
+          <option value={variant}>
             {variant.name}
           </option>
         {/each}
@@ -65,13 +67,13 @@
     {/if}
     <div class="flex items-center justify-between my-4">
       <p class="inline-block align-bottom text-2xl text-neutral">
-        {product.variants[0].sku}
+        {selected?.sku || product.variants[0].sku}
       </p>
       <div class="flex items-center">
         <p
           class="inline-block align-bottom text-2xl text-neutral mr-4"
         >
-          {product.variants[0].priceWithTax}
+          {selected?.priceWithTax || product.variants[0].priceWithTax}
         </p>
         <div class="relative block">
           <input
