@@ -12,7 +12,7 @@
       input: { collectionSlug: slug, groupByProduct: true },
     }
     const {
-      search: { items },
+      search: { items, totalItems, facetValues },
     } = await client.request(SEARCH_PRODUCTS, variables)
 
     return {
@@ -20,6 +20,8 @@
         slug,
         allCollections,
         items,
+        totalItems,
+        facetValues,
       },
     }
   }
@@ -29,6 +31,8 @@
   export let slug
   export let allCollections
   export let items
+  export let totalItems
+  export let facetValues
 
   $: collections = allCollections.filter(
     item => item.parent.slug === slug
@@ -43,14 +47,39 @@
       return acc
     }, [])
     .filter(item => item !== null)
+
+  $: productList = facetValues.filter(
+    item => item.facetValue.facet.id > 1
+  )
+
+  let values = []
+  $: console.log(values)
 </script>
 
 <CategoryBanner {collections} />
 
-<div
-  class="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
->
-  {#each products as item}
-    <ProductCard {item} />
-  {/each}
+<div class="flex">
+  <div class="p-2 mr-6 w-1/5 h-full bordered card">
+    <div class="form-control">
+      {#each productList as item}
+        <label class="cursor-pointer label py-1">
+          <span class="label-text">{item.facetValue.name}</span>
+          <input
+            bind:group={values}
+            value={item.facetValue.id}
+            type="checkbox"
+            checked=""
+            class="checkbox checkbox-sm checkbox-primary"
+          />
+        </label>
+      {/each}
+    </div>
+  </div>
+  <div
+    class="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+  >
+    {#each products as item}
+      <ProductCard {item} />
+    {/each}
+  </div>
 </div>
