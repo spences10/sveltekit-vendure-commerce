@@ -3,7 +3,7 @@
 </script>
 
 <nav
-  class="navbar shadow-lg bg-neutral text-neutral-content sticky top-0 z-10"
+  class="navbar shadow-lg bg-neutral text-neutral-content sticky top-0 z-30"
 >
   <div class="px-2 mx-2 navbar-start">
     <a sveltekit:prefetch href={`/`}>
