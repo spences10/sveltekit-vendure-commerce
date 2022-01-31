@@ -3,10 +3,13 @@
   import ProductCard from '$lib/components/product-card.svelte'
   import { client } from '$lib/graphql/graphql-client'
   import { SEARCH_PRODUCTS } from '$lib/graphql/queries'
+  import {
+    collectionsStore,
+    fetchCollections,
+  } from '$stores/collections'
 
-  export const load = async ({ params, fetch }) => {
-    const res = await fetch(`/api/get-collections.json`)
-    const allCollections = await res.json()
+  export const load = async ({ params }) => {
+    fetchCollections()
     const { slug } = params
     const variables = {
       input: { collectionSlug: slug, groupByProduct: true },
@@ -18,7 +21,6 @@
     return {
       props: {
         slug,
-        allCollections,
         items,
         totalItems,
         facetValues,
@@ -29,12 +31,11 @@
 
 <script>
   export let slug
-  export let allCollections
   export let items
-  export let totalItems
+  // export let totalItems
   export let facetValues
 
-  $: collections = allCollections.filter(
+  $: collections = $collectionsStore.filter(
     item => item.parent.slug === slug
   )
 

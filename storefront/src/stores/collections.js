@@ -4,12 +4,10 @@ import { writable } from 'svelte/store'
 
 export const collectionsStore = writable({})
 
-const fetchCollections = async () => {
+export const fetchCollections = async () => {
   const {
     collections: { items },
   } = await client.request(GET_COLLECTIONS)
 
-  return items
+  return collectionsStore.set(items)
 }
-
-collectionsStore.set(await fetchCollections())
