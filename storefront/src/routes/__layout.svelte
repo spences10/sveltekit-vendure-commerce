@@ -22,7 +22,7 @@
 
   export let key
 
-  const collections = $collectionsStore.filter(
+  $: collections = $collectionsStore.filter(
     item => item.parent.name === '__root_collection__'
   )
 </script>
