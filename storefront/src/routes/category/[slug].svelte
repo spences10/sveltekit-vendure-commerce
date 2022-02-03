@@ -3,20 +3,16 @@
   import ProductCard from '$lib/components/product-card.svelte'
   import { client } from '$lib/graphql/graphql-client'
   import { SEARCH_PRODUCTS } from '$lib/graphql/queries'
-  import {
-    collectionsStore,
-    fetchCollections,
-  } from '$stores/collections'
+  import { collectionsStore } from '$stores/collections'
 
   export const load = async ({ params }) => {
-    fetchCollections()
     const { slug } = params
     const variables = {
       input: { collectionSlug: slug, groupByProduct: true },
     }
     const {
       search: { items, totalItems, facetValues },
-    } = await client.request(SEARCH_PRODUCTS, variables)
+    } = await client.request(SEARCH_PRODUCTS, variables) // this needs to come from a store
 
     return {
       props: {
@@ -62,7 +58,7 @@
 <div class="flex">
   <div class="p-2 mr-6 w-1/5 h-full bordered card">
     <div class="form-control">
-      {#each productList as item}
+      {#each facetValues as item}
         <label class="cursor-pointer label py-1">
           <span class="label-text">{item.facetValue.name}</span>
           <input

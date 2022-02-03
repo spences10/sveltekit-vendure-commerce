@@ -1,8 +1,9 @@
 <script>
-  export let key
-  export let allCollections
+  import { collectionsStore } from '$stores/collections'
 
-  $: [parent] = allCollections.filter(
+  export let key
+
+  $: [parent] = $collectionsStore.filter(
     item => item.slug === key.substring(key.lastIndexOf(`/`) + 1)
   )
 </script>

@@ -1,11 +1,9 @@
 <script context="module">
-  export const load = async ({ url, fetch }) => {
-    const res = await fetch(`/api/get-collections.json`)
-    const allCollections = await res.json()
+  export const load = async ({ url }) => {
+    fetchCollections()
     return {
       props: {
         key: url.pathname,
-        allCollections,
       },
     }
   }
@@ -15,20 +13,23 @@
   import Footer from '$lib/components/footer.svelte'
   import Hero from '$lib/components/hero.svelte'
   import Navbar from '$lib/components/navbar.svelte'
-import PageTransition from '$lib/components/page-transition.svelte';
+  import PageTransition from '$lib/components/page-transition.svelte'
+  import {
+    collectionsStore,
+    fetchCollections,
+  } from '$stores/collections'
   import '../app.css'
 
   export let key
-  export let allCollections
 
-  const collections = allCollections.filter(
+  const collections = $collectionsStore.filter(
     item => item.parent.name === '__root_collection__'
   )
 </script>
 
 <PageTransition refresh={key}>
   <Navbar {collections} />
-  <Hero {key} {allCollections} />
+  <Hero {key} />
   <main class="container max-w-6xl mx-auto px-4 mb-20">
     <slot />
   </main>
