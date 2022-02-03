@@ -2,7 +2,7 @@
   import { client } from '$lib/graphql/graphql-client'
   import { GET_PRODUCT_DETAIL } from '$lib/graphql/queries'
 
-  export const load = async ({ params, fetch }) => {
+  export const load = async ({ params }) => {
     const { slug } = params
     const variables = { slug }
     const { product } = await client.request(
@@ -75,17 +75,15 @@
         >
           {selected?.priceWithTax || product.variants[0].priceWithTax}
         </p>
-        <div class="relative block">
+        <div>
           <input
             type="number"
             min="0"
             max="99"
             placeholder="1"
-            class="input input-primary input-bordered"
+            class="input input-primary input-bordered caret-primary"
           />
-          <button
-            class="absolute top-0 right-0 rounded-l-none btn btn-primary"
-          >
+          <button class="rounded-lg btn btn-primary">
             Add To Cart
           </button>
         </div>
