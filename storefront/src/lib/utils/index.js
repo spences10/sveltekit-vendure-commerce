@@ -1,9 +1,11 @@
-export const GetLocaleCurrency = (currencyCode, value) => {
-  if (typeof value === 'number' && typeof currencyCode === 'string') {
+import localeCurrency from 'locale-currency'
+
+export const GetLocaleCurrency = (locale, value) => {
+  if (typeof value === 'number' && typeof locale === 'string') {
     const majorUnits = value / 100
-    return new Intl.NumberFormat(currencyCode, {
+    return new Intl.NumberFormat(locale, {
       style: 'currency',
-      currency: 'GBP', // TODO: get this from the user's locale
+      currency: localeCurrency.getCurrency(locale),
     }).format(majorUnits)
   }
 }
