@@ -3,9 +3,10 @@
 
   export let key
 
-  $: [parent] = $collectionsStore.filter(
-    item => item.slug === key.substring(key.lastIndexOf(`/`) + 1)
-  )
+  $: [parent] =
+    $collectionsStore.filter(
+      item => item.slug === key.substring(key.lastIndexOf(`/`) + 1)
+    ) || []
 </script>
 
 {#if key === '/'}

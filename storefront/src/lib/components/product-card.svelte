@@ -1,8 +1,11 @@
 <script>
+  import { GetLocaleCurrency } from '$lib/utils'
+  import { userLocale } from '$stores/locale'
+
   export let item
 </script>
 
-<div>
+<section>
   <div>
     <a href={`/product/${item.slug}`} class="">
       <img
@@ -12,6 +15,8 @@
       />
     </a>
   </div>
-  <p>{item.productName}</p>
-  <p>{item.priceWithTax.max}</p>
-</div>
+  <p class="text-center">{item.productName}</p>
+  <p class="text-center text-primary">
+    {GetLocaleCurrency($userLocale, item.priceWithTax.max) || 0}
+  </p>
+</section>

@@ -1,6 +1,8 @@
 <script context="module">
   import { client } from '$lib/graphql/graphql-client'
   import { GET_PRODUCT_DETAIL } from '$lib/graphql/queries'
+  import { GetLocaleCurrency } from '$lib/utils'
+  import { userLocale } from '$stores/locale'
 
   export const load = async ({ params }) => {
     const { slug } = params
@@ -73,7 +75,10 @@
         <p
           class="inline-block align-bottom text-2xl text-neutral mr-4"
         >
-          {selected?.priceWithTax || product.variants[0].priceWithTax}
+          {GetLocaleCurrency(
+            $userLocale,
+            selected?.priceWithTax || product.variants[0].priceWithTax
+          ) || 0}
         </p>
         <div>
           <input
