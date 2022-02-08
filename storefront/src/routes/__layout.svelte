@@ -18,13 +18,20 @@
     collectionsStore,
     fetchCollections,
   } from '$stores/collections'
+  import { userLocale } from '$stores/locale'
+  import { onMount } from 'svelte'
   import '../app.css'
 
   export let key
 
-  $: collections = $collectionsStore.filter(
-    item => item.parent.name === '__root_collection__'
-  )
+  $: collections =
+    $collectionsStore.filter(
+      item => item.parent.name === '__root_collection__'
+    ) || []
+
+  onMount(async () => {
+    await userLocale.set(navigator.languages[0])
+  })
 </script>
 
 <PageTransition refresh={key}>

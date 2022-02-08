@@ -31,9 +31,8 @@
   // export let totalItems
   export let facetValues
 
-  $: collections = $collectionsStore.filter(
-    item => item.parent.slug === slug
-  )
+  $: collections =
+    $collectionsStore.filter(item => item.parent.slug === slug) || []
 
   $: products = items
     .reduce((acc, item) => {

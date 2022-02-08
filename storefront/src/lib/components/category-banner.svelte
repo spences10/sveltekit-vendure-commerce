@@ -1,5 +1,5 @@
 <script>
-  export let collections
+  export let collections = []
 </script>
 
 <aside
