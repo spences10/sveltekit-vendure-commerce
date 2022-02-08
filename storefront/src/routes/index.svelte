@@ -3,19 +3,17 @@
   import ProductCard from '$lib/components/product-card.svelte'
   import { client } from '$lib/graphql/graphql-client'
   import { GET_TOP_SELLERS } from '$lib/graphql/queries'
+  import { collectionsStore } from '$stores/collections'
+  import { userLocale } from '$stores/locale'
 
-  export const load = async ({ fetch }) => {
+  export const load = async () => {
     const {
       search: { items },
     } = await client.request(GET_TOP_SELLERS)
 
-    const res = await fetch(`/api/get-collections.json`)
-    const allCollections = await res.json()
-
     return {
       props: {
         items,
-        allCollections,
       },
     }
   }
@@ -23,16 +21,18 @@
 
 <script>
   export let items
-  export let allCollections
 
-  $: collections = allCollections.filter(
-    item => item.parent.name === '__root_collection__'
-  )
+  $: collections =
+    $collectionsStore.filter(
+      item => item.parent.name === '__root_collection__'
+    ) || []
 </script>
 
 <CategoryBanner {collections} />
 
 <h3 class="text-5xl text-neutral mb-8">Top Sellers</h3>
+
+{$userLocale}
 
 <div
   class="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
