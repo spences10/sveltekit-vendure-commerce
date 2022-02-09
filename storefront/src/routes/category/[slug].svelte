@@ -1,5 +1,6 @@
 <script context="module">
   import CategoryBanner from '$lib/components/category-banner.svelte'
+  import Filters from '$lib/components/filters.svelte'
   import ProductCard from '$lib/components/product-card.svelte'
   import { client } from '$lib/graphql/graphql-client'
   import { SEARCH_PRODUCTS } from '$lib/graphql/queries'
@@ -47,30 +48,12 @@
   $: productList = facetValues.filter(
     item => item.facetValue.facet.id > 1
   )
-
-  let values = []
-  $: console.log(values)
 </script>
 
 <CategoryBanner {collections} />
 
 <div class="flex">
-  <div class="p-2 mr-6 w-1/5 h-full bordered card">
-    <div class="form-control">
-      {#each facetValues as item}
-        <label class="cursor-pointer label py-1">
-          <span class="label-text">{item.facetValue.name}</span>
-          <input
-            bind:group={values}
-            value={item.facetValue.id}
-            type="checkbox"
-            checked=""
-            class="checkbox checkbox-sm checkbox-primary"
-          />
-        </label>
-      {/each}
-    </div>
-  </div>
+  <Filters {facetValues} />
   <div
     class="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
   >
