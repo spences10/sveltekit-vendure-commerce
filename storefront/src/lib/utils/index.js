@@ -9,3 +9,13 @@ export const GetLocaleCurrency = (locale, value) => {
     }).format(majorUnits)
   }
 }
+
+export const expand = ({ delay, duration }) => {
+  return {
+    delay,
+    duration,
+    css: t => {
+      return `width: ${t}`
+    },
+  }
+}
