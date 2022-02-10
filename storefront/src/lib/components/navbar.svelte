@@ -1,9 +1,7 @@
 <script>
-  import MagnifyingGlass from './icons/magnifying-glass.svelte'
   import Search from './search.svelte'
 
   export let collections
-  let show = false
 </script>
 
 <nav
@@ -49,16 +47,6 @@
 
   <div class="hidden px-2 mx-2 navbar-center lg:flex" />
   <div class="navbar-end relative">
-    {#if show}
-      <Search />
-    {/if}
-    <button
-      on:click={() => {
-        show = !show
-      }}
-      class="btn btn-square btn-ghost"
-    >
-      <MagnifyingGlass />
-    </button>
+    <Search />
   </div>
 </nav>
