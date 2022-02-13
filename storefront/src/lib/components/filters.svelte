@@ -1,8 +1,10 @@
 <script>
+  import { filtersStore } from '$stores/filters'
+
   export let facetValues
 
   let values = []
-  $: console.log(values)
+  $: filtersStore.set(values)
 
   // Thanks Michael https://github.com/vendure-ecommerce/storefront/blob/8848e9e0540c12e0eb964a90ca8accabccb4fbfa/src/app/core/components/product-list-controls/product-list-controls.component.ts#L68
   const facetMap = new Map()

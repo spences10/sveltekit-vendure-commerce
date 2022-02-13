@@ -1,7 +1,7 @@
 <script>
   import Search from './search.svelte'
 
-  export let collections
+  export let collections = []
 </script>
 
 <nav

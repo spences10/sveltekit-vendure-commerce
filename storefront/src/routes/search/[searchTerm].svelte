@@ -2,45 +2,38 @@
   import Filters from '$lib/components/filters.svelte'
   import SadFace from '$lib/components/icons/sad-face.svelte'
   import ProductCard from '$lib/components/product-card.svelte'
-  import { client } from '$lib/graphql/graphql-client'
-  import { SEARCH_PRODUCTS } from '$lib/graphql/queries'
+  import { filtersStore } from '$stores/filters'
+  import {
+    fetchSearchResults,
+    searchStore,
+  } from '$stores/search-products'
 
   export const load = async ({ params }) => {
     const { searchTerm } = params
-    const variables = {
-      input: { term: searchTerm, groupByProduct: true },
-    }
-    const {
-      search: { items, totalItems, facetValues },
-    } = await client.request(SEARCH_PRODUCTS, variables)
-
-    return {
-      props: {
-        items,
-        totalItems,
-        facetValues,
-      },
-    }
+    return { props: { searchTerm } }
   }
 </script>
 
 <script>
-  export let items
-  export let facetValues
+  export let searchTerm
 
-  $: products = items
-    .reduce((acc, item) => {
-      if (!acc[item.productId]) {
-        acc[item] = item
-      }
-      acc[item.productId] = item
-      return acc
-    }, [])
-    .filter(item => item !== null)
+  $: fetchSearchResults({
+    input: {
+      collectionSlug: '',
+      term: searchTerm,
+      groupByProduct: true,
+      facetValueIds: $filtersStore,
+      take: 24,
+      skip: 0,
+    },
+  })
+
+  $: products = $searchStore.items || {}
+  $: facetValues = $searchStore.facetValues || {}
 </script>
 
 <div class="flex">
-  {#if items.length > 0}
+  {#if Object.entries(products).length >= 1}
     <Filters {facetValues} />
     <div
       class="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"

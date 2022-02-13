@@ -1,11 +1,7 @@
 <script context="module">
   export const load = async ({ url }) => {
     fetchCollections()
-    return {
-      props: {
-        key: url.pathname,
-      },
-    }
+    return { props: { key: url.pathname } }
   }
 </script>
 
@@ -26,7 +22,7 @@
 
   $: collections =
     $collectionsStore.filter(
-      item => item.parent.name === '__root_collection__'
+      item => item?.parent?.name === '__root_collection__'
     ) || []
 
   onMount(async () => {
