@@ -10,14 +10,14 @@
     goto(`/search/${searchTerm}`)
   }
 
-  const progress = tweened(0, {
+  const width = tweened(0, {
     duration: 200,
     easing: cubicOut,
   })
 </script>
 
 <form
-  style="transform: scaleX({$progress}); transform-origin: 100% 100%;"
+  style="transform: scaleX({$width}); transform-origin: 100% 100%;"
   class="form-control"
   on:submit|preventDefault={submitSearchTerm}
 >
@@ -35,7 +35,7 @@
 
 <button
   on:click={() => {
-    $progress === 1 ? progress.set(0) : progress.set(1)
+    $width === 1 ? width.set(0) : width.set(1)
   }}
   class="btn btn-square btn-ghost"
 >
