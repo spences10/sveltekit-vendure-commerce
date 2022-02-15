@@ -6,7 +6,7 @@
   class="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 my-14"
 >
   {#each collections as collection}
-    <a href={`/category/${collection.slug}`}>
+    <a sveltekit:prefetch href={`/category/${collection.slug}`}>
       <div class="card shadow-xl image-full">
         <figure>
           <img
