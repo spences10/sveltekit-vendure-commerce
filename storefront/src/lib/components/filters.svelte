@@ -1,30 +1,39 @@
 <script>
+  // @ts -check
   import { filtersStore } from '$stores/filters'
+  import { searchStore } from '$stores/search-products'
 
-  export let facetValues
+  $: facetValues = $searchStore.facetValues || []
 
-  let values = []
-  $: filtersStore.set(values)
+  let filterValues = []
+  $: filtersStore.set(filterValues)
 
-  // Thanks Michael https://github.com/vendure-ecommerce/storefront/blob/8848e9e0540c12e0eb964a90ca8accabccb4fbfa/src/app/core/components/product-list-controls/product-list-controls.component.ts#L68
-  const facetMap = new Map()
-  for (const {
-    count,
-    facetValue: { id, name, facet },
-  } of facetValues) {
-    const facetFromMap = facetMap.get(facet.id)
-    if (facetFromMap) {
-      facetFromMap.values.push({ id, name, count })
-    } else {
-      facetMap.set(facet.id, {
-        id: facet.id,
-        name: facet.name,
-        values: [{ id, name, count }],
-      })
+  $: groupFacetValues = facetValues => {
+    const facetMap = new Map()
+
+    for (const {
+      count,
+      facetValue: { id, name, facet },
+    } of facetValues) {
+      const facetFromMap = facetMap[facet.id]
+      if (facetFromMap) {
+        facetFromMap.values = [
+          ...facetFromMap.values,
+          { id, name, count },
+        ]
+      } else {
+        facetMap[facet.id] = {
+          id: facet.id,
+          name: facet.name,
+          values: [{ id, name, count }],
+        }
+      }
     }
+
+    return Object.values(facetMap)
   }
 
-  let facetValuesGrouped = Array.from(facetMap.values())
+  $: facetValuesGrouped = groupFacetValues(facetValues)
 </script>
 
 <div class="p-2 mr-6 w-1/5 h-full bordered card">
@@ -44,7 +53,7 @@
           <label class="cursor-pointer label py-1">
             <span class="label-text">{item.name}</span>
             <input
-              bind:group={values}
+              bind:group={filterValues}
               value={item.id}
               type="checkbox"
               checked=""

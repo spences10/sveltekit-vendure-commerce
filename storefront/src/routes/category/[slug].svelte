@@ -16,32 +16,34 @@
 </script>
 
 <script>
+  // @ts -check
   export let slug
 
   $: collections =
     $collectionsStore?.filter(item => item?.parent?.slug === slug) ||
     []
 
-  $: fetchSearchResults({
-    input: {
-      collectionSlug: slug,
-      term: '',
-      groupByProduct: true,
-      facetValueIds: $filtersStore,
-      take: 24,
-      skip: 0,
-    },
-  })
+  $: products = $searchStore.items || []
+  $: facetValues = $searchStore.facetValues || []
 
-  $: products = $searchStore.items || {}
-  $: facetValues = $searchStore.facetValues || {}
+  $: {
+    fetchSearchResults({
+      input: {
+        collectionSlug: slug,
+        groupByProduct: true,
+        facetValueIds: $filtersStore,
+        take: 24,
+        skip: 0,
+      },
+    })
+  }
 </script>
 
 <CategoryBanner {collections} />
 
 <div class="flex">
   {#if Object.entries(facetValues).length >= 1}
-    <Filters {facetValues} />
+    <Filters />
   {/if}
   <div
     class="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
