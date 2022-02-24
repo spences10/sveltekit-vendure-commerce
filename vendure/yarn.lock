@@ -762,10 +762,10 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.3.tgz#781d360c282436494b32fe7d9f7f8e64b3118aa3"
   integrity sha512-fbF6oTd4sGGy0xjHPKAt+eS2CrxJ3+6gQ3FGcBoIJR2TLAyCkCyI8JqZNy+FeON0AhVgNJoUumVoZQjBFUqHkw==
 
-"@vendure/admin-ui-plugin@1.4.6":
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/@vendure/admin-ui-plugin/-/admin-ui-plugin-1.4.6.tgz#222c97547e712c8577c2cac5f7d5fb95e65d3b50"
-  integrity sha512-UsRN57rnCCTSNuxlzgIgr//d9qEvOFHiFFxM4t+K0ABWcMyZS16VH2cGmba+oCLAPLwiRJMZVBVgs49SjDxwYw==
+"@vendure/admin-ui-plugin@1.4.7":
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/@vendure/admin-ui-plugin/-/admin-ui-plugin-1.4.7.tgz#be3f6528b98d5b184af168c70dc0e20b94cdd382"
+  integrity sha512-xScFF2VB4Ga0+IbX1HVUyokr+wQhaY4Zrr26MK3Zq/vcIMYpxM1fg9MNBKS+TVph7G9yjdr+uyjvfko//94sJw==
   dependencies:
     fs-extra "^10.0.0"
 
