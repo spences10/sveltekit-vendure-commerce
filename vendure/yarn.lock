@@ -769,10 +769,10 @@
   dependencies:
     fs-extra "^10.0.0"
 
-"@vendure/asset-server-plugin@1.4.6":
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/@vendure/asset-server-plugin/-/asset-server-plugin-1.4.6.tgz#1c1f5980e09a5477a461a967f64c1a8c172312d6"
-  integrity sha512-VqLBnhA75myqDktzRLNRlNje4dYwXiWuuyjLHR7wjNEyCOnqtvkUOdDXR+M2A/nkxvlTRC5s35kLpns0lCGxgg==
+"@vendure/asset-server-plugin@1.4.7":
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/@vendure/asset-server-plugin/-/asset-server-plugin-1.4.7.tgz#8616ef6556ae766a741d37f3b93925c27cb2287e"
+  integrity sha512-2apJbe3ppaTm2gG0s6e542FEAgVO6LpyC5HA9XYWR+aV9rcWawpnff/nZyxLGpGa612dS5s6KYr7flQYEEiUXg==
   dependencies:
     file-type "^16.2.0"
     fs-extra "^10.0.0"
