@@ -8,7 +8,7 @@
   class="navbar shadow-lg bg-neutral text-neutral-content sticky top-0 z-30"
 >
   <div class="px-2 mx-2 navbar-start">
-    <a sveltekit:prefetch href={`/`}>
+    <a href={`/`}>
       <img
         class="h-8"
         src="/cube-logo-line-icon-nostroke.png"
@@ -18,7 +18,6 @@
     <div class="items-stretch hidden px-2 mx-2 lg:flex">
       {#each collections as collection}
         <a
-          sveltekit:prefetch
           href={`/category/${collection.slug}`}
           class="btn btn-ghost btn-sm rounded-btn"
         >

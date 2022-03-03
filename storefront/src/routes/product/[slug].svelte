@@ -1,27 +1,19 @@
 <script context="module">
-  import { client } from '$lib/graphql/graphql-client'
-  import { GET_PRODUCT_DETAIL } from '$lib/graphql/queries'
+  import { KQL_GetProductDetail } from '$lib/graphql/_kitql/graphqlStores'
   import { GetLocaleCurrency } from '$lib/utils'
-  import { userLocale } from '$stores/locale'
+  import { userLocale } from '../../stores/locale'
 
-  export const load = async ({ params }) => {
+  export const load = async ({ params, fetch }) => {
     const { slug } = params
     const variables = { slug }
-    const { product } = await client.request(
-      GET_PRODUCT_DETAIL,
-      variables
-    )
+    await KQL_GetProductDetail.query({ fetch, variables })
 
-    return {
-      props: {
-        product,
-      },
-    }
+    return {}
   }
 </script>
 
 <script>
-  export let product
+  let product = $KQL_GetProductDetail?.data?.product
 
   let { breadcrumbs } =
     product.collections[product.collections.length - 1]

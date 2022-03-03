@@ -1,39 +1,45 @@
-<script context="module">
+<script lang="ts" context="module">
   import CategoryBanner from '$lib/components/category-banner.svelte'
   import Filters from '$lib/components/filters.svelte'
   import ProductCard from '$lib/components/product-card.svelte'
-  import { collectionsStore } from '$stores/collections'
-  import { filtersStore } from '$stores/filters'
   import {
-    fetchSearchResults,
-    searchStore,
-  } from '$stores/search-products'
+    KQL_GetCollections,
+    KQL_SearchProducts,
+  } from '$lib/graphql/_kitql/graphqlStores'
+  import { filtersStore } from '../../stores/filters'
 
-  export const load = async ({ params }) => {
+  export const load = async ({ params, fetch }) => {
     const { slug } = params
+    await KQL_GetCollections.query({ fetch })
+    await KQL_SearchProducts.query({
+      fetch,
+      variables: { input: { collectionSlug: slug } },
+    })
     return { props: { slug } }
   }
 </script>
 
-<script>
-  // @ts -check
+<script lang="ts">
   export let slug
 
   $: collections =
-    $collectionsStore?.filter(item => item?.parent?.slug === slug) ||
-    []
+    $KQL_GetCollections.data?.collections?.items?.filter(
+      item => item?.parent?.slug === slug
+    )
 
-  $: products = $searchStore.items || []
-  $: facetValues = $searchStore.facetValues || []
+  $: products = $KQL_SearchProducts?.data?.search?.items
+  $: facetValues = $KQL_SearchProducts?.data?.search?.facetValues
 
   $: {
-    fetchSearchResults({
-      input: {
-        collectionSlug: slug,
-        groupByProduct: true,
-        facetValueIds: $filtersStore,
-        take: 24,
-        skip: 0,
+    KQL_SearchProducts.query({
+      variables: {
+        input: {
+          collectionSlug: slug,
+          groupByProduct: true,
+          facetValueIds: $filtersStore,
+          take: 24,
+          skip: 0,
+        },
       },
     })
   }

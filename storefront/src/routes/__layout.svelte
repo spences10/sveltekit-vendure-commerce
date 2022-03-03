@@ -1,32 +1,28 @@
-<script context="module">
-  export const load = async ({ url }) => {
-    fetchCollections()
-    return { props: { key: url.pathname } }
-  }
-</script>
-
-<script>
+<script lang="ts" context="module">
   import Footer from '$lib/components/footer.svelte'
   import Hero from '$lib/components/hero.svelte'
   import Navbar from '$lib/components/navbar.svelte'
   import PageTransition from '$lib/components/page-transition.svelte'
-  import {
-    collectionsStore,
-    fetchCollections,
-  } from '$stores/collections'
-  import { userLocale } from '$stores/locale'
+  import { KQL_GetCollections } from '$lib/graphql/_kitql/graphqlStores'
   import { onMount } from 'svelte'
   import '../app.css'
+  import { userLocale } from '../stores/locale'
+  export const load = async ({ url }) => {
+    await KQL_GetCollections.query({ fetch })
+    return { props: { key: url.pathname } }
+  }
+</script>
 
+<script lang="ts">
   export let key
 
   $: collections =
-    $collectionsStore.filter(
+    $KQL_GetCollections.data?.collections.items.filter(
       item => item?.parent?.name === '__root_collection__'
     ) || []
 
   onMount(async () => {
-    await userLocale.set(navigator.languages[0])
+    await userLocale.set(navigator.languages[0] as any)
   })
 </script>
 

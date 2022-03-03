@@ -1,9 +1,15 @@
-<script>
-  // @ts -check
-  import { filtersStore } from '$stores/filters'
-  import { searchStore } from '$stores/search-products'
+<script lang="ts" context="module">
+  import { KQL_SearchProducts } from '$lib/graphql/_kitql/graphqlStores'
+  import { filtersStore } from '../../stores/filters'
 
-  $: facetValues = $searchStore.facetValues || []
+  export const load = async ({ fetch }) => {
+    await KQL_SearchProducts.query({ fetch })
+    return {}
+  }
+</script>
+
+<script lang="ts">
+  $: facetValues = $KQL_SearchProducts?.data?.search?.facetValues
 
   let filterValues = []
   $: filtersStore.set(filterValues)
@@ -56,7 +62,7 @@
               bind:group={filterValues}
               value={item.id}
               type="checkbox"
-              checked=""
+              checked
               class="checkbox checkbox-sm checkbox-primary"
             />
           </label>

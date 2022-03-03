@@ -2,13 +2,11 @@
   import Filters from '$lib/components/filters.svelte'
   import SadFace from '$lib/components/icons/sad-face.svelte'
   import ProductCard from '$lib/components/product-card.svelte'
-  import { filtersStore } from '$stores/filters'
-  import {
-    fetchSearchResults,
-    searchStore,
-  } from '$stores/search-products'
+  import { KQL_SearchProducts } from '$lib/graphql/_kitql/graphqlStores'
+  import { filtersStore } from '../../stores/filters'
 
-  export const load = async ({ params }) => {
+  export const load = async ({ params, fetch }) => {
+    KQL_SearchProducts.query({ fetch, variables: { input: {} } })
     const { searchTerm } = params
     return { props: { searchTerm } }
   }
@@ -17,19 +15,21 @@
 <script>
   export let searchTerm
 
-  $: fetchSearchResults({
-    input: {
-      collectionSlug: '',
-      term: searchTerm,
-      groupByProduct: true,
-      facetValueIds: $filtersStore,
-      take: 24,
-      skip: 0,
+  $: KQL_SearchProducts.query({
+    variables: {
+      input: {
+        collectionSlug: '',
+        term: searchTerm,
+        groupByProduct: true,
+        facetValueIds: $filtersStore,
+        take: 24,
+        skip: 0,
+      },
     },
   })
 
-  $: products = $searchStore.items || {}
-  $: facetValues = $searchStore.facetValues || {}
+  $: products = $KQL_SearchProducts?.data?.search?.items
+  $: facetValues = $KQL_SearchProducts?.data?.search?.facetValues
 </script>
 
 <div class="flex">
@@ -44,6 +44,6 @@
     </div>
   {:else}
     <h3 class="text-5xl text-neutral mb-8">No results</h3>
-    <SadFace height="200" width="200" />
+    <SadFace height={200} width={200} />
   {/if}
 </div>
