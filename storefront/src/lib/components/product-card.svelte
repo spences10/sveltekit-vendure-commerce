@@ -1,6 +1,6 @@
 <script>
   import { GetLocaleCurrency } from '$lib/utils'
-  import { userLocale } from '$stores/locale'
+  import { userLocale } from '../../stores/locale'
 
   export let item
 </script>

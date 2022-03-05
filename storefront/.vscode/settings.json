@@ -5,5 +5,12 @@
     "titleBar.activeForeground": "#15202b",
     "titleBar.inactiveForeground": "#15202b99"
   },
-  "cSpell.words": ["daisyui", "sveltejs", "VITE"]
+  "cSpell.words": [
+    "Color",
+    "daisyui",
+    "kitql",
+    "nostroke",
+    "sveltejs",
+    "VITE"
+  ]
 }

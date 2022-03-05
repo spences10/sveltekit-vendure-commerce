@@ -1,30 +1,24 @@
-<script context="module">
+<script lang="ts" context="module">
   import CategoryBanner from '$lib/components/category-banner.svelte'
   import ProductCard from '$lib/components/product-card.svelte'
-  import { client } from '$lib/graphql/graphql-client'
-  import { GET_TOP_SELLERS } from '$lib/graphql/queries'
-  import { collectionsStore } from '$stores/collections'
+  import {
+    KQL_GetCollections,
+    KQL_GetTopSellers,
+  } from '$lib/graphql/_kitql/graphqlStores'
 
-  export const load = async () => {
-    const {
-      search: { items },
-    } = await client.request(GET_TOP_SELLERS)
-
-    return {
-      props: {
-        items,
-      },
-    }
+  export const load = async ({ fetch }) => {
+    await KQL_GetTopSellers.query({ fetch })
+    await KQL_GetCollections.query({ fetch })
+    return {}
   }
 </script>
 
-<script>
-  export let items
+<script lang="ts">
+  let items = $KQL_GetTopSellers.data?.search?.items
 
-  $: collections =
-    $collectionsStore.filter(
-      item => item.parent.name === '__root_collection__'
-    ) || []
+  $: collections = $KQL_GetCollections.data?.collections.items.filter(
+    item => item.parent.name === '__root_collection__'
+  )
 </script>
 
 <CategoryBanner {collections} />

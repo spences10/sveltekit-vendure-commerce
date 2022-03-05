@@ -1,12 +1,18 @@
-<script>
-  import { collectionsStore } from '$stores/collections'
+<script lang="ts" context="module">
+  import { KQL_GetCollections } from '$lib/graphql/_kitql/graphqlStores'
 
+  export const load = async ({ fetch }) => {
+    await KQL_GetCollections.query({ fetch })
+    return {}
+  }
+</script>
+
+<script>
   export let key
 
-  $: [parent] =
-    $collectionsStore.filter(
-      item => item.slug === key.substring(key.lastIndexOf(`/`) + 1)
-    ) || []
+  $: [parent] = $KQL_GetCollections.data?.collections?.items.filter(
+    item => item.slug === key.substring(key.lastIndexOf(`/`) + 1)
+  )
 </script>
 
 {#if key === '/'}
