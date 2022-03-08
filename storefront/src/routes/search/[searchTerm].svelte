@@ -2,18 +2,24 @@
   import Filters from '$lib/components/filters.svelte'
   import SadFace from '$lib/components/icons/sad-face.svelte'
   import ProductCard from '$lib/components/product-card.svelte'
-  import { KQL_SearchProducts } from '$lib/graphql/_kitql/graphqlStores'
+  import {
+    KQL_GetCurrencyCode,
+    KQL_SearchProducts,
+  } from '$lib/graphql/_kitql/graphqlStores'
   import { filtersStore } from '$stores/filters'
 
   export const load = async ({ params, fetch }) => {
     KQL_SearchProducts.query({ fetch, variables: { input: {} } })
     const { searchTerm } = params
+    await KQL_GetCurrencyCode.query({ fetch })
     return { props: { searchTerm } }
   }
 </script>
 
 <script lang="ts">
   export let searchTerm
+  let currencyCode =
+    $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
 
   $: KQL_SearchProducts.query({
     variables: {
@@ -39,7 +45,7 @@
       class="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
     >
       {#each products as item}
-        <ProductCard {item} />
+        <ProductCard {item} {currencyCode} />
       {/each}
     </div>
   {:else}

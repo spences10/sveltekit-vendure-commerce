@@ -1,0 +1,5 @@
+query GetCurrencyCode {
+  activeChannel {
+    currencyCode
+  }
+}

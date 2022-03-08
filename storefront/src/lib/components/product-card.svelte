@@ -1,7 +1,8 @@
 <script>
-  import { GetLocaleCurrency } from '$lib/utils'
-  import { userLocale } from '../../stores/locale'
 
+  import { formatCurrency } from '$lib/utils'
+  
+  export let currencyCode
   export let item
 </script>
 
@@ -15,6 +16,6 @@
   </a>
   <p class="xl:text-center">{item.productName}</p>
   <p class="xl:text-center text-primary">
-    {GetLocaleCurrency($userLocale, item.priceWithTax.max) || 0}
+    {formatCurrency(currencyCode, item.priceWithTax.max) || 0}
   </p>
 </section>
