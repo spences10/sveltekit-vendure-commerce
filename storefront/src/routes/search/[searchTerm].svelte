@@ -3,7 +3,7 @@
   import SadFace from '$lib/components/icons/sad-face.svelte'
   import ProductCard from '$lib/components/product-card.svelte'
   import { KQL_SearchProducts } from '$lib/graphql/_kitql/graphqlStores'
-  import { filtersStore } from '../../stores/filters'
+  import { filtersStore } from '$stores/filters'
 
   export const load = async ({ params, fetch }) => {
     KQL_SearchProducts.query({ fetch, variables: { input: {} } })
@@ -12,7 +12,7 @@
   }
 </script>
 
-<script>
+<script lang="ts">
   export let searchTerm
 
   $: KQL_SearchProducts.query({

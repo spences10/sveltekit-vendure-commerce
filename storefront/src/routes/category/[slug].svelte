@@ -6,7 +6,7 @@
     KQL_GetCollections,
     KQL_SearchProducts,
   } from '$lib/graphql/_kitql/graphqlStores'
-  import { filtersStore } from '../../stores/filters'
+  import { filtersStore } from '$stores/filters'
 
   export const load = async ({ params, fetch }) => {
     const { slug } = params

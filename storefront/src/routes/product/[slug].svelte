@@ -1,7 +1,7 @@
-<script context="module">
+<script lang="ts" context="module">
   import { KQL_GetProductDetail } from '$lib/graphql/_kitql/graphqlStores'
   import { GetLocaleCurrency } from '$lib/utils'
-  import { userLocale } from '../../stores/locale'
+  import { userLocale } from '$stores/locale'
 
   export const load = async ({ params, fetch }) => {
     const { slug } = params
@@ -12,7 +12,7 @@
   }
 </script>
 
-<script>
+<script lang="ts">
   let product = $KQL_GetProductDetail?.data?.product
 
   let { breadcrumbs } =
