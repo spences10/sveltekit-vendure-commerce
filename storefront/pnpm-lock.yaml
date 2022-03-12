@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@kitql/all-in': ^0.2.3
+  '@kitql/all-in': 0.3.3
   '@sveltejs/adapter-auto': next
   '@sveltejs/kit': next
   '@typescript-eslint/eslint-plugin': ^5.10.1
@@ -25,7 +25,7 @@ specifiers:
   typescript: 4.6.2
 
 devDependencies:
-  '@kitql/all-in': 0.2.3_graphql@16.3.0+typescript@4.6.2
+  '@kitql/all-in': 0.3.3_graphql@16.3.0+typescript@4.6.2
   '@sveltejs/adapter-auto': 1.0.0-next.31
   '@sveltejs/kit': 1.0.0-next.295_svelte@3.46.4
   '@typescript-eslint/eslint-plugin': 5.13.0_33fffc354ccfa91fbe7d1677b9395a0a
@@ -736,7 +736,7 @@ packages:
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
-      '@graphql-tools/utils': 8.6.1_graphql@16.3.0
+      '@graphql-tools/utils': 8.6.2_graphql@16.3.0
       change-case-all: 1.0.14
       common-tags: 1.8.2
       graphql: 16.3.0
@@ -844,7 +844,7 @@ packages:
       '@graphql-codegen/plugin-helpers': 2.4.2_graphql@16.3.0
       '@graphql-tools/optimize': 1.2.0_graphql@16.3.0
       '@graphql-tools/relay-operation-optimizer': 6.4.2_graphql@16.3.0
-      '@graphql-tools/utils': 8.6.1_graphql@16.3.0
+      '@graphql-tools/utils': 8.6.2_graphql@16.3.0
       auto-bind: 4.0.0
       change-case-all: 1.0.14
       dependency-graph: 0.11.0
@@ -911,8 +911,8 @@ packages:
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
-      '@graphql-tools/graphql-tag-pluck': 7.1.5_graphql@16.3.0
-      '@graphql-tools/utils': 8.6.1_graphql@16.3.0
+      '@graphql-tools/graphql-tag-pluck': 7.1.6_graphql@16.3.0
+      '@graphql-tools/utils': 8.6.2_graphql@16.3.0
       globby: 11.1.0
       graphql: 16.3.0
       tslib: 2.3.1
@@ -1004,7 +1004,7 @@ packages:
       '@babel/parser': 7.17.3
       '@babel/traverse': 7.17.3
       '@babel/types': 7.17.0
-      '@graphql-tools/utils': 8.6.1_graphql@16.3.0
+      '@graphql-tools/utils': 8.6.2_graphql@16.3.0
       graphql: 16.3.0
       tslib: 2.3.1
     transitivePeerDependencies:
@@ -1246,8 +1246,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.11
     dev: true
 
-  /@kitql/all-in/0.2.3_graphql@16.3.0+typescript@4.6.2:
-    resolution: {integrity: sha512-/fFZjb+oXZebAU2AoRBAXNqI/hopYTOWBMDFaf3YuzzhnLeEtfolpvumyeZ9OFfi2tG+gUuSMDKA0ErmvMMtEg==}
+  /@kitql/all-in/0.3.3_graphql@16.3.0+typescript@4.6.2:
+    resolution: {integrity: sha512-Az/X9hG/BxLoKdTbagmpMmEsRGnxXL0TTNeMPfyzd05eKSTvbJewp9MbLaNiENnzBfU/vI9lb0h47KFbpx2snA==}
     peerDependencies:
       graphql: ^15.0.0 || ^16.0.0
     dependencies:
@@ -1260,9 +1260,9 @@ packages:
       '@graphql-codegen/typescript-resolvers': 2.5.2_graphql@16.3.0
       '@graphql-eslint/eslint-plugin': 3.8.0_graphql@16.3.0+typescript@4.6.2
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.3.0
-      '@kitql/client': 0.2.3_graphql@16.3.0
-      '@kitql/graphql-codegen': 0.2.3_graphql@16.3.0
-      '@kitql/module-codegen': 0.1.9_graphql@16.3.0
+      '@kitql/client': 0.3.2
+      '@kitql/graphql-codegen': 0.3.2_graphql@16.3.0
+      '@kitql/module-codegen': 0.1.10_graphql@16.3.0
       '@kitql/vite-plugin-watch-and-run': 0.1.6
       graphql: 16.3.0
     transitivePeerDependencies:
@@ -1275,17 +1275,14 @@ packages:
       - zen-observable
     dev: true
 
-  /@kitql/client/0.2.3_graphql@16.3.0:
-    resolution: {integrity: sha512-dFqPaVig5THIMfMmEuD5l6zuQzLDMvJNxtMye++6BCuproLMS+/sRjrI/ubEu6rCTDaldrWFHbr0EQGLNTOffw==}
-    peerDependencies:
-      graphql: ^15.0.0 || ^16.0.0
+  /@kitql/client/0.3.2:
+    resolution: {integrity: sha512-NR/6bxoGBelvNNw7VtR7XzXtihCRqx7EB07tThMTfQK3wjPuAlJlLCv0rJIUT3dgDWgSr1akIO2P8BcOEP7UmQ==}
     dependencies:
       '@kitql/helper': 0.1.6
-      graphql: 16.3.0
     dev: true
 
-  /@kitql/graphql-codegen/0.2.3_graphql@16.3.0:
-    resolution: {integrity: sha512-CegDlvuW5YYm4H2/Qb3yJu7zVC4x3XPd6/BM6GWtqy1L/UwuAXcGFl4O2YJHYBuWMm6E7i68jNt1xgZmP0rX6g==}
+  /@kitql/graphql-codegen/0.3.2_graphql@16.3.0:
+    resolution: {integrity: sha512-Mv9LmLxv1jXfm1JFic7EOXbwDMjCkuRicsd3KOmDAG6mswxc8kyfRWHObbqTqcqW8DONQTkj5QCsuBBCBsxPnQ==}
     peerDependencies:
       graphql: ^15.0.0 || ^16.0.0
     dependencies:
@@ -1303,8 +1300,8 @@ packages:
     resolution: {integrity: sha512-YZNKR4kbGXvp3S5jQshFRzPkieFfU/LQXJH4YeDYoL+exh3FRSL9fOcY9ubagAFKijo4pOBHxkcFLFLx2Jrj7w==}
     dev: true
 
-  /@kitql/module-codegen/0.1.9_graphql@16.3.0:
-    resolution: {integrity: sha512-jdLOp6+qERZalYgzZDeWm969PJYKqAwrL1mi2/NdfCle1ZwayOkEpwB+uVNhOW1Nz/uDzuSeJjjdNL6fAWS+6Q==}
+  /@kitql/module-codegen/0.1.10_graphql@16.3.0:
+    resolution: {integrity: sha512-Ecpu8b1v40Qq3k3P87fPdobIugdF2E3Fwd/XVQ6D1tKibqd7OcXp3EtL7U41eDgS5hMIEaSW6gL+f1cQePkYBg==}
     peerDependencies:
       graphql: ^15.0.0 || ^16.0.0
     dependencies:
@@ -4739,6 +4736,7 @@ packages:
 
   /subscriptions-transport-ws/0.11.0_graphql@16.3.0:
     resolution: {integrity: sha512-8D4C6DIH5tGiAIpp5I0wD/xRlNiZAPGHygzCe7VzyzUoxHtawzjNAY9SUTXU05/EY2NMY9/9GF0ycizkXr1CWQ==}
+    deprecated: The `subscriptions-transport-ws` package is no longer maintained. We recommend you use `graphql-ws` instead. For help migrating Apollo software to `graphql-ws`, see https://www.apollographql.com/docs/apollo-server/data/subscriptions/#switching-from-subscriptions-transport-ws    For general help using `graphql-ws`, see https://github.com/enisdenjo/graphql-ws/blob/master/README.md
     peerDependencies:
       graphql: ^15.7.2 || ^16.0.0
     dependencies:
