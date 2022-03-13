@@ -1,6 +1,6 @@
 import { browser } from '$app/env';
 import * as Types from '$lib/graphql/_kitql/graphqlTypes';
-import { defaultStoreValue, RequestStatus, type RequestParameters, type RequestResult } from '@kitql/client';
+import { defaultStoreValue, RequestStatus, type RequestParameters, type RequestQueryParameters, type RequestResult } from '@kitql/client';
 import { get, writable } from 'svelte/store';
 import { kitQLClient } from '../kitQLClient';
  
@@ -19,36 +19,11 @@ function KQL_AddToCartStore() {
 		mutate: async (
 			params?: RequestParameters<Types.AddToCartMutationVariables>
 		): Promise<RequestResult<Types.AddToCartMutation, Types.AddToCartMutationVariables>> => {
-			let { fetch, variables, settings } = params ?? {};
-			let { cache, policy } = settings ?? {};
+			let { fetch, variables } = params ?? {};
 
 			const storedVariables = get(KQL_AddToCart).variables;
 			variables = variables ?? storedVariables;
-			policy = policy ?? kitQLClient.defaultPolicy;
 
-			// Cache only in the browser for now. In SSR, we will need session identif to not mix peoples data
-			if (browser) {
-				if (policy !== 'network-only') {
-					// prettier-ignore
-					const cachedData = kitQLClient.requestCache<Types.AddToCartMutation, Types.AddToCartMutationVariables>({
-						variables, cacheKey, cache,	browser
-					});
-					if (cachedData) {
-						const result = { ...cachedData, isFetching: false, status: RequestStatus.DONE };
-						if (policy === 'cache-first') {
-							set(result);
-							if (!result.isOutdated) {
-								return result;
-							}
-						} else if (policy === 'cache-only') {
-							set(result);
-							return result;
-						} else if (policy === 'cache-and-network') {
-							set(result);
-						}
-					}
-				}
-			}
 			update((c) => {
 				return { ...c, isFetching: true, status: RequestStatus.LOADING };
 			});
@@ -85,21 +60,21 @@ function KQL_GetCollectionsStore() {
 		 * @returns the latest operation and fill this store
 		 */
 		query: async (
-			params?: RequestParameters<Types.GetCollectionsQueryVariables>
+			params?: RequestQueryParameters<Types.GetCollectionsQueryVariables>
 		): Promise<RequestResult<Types.GetCollectionsQuery, Types.GetCollectionsQueryVariables>> => {
 			let { fetch, variables, settings } = params ?? {};
-			let { cache, policy } = settings ?? {};
+			let { cacheMs, policy } = settings ?? {};
 
 			const storedVariables = get(KQL_GetCollections).variables;
 			variables = variables ?? storedVariables;
-			policy = policy ?? kitQLClient.defaultPolicy;
+			policy = policy ?? kitQLClient.policy;
 
 			// Cache only in the browser for now. In SSR, we will need session identif to not mix peoples data
 			if (browser) {
 				if (policy !== 'network-only') {
 					// prettier-ignore
 					const cachedData = kitQLClient.requestCache<Types.GetCollectionsQuery, Types.GetCollectionsQueryVariables>({
-						variables, cacheKey, cache,	browser
+						variables, cacheKey, cacheMs,	browser
 					});
 					if (cachedData) {
 						const result = { ...cachedData, isFetching: false, status: RequestStatus.DONE };
@@ -117,6 +92,7 @@ function KQL_GetCollectionsStore() {
 					}
 				}
 			}
+
 			update((c) => {
 				return { ...c, isFetching: true, status: RequestStatus.LOADING };
 			});
@@ -175,21 +151,21 @@ function KQL_GetCurrencyCodeStore() {
 		 * @returns the latest operation and fill this store
 		 */
 		query: async (
-			params?: RequestParameters<Types.GetCurrencyCodeQueryVariables>
+			params?: RequestQueryParameters<Types.GetCurrencyCodeQueryVariables>
 		): Promise<RequestResult<Types.GetCurrencyCodeQuery, Types.GetCurrencyCodeQueryVariables>> => {
 			let { fetch, variables, settings } = params ?? {};
-			let { cache, policy } = settings ?? {};
+			let { cacheMs, policy } = settings ?? {};
 
 			const storedVariables = get(KQL_GetCurrencyCode).variables;
 			variables = variables ?? storedVariables;
-			policy = policy ?? kitQLClient.defaultPolicy;
+			policy = policy ?? kitQLClient.policy;
 
 			// Cache only in the browser for now. In SSR, we will need session identif to not mix peoples data
 			if (browser) {
 				if (policy !== 'network-only') {
 					// prettier-ignore
 					const cachedData = kitQLClient.requestCache<Types.GetCurrencyCodeQuery, Types.GetCurrencyCodeQueryVariables>({
-						variables, cacheKey, cache,	browser
+						variables, cacheKey, cacheMs,	browser
 					});
 					if (cachedData) {
 						const result = { ...cachedData, isFetching: false, status: RequestStatus.DONE };
@@ -207,6 +183,7 @@ function KQL_GetCurrencyCodeStore() {
 					}
 				}
 			}
+
 			update((c) => {
 				return { ...c, isFetching: true, status: RequestStatus.LOADING };
 			});
@@ -265,21 +242,21 @@ function KQL_GetProductDetailStore() {
 		 * @returns the latest operation and fill this store
 		 */
 		query: async (
-			params?: RequestParameters<Types.GetProductDetailQueryVariables>
+			params?: RequestQueryParameters<Types.GetProductDetailQueryVariables>
 		): Promise<RequestResult<Types.GetProductDetailQuery, Types.GetProductDetailQueryVariables>> => {
 			let { fetch, variables, settings } = params ?? {};
-			let { cache, policy } = settings ?? {};
+			let { cacheMs, policy } = settings ?? {};
 
 			const storedVariables = get(KQL_GetProductDetail).variables;
 			variables = variables ?? storedVariables;
-			policy = policy ?? kitQLClient.defaultPolicy;
+			policy = policy ?? kitQLClient.policy;
 
 			// Cache only in the browser for now. In SSR, we will need session identif to not mix peoples data
 			if (browser) {
 				if (policy !== 'network-only') {
 					// prettier-ignore
 					const cachedData = kitQLClient.requestCache<Types.GetProductDetailQuery, Types.GetProductDetailQueryVariables>({
-						variables, cacheKey, cache,	browser
+						variables, cacheKey, cacheMs,	browser
 					});
 					if (cachedData) {
 						const result = { ...cachedData, isFetching: false, status: RequestStatus.DONE };
@@ -297,6 +274,7 @@ function KQL_GetProductDetailStore() {
 					}
 				}
 			}
+
 			update((c) => {
 				return { ...c, isFetching: true, status: RequestStatus.LOADING };
 			});
@@ -355,21 +333,21 @@ function KQL_GetTopSellersStore() {
 		 * @returns the latest operation and fill this store
 		 */
 		query: async (
-			params?: RequestParameters<Types.GetTopSellersQueryVariables>
+			params?: RequestQueryParameters<Types.GetTopSellersQueryVariables>
 		): Promise<RequestResult<Types.GetTopSellersQuery, Types.GetTopSellersQueryVariables>> => {
 			let { fetch, variables, settings } = params ?? {};
-			let { cache, policy } = settings ?? {};
+			let { cacheMs, policy } = settings ?? {};
 
 			const storedVariables = get(KQL_GetTopSellers).variables;
 			variables = variables ?? storedVariables;
-			policy = policy ?? kitQLClient.defaultPolicy;
+			policy = policy ?? kitQLClient.policy;
 
 			// Cache only in the browser for now. In SSR, we will need session identif to not mix peoples data
 			if (browser) {
 				if (policy !== 'network-only') {
 					// prettier-ignore
 					const cachedData = kitQLClient.requestCache<Types.GetTopSellersQuery, Types.GetTopSellersQueryVariables>({
-						variables, cacheKey, cache,	browser
+						variables, cacheKey, cacheMs,	browser
 					});
 					if (cachedData) {
 						const result = { ...cachedData, isFetching: false, status: RequestStatus.DONE };
@@ -387,6 +365,7 @@ function KQL_GetTopSellersStore() {
 					}
 				}
 			}
+
 			update((c) => {
 				return { ...c, isFetching: true, status: RequestStatus.LOADING };
 			});
@@ -445,21 +424,21 @@ function KQL_SearchProductsStore() {
 		 * @returns the latest operation and fill this store
 		 */
 		query: async (
-			params?: RequestParameters<Types.SearchProductsQueryVariables>
+			params?: RequestQueryParameters<Types.SearchProductsQueryVariables>
 		): Promise<RequestResult<Types.SearchProductsQuery, Types.SearchProductsQueryVariables>> => {
 			let { fetch, variables, settings } = params ?? {};
-			let { cache, policy } = settings ?? {};
+			let { cacheMs, policy } = settings ?? {};
 
 			const storedVariables = get(KQL_SearchProducts).variables;
 			variables = variables ?? storedVariables;
-			policy = policy ?? kitQLClient.defaultPolicy;
+			policy = policy ?? kitQLClient.policy;
 
 			// Cache only in the browser for now. In SSR, we will need session identif to not mix peoples data
 			if (browser) {
 				if (policy !== 'network-only') {
 					// prettier-ignore
 					const cachedData = kitQLClient.requestCache<Types.SearchProductsQuery, Types.SearchProductsQueryVariables>({
-						variables, cacheKey, cache,	browser
+						variables, cacheKey, cacheMs,	browser
 					});
 					if (cachedData) {
 						const result = { ...cachedData, isFetching: false, status: RequestStatus.DONE };
@@ -477,6 +456,7 @@ function KQL_SearchProductsStore() {
 					}
 				}
 			}
+
 			update((c) => {
 				return { ...c, isFetching: true, status: RequestStatus.LOADING };
 			});
