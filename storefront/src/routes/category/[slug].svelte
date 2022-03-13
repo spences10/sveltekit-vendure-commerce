@@ -4,11 +4,13 @@
   import ProductCard from '$lib/components/product-card.svelte'
   import {
     KQL_GetCollections,
+    KQL_GetCurrencyCode,
     KQL_SearchProducts,
   } from '$lib/graphql/_kitql/graphqlStores'
   import { filtersStore } from '$stores/filters'
 
   export const load = async ({ params, fetch }) => {
+    await KQL_GetCurrencyCode.query({ fetch })
     const { slug } = params
     await KQL_GetCollections.query({ fetch })
     await KQL_SearchProducts.query({
@@ -21,6 +23,8 @@
 
 <script lang="ts">
   export let slug
+  let currencyCode =
+    $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
 
   $: collections =
     $KQL_GetCollections.data?.collections?.items?.filter(
@@ -56,7 +60,7 @@
   >
     {#if Object.entries(products).length >= 1}
       {#each products as item}
-        <ProductCard {item} />
+        <ProductCard {item} {currencyCode} />
       {/each}
     {/if}
   </div>

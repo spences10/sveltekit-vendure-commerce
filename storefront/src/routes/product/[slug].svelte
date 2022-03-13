@@ -1,23 +1,34 @@
 <script lang="ts" context="module">
-  import { KQL_GetProductDetail } from '$lib/graphql/_kitql/graphqlStores'
-  import { GetLocaleCurrency } from '$lib/utils'
-  import { userLocale } from '$stores/locale'
+  import {
+    KQL_AddToCart,
+    KQL_GetCurrencyCode,
+    KQL_GetProductDetail,
+  } from '$lib/graphql/_kitql/graphqlStores'
+  import { formatCurrency } from '$lib/utils'
 
   export const load = async ({ params, fetch }) => {
     const { slug } = params
     const variables = { slug }
     await KQL_GetProductDetail.query({ fetch, variables })
-
+    await KQL_GetCurrencyCode.query({ fetch })
     return {}
   }
 </script>
 
 <script lang="ts">
   let product = $KQL_GetProductDetail?.data?.product
-
+  let currencyCode =
+    $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
   let { breadcrumbs } =
     product.collections[product.collections.length - 1]
   let selected
+
+  const addToCart = async () => {
+    let variables = { productVariantId: '1', quantity: 10 }
+    console.log('=====================')
+    console.log(await KQL_AddToCart.mutate({ fetch, variables }))
+    console.log('=====================')
+  }
 </script>
 
 <div class="my-5">
@@ -67,8 +78,8 @@
         <p
           class="inline-block align-bottom text-2xl text-neutral mr-4"
         >
-          {GetLocaleCurrency(
-            $userLocale,
+          {formatCurrency(
+            currencyCode,
             selected?.priceWithTax || product.variants[0].priceWithTax
           ) || 0}
         </p>
@@ -80,7 +91,10 @@
             placeholder="1"
             class="input input-primary input-bordered caret-primary"
           />
-          <button class="rounded-lg btn btn-primary">
+          <button
+            on:click={addToCart}
+            class="rounded-lg btn btn-primary"
+          >
             Add To Cart
           </button>
         </div>

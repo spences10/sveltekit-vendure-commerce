@@ -11,11 +11,11 @@
         <figure>
           <img
             class="object-cover"
-            src={`${collection.featuredAsset.preview}?w=200&h=110`}
+            src={`${collection.featuredAsset.preview}?w=350&h=100`}
             alt={collection.name}
           />
         </figure>
-        <div class="justify-end card-body">
+        <div class="justify-end card-body p-5">
           <h2 class="text-xl lg:text-3xl font-bold tracking-widest">
             {collection.name}
           </h2>

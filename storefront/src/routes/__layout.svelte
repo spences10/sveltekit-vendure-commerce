@@ -21,8 +21,8 @@
       item => item?.parent?.name === '__root_collection__'
     ) || []
 
-  onMount(async () => {
-    await userLocale.set(navigator.languages[0] as any)
+  onMount(() => {
+    userLocale.set(navigator.languages[0] as any)
   })
 </script>
 

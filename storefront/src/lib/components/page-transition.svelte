@@ -4,7 +4,7 @@
 </script>
 
 {#key refresh}
-  <div transition:fade={{ duration: 200 }}>
+  <div transition:fade={{ duration: 300 }}>
     <slot />
   </div>
 {/key}

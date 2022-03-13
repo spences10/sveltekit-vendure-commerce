@@ -8,5 +8,10 @@
       "$stores/*": ["src/stores/*"]
     }
   },
-  "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte"]
+  "include": [
+    "src/**/*.d.ts",
+    "src/**/*.js",
+    "src/**/*.svelte",
+    "src/lib/utils/index.ts"
+  ]
 }
