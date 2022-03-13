@@ -1,7 +1,6 @@
 <script>
-
   import { formatCurrency } from '$lib/utils'
-  
+
   export let currencyCode
   export let item
 </script>
