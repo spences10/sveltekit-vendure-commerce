@@ -909,8 +909,8 @@ packages:
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
-      '@graphql-tools/graphql-tag-pluck': 7.1.6_graphql@16.3.0
-      '@graphql-tools/utils': 8.6.2_graphql@16.3.0
+      '@graphql-tools/graphql-tag-pluck': 7.1.5_graphql@16.3.0
+      '@graphql-tools/utils': 8.6.1_graphql@16.3.0
       globby: 11.1.0
       graphql: 16.3.0
       tslib: 2.3.1
@@ -1002,7 +1002,7 @@ packages:
       '@babel/parser': 7.17.3
       '@babel/traverse': 7.17.3
       '@babel/types': 7.17.0
-      '@graphql-tools/utils': 8.6.2_graphql@16.3.0
+      '@graphql-tools/utils': 8.6.1_graphql@16.3.0
       graphql: 16.3.0
       tslib: 2.3.1
     transitivePeerDependencies:
@@ -2250,7 +2250,7 @@ packages:
     hasBin: true
     dev: true
 
-  /daisyui/2.6.4_4585f94de3eac54c17be782e8b51352c:
+  /daisyui/2.6.4_554c024960c0d85659bdf1e5e950b7f7:
     resolution: {integrity: sha512-3l7WHgpOTdyUBVu2TD6uZH4+IbwaBnPXdoWjjvmzT6hxR5+WUHMl4vvPP+7/VB+CcoxSB296qaYWXQcoWcbISw==}
     peerDependencies:
       autoprefixer: ^10.0.2
