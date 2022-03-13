@@ -1,7 +1,8 @@
 <script lang="ts" context="module">
   import { KQL_GetCollections } from '$lib/graphql/_kitql/graphqlStores'
+  import type { LoadOutput } from '@sveltejs/kit/types/internal'
 
-  export const load = async ({ fetch }) => {
+  export const load = async ({ fetch }): Promise<LoadOutput> => {
     await KQL_GetCollections.query({ fetch })
     return {}
   }

@@ -1,12 +1,13 @@
 <script lang="ts" context="module">
   import {
-    KQL_AddToCart,
-    KQL_GetCurrencyCode,
-    KQL_GetProductDetail,
+  KQL_AddToCart,
+  KQL_GetCurrencyCode,
+  KQL_GetProductDetail
   } from '$lib/graphql/_kitql/graphqlStores'
   import { formatCurrency } from '$lib/utils'
+  import type { LoadOutput } from '@sveltejs/kit/types/private'
 
-  export const load = async ({ params, fetch }) => {
+  export const load = async ({ params, fetch }) : Promise<LoadOutput>=> {
     const { slug } = params
     const variables = { slug }
     await KQL_GetProductDetail.query({ fetch, variables })

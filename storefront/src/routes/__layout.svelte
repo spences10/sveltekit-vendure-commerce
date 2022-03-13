@@ -4,10 +4,12 @@
   import Navbar from '$lib/components/navbar.svelte'
   import PageTransition from '$lib/components/page-transition.svelte'
   import { KQL_GetCollections } from '$lib/graphql/_kitql/graphqlStores'
+  import type { LoadOutput } from '@sveltejs/kit/types/internal'
   import { onMount } from 'svelte'
   import '../app.css'
   import { userLocale } from '../stores/locale'
-  export const load = async ({ url }) => {
+
+  export const load = async ({ url }): Promise<LoadOutput> => {
     await KQL_GetCollections.query({ fetch })
     return { props: { key: url.pathname } }
   }

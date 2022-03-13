@@ -1,4 +1,4 @@
-<script context="module">
+<script lang="ts" context="module">
   import Filters from '$lib/components/filters.svelte'
   import SadFace from '$lib/components/icons/sad-face.svelte'
   import ProductCard from '$lib/components/product-card.svelte'
@@ -7,8 +7,12 @@
     KQL_SearchProducts,
   } from '$lib/graphql/_kitql/graphqlStores'
   import { filtersStore } from '$stores/filters'
+  import type { LoadOutput } from '@sveltejs/kit/types/internal'
 
-  export const load = async ({ params, fetch }) => {
+  export const load = async ({
+    params,
+    fetch,
+  }): Promise<LoadOutput> => {
     KQL_SearchProducts.query({ fetch, variables: { input: {} } })
     const { searchTerm } = params
     await KQL_GetCurrencyCode.query({ fetch })
@@ -17,7 +21,8 @@
 </script>
 
 <script lang="ts">
-  export let searchTerm
+  export let searchTerm: string
+
   let currencyCode =
     $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
 
@@ -34,8 +39,9 @@
     },
   })
 
-  $: products = $KQL_SearchProducts?.data?.search?.items
-  $: facetValues = $KQL_SearchProducts?.data?.search?.facetValues
+  $: products = $KQL_SearchProducts?.data?.search?.items || []
+  $: facetValues =
+    $KQL_SearchProducts?.data?.search?.facetValues || []
 </script>
 
 <div class="flex">
