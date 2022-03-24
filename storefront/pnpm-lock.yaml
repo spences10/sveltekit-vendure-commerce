@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@kitql/all-in': 0.4.1
+  '@kitql/all-in': 0.5.2
   '@sveltejs/adapter-auto': next
   '@sveltejs/kit': next
   '@typescript-eslint/eslint-plugin': ^5.14.0
@@ -24,7 +24,7 @@ specifiers:
   typescript: 4.6.2
 
 devDependencies:
-  '@kitql/all-in': 0.4.1_typescript@4.6.2
+  '@kitql/all-in': 0.5.2_typescript@4.6.2
   '@sveltejs/adapter-auto': 1.0.0-next.33
   '@sveltejs/kit': 1.0.0-next.302_svelte@3.46.4
   '@typescript-eslint/eslint-plugin': 5.14.0_ace6f9e7722b813e21eaf2dc993bc413
@@ -1264,8 +1264,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.11
     dev: true
 
-  /@kitql/all-in/0.4.1_typescript@4.6.2:
-    resolution: {integrity: sha512-30o2ovOf8Dyq1wsCgflf6PiNuBdp1oM4ryZKXwD7q8bRcam10ECXQeXBFASZYM1w0wdXHvOlUAbplTfuYuBKTA==}
+  /@kitql/all-in/0.5.2_typescript@4.6.2:
+    resolution: {integrity: sha512-Qu0+GPaPr0TDqXj4KBje3DvSvZ8bNZuux2yFbAKwEU1e1BSH6iugB0LAwmlHAzmOpclBWChNHv90P7vga74rXQ==}
     dependencies:
       '@graphql-codegen/cli': 2.6.2_graphql@16.3.0+typescript@4.6.2
       '@graphql-codegen/graphql-modules-preset': 2.3.8_graphql@16.3.0
@@ -1277,10 +1277,11 @@ packages:
       '@graphql-codegen/typescript-resolvers': 2.6.1_graphql@16.3.0
       '@graphql-eslint/eslint-plugin': 3.9.1_graphql@16.3.0+typescript@4.6.2
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.3.0
-      '@kitql/client': 0.3.4
-      '@kitql/graphql-codegen': 0.3.4_graphql@16.3.0
-      '@kitql/module-codegen': 0.1.11_graphql@16.3.0
-      '@kitql/vite-plugin-watch-and-run': 0.1.7
+      '@kitql/client': 0.4.2
+      '@kitql/comp': 0.1.2
+      '@kitql/graphql-codegen': 0.4.0_graphql@16.3.0
+      '@kitql/module-codegen': 0.2.0_graphql@16.3.0
+      '@kitql/vite-plugin-watch-and-run': 0.2.0
       graphql: 16.3.0
     transitivePeerDependencies:
       - '@types/node'
@@ -1292,14 +1293,19 @@ packages:
       - zen-observable
     dev: true
 
-  /@kitql/client/0.3.4:
-    resolution: {integrity: sha512-l34zKNSmJRXJTq+KMhGOIbf8OeDyIklCvhnDPrrxXd4KIytHfIoZlFORBKs+DcteXMdidGei+ErbMHq5PNwX+w==}
+  /@kitql/client/0.4.2:
+    resolution: {integrity: sha512-WV1zB0Gsh2yG777W77oDWFWI2kqdkhB1L3KC0plKsiw3qF6wYjVW9f0Uj2pa8jpc3bK3fa0Vfx73gl4wLY6QxA==}
     dependencies:
-      '@kitql/helper': 0.1.7
+      '@kitql/comp': 0.1.2
+      '@kitql/helper': 0.2.0
     dev: true
 
-  /@kitql/graphql-codegen/0.3.4_graphql@16.3.0:
-    resolution: {integrity: sha512-fTMBUBD5DL4nPK5kzT3c6F8AVj/fOGIgmx/VGrGERgoI6mL+ggyWpsfKwFAEmM8pAHDzhMel8RR0UrUHMZrA9A==}
+  /@kitql/comp/0.1.2:
+    resolution: {integrity: sha512-mPVsyuUyKkEhJfUwp9Bcq823NCkcwhGRaS3LLm9VwTH5gQVWQWu4yPsblwIjegavLAALWgTwPc18/uEDEVJoIA==}
+    dev: true
+
+  /@kitql/graphql-codegen/0.4.0_graphql@16.3.0:
+    resolution: {integrity: sha512-dbQmiztWySQIcGFBmqhh6iEjhAm2QAS36wGNSDxMoMDRGR/7ARLcYt8lzWHtVFSQuXxcw0JnyiW5z0pk6GaW9Q==}
     peerDependencies:
       graphql: ^15.0.0 || ^16.0.0
     dependencies:
@@ -1313,24 +1319,24 @@ packages:
       - supports-color
     dev: true
 
-  /@kitql/helper/0.1.7:
-    resolution: {integrity: sha512-vFwTJXnTEpSI8QHSSyikOMOCLAqjovMopjpcrFPBo9Yvus/1QhSXF6saeRjClwFj5ckVDnWLKS6lSgspWvrycg==}
+  /@kitql/helper/0.2.0:
+    resolution: {integrity: sha512-9hgHCZKviFqCavanhmCr7w/VUZ+pbkgfwyGsFGMG1WEh9QyD/XXlB9QNnL2XbJKDXdA3Hmf39b2b2fm7IiTF2w==}
     dev: true
 
-  /@kitql/module-codegen/0.1.11_graphql@16.3.0:
-    resolution: {integrity: sha512-wF34kFidThBZlzv0aWPSb4Voh8L0REpFIvTJKtDnOfhgo/yv3B8SPKv/FAhL0mrPbsT4+xZDHaA9VeFvV4fHsw==}
+  /@kitql/module-codegen/0.2.0_graphql@16.3.0:
+    resolution: {integrity: sha512-bmgXlxm8Yk+Tsw5eKkQ7zo4x5C070ZpbnN9nYA3rv/nswIsEJ6cxhanNB1hRAXuQxcLl2pjsWr0bzwpi3EeYbA==}
     peerDependencies:
       graphql: ^15.0.0 || ^16.0.0
     dependencies:
-      '@kitql/helper': 0.1.7
+      '@kitql/helper': 0.2.0
       graphql: 16.3.0
       yaml: 1.10.2
     dev: true
 
-  /@kitql/vite-plugin-watch-and-run/0.1.7:
-    resolution: {integrity: sha512-EcZXE18UHvlTKeTxy8Wl1P9SkB4dBCCKFu8zcuBNAYU6g57KmfIY9+uFAwNEypFqoz+pvxYhRpTigjf0kmUq4w==}
+  /@kitql/vite-plugin-watch-and-run/0.2.0:
+    resolution: {integrity: sha512-fb/ealm4bgpkxILY42kvmphlrVGMvfcqxCtxReIMLfVAPNVSjuD4O9PWZfq0Uz9p8EbgAfc7Vv6RdFFuY60zSQ==}
     dependencies:
-      '@kitql/helper': 0.1.7
+      '@kitql/helper': 0.2.0
       micromatch: 4.0.4
     dev: true
 
