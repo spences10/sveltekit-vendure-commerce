@@ -8,6 +8,7 @@
     KQL_SearchProducts,
   } from '$lib/graphql/_kitql/graphqlStores'
   import { filtersStore } from '$stores/filters'
+  import { KitQLInfo } from '@kitql/comp'
   import type { LoadOutput } from '@sveltejs/kit/types/private'
 
   export const load = async ({
@@ -23,6 +24,8 @@
     })
     return { props: { slug } }
   }
+
+  let dev = import.meta.env.DEV
 </script>
 
 <script lang="ts">
@@ -55,9 +58,13 @@
 
 <CategoryBanner {collections} />
 
+{#if dev}
+  <KitQLInfo store={KQL_GetCollections} />
+{/if}
+
 <div class="flex">
   {#if Object.entries(facetValues).length >= 1}
-    <Filters />
+    <Filters {facetValues} />
   {/if}
   <div
     class="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"

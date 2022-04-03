@@ -22,7 +22,7 @@
     $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
   let { breadcrumbs } =
     product.collections[product.collections.length - 1]
-  let selected
+  let selected: { sku: string; priceWithTax: number; } 
 
   const addToCart = async () => {
     let variables = { productVariantId: '1', quantity: 10 }
@@ -74,6 +74,7 @@
     <div class="flex items-center justify-between my-4">
       <p class="inline-block align-bottom text-2xl text-neutral">
         {selected?.sku || product.variants[0].sku}
+        {console.log(selected?.sku)}
       </p>
       <div class="flex items-center">
         <p

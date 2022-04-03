@@ -53,10 +53,11 @@ export type Adjustment = {
 
 export enum AdjustmentType {
   DistributedOrderPromotion = 'DISTRIBUTED_ORDER_PROMOTION',
+  Other = 'OTHER',
   Promotion = 'PROMOTION'
 }
 
-/** Retured when attemting to set the Customer for an Order when already logged in. */
+/** Returned when attempting to set the Customer for an Order when already logged in. */
 export type AlreadyLoggedInError = ErrorResult & {
   __typename?: 'AlreadyLoggedInError';
   errorCode: ErrorCode;
@@ -119,6 +120,11 @@ export type BooleanCustomFieldConfig = CustomField & {
   readonly?: Maybe<Scalars['Boolean']>;
   type: Scalars['String'];
   ui?: Maybe<Scalars['JSON']>;
+};
+
+/** Operators for filtering on a list of Boolean fields */
+export type BooleanListOperators = {
+  inList: Scalars['Boolean'];
 };
 
 /** Operators for filtering on a Boolean field */
@@ -789,6 +795,11 @@ export type CustomerSortParameter = {
   updatedAt?: InputMaybe<SortOrder>;
 };
 
+/** Operators for filtering on a list of Date fields */
+export type DateListOperators = {
+  inList: Scalars['DateTime'];
+};
+
 /** Operators for filtering on a DateTime field */
 export type DateOperators = {
   after?: InputMaybe<Scalars['DateTime']>;
@@ -844,7 +855,7 @@ export type Discount = {
   type: AdjustmentType;
 };
 
-/** Retured when attemting to create a Customer with an email address already registered to an existing User. */
+/** Returned when attempting to create a Customer with an email address already registered to an existing User. */
 export type EmailAddressConflictError = ErrorResult & {
   __typename?: 'EmailAddressConflictError';
   errorCode: ErrorCode;
@@ -875,6 +886,7 @@ export enum ErrorCode {
   PasswordAlreadySetError = 'PASSWORD_ALREADY_SET_ERROR',
   PasswordResetTokenExpiredError = 'PASSWORD_RESET_TOKEN_EXPIRED_ERROR',
   PasswordResetTokenInvalidError = 'PASSWORD_RESET_TOKEN_INVALID_ERROR',
+  PasswordValidationError = 'PASSWORD_VALIDATION_ERROR',
   PaymentDeclinedError = 'PAYMENT_DECLINED_ERROR',
   PaymentFailedError = 'PAYMENT_FAILED_ERROR',
   UnknownError = 'UNKNOWN_ERROR',
@@ -1092,6 +1104,11 @@ export enum HistoryEntryType {
   OrderStateTransition = 'ORDER_STATE_TRANSITION'
 }
 
+/** Operators for filtering on a list of ID fields */
+export type IdListOperators = {
+  inList: Scalars['ID'];
+};
+
 /** Operators for filtering on an ID field */
 export type IdOperators = {
   eq?: InputMaybe<Scalars['String']>;
@@ -1101,7 +1118,7 @@ export type IdOperators = {
 };
 
 /**
- * Retured if the token used to change a Customer's email address is valid, but has
+ * Returned if the token used to change a Customer's email address is valid, but has
  * expired according to the `verificationTokenDuration` setting in the AuthOptions.
  */
 export type IdentifierChangeTokenExpiredError = ErrorResult & {
@@ -1111,7 +1128,7 @@ export type IdentifierChangeTokenExpiredError = ErrorResult & {
 };
 
 /**
- * Retured if the token used to change a Customer's email address is either
+ * Returned if the token used to change a Customer's email address is either
  * invalid or does not match any expected tokens.
  */
 export type IdentifierChangeTokenInvalidError = ErrorResult & {
@@ -1520,7 +1537,7 @@ export enum LogicalOperator {
   Or = 'OR'
 }
 
-/** Retured when attemting to register or verify a customer account without a password, when one is required. */
+/** Returned when attempting to register or verify a customer account without a password, when one is required. */
 export type MissingPasswordError = ErrorResult & {
   __typename?: 'MissingPasswordError';
   errorCode: ErrorCode;
@@ -1558,7 +1575,7 @@ export type Mutation = {
    *    verificationToken would then be passed to the `verifyCustomerAccount` mutation _without_ a password. The Customer is then
    *    verified and authenticated in one step.
    * 2. **The Customer is registered _without_ a password**. A verificationToken will be created (and typically emailed to the Customer). That
-   *    verificationToken would then be passed to the `verifyCustomerAccount` mutation _with_ the chosed password of the Customer. The Customer is then
+   *    verificationToken would then be passed to the `verifyCustomerAccount` mutation _with_ the chosen password of the Customer. The Customer is then
    *    verified and authenticated in one step.
    *
    * _If `authOptions.requireVerification` is set to `false`:_
@@ -1609,7 +1626,7 @@ export type Mutation = {
   /**
    * Verify a Customer email address with the token sent to that address. Only applicable if `authOptions.requireVerification` is set to true.
    *
-   * If the Customer was not registered with a password in the `registerCustomerAccount` mutation, the a password _must_ be
+   * If the Customer was not registered with a password in the `registerCustomerAccount` mutation, the password _must_ be
    * provided here.
    */
   verifyCustomerAccount: VerifyCustomerAccountResult;
@@ -1759,7 +1776,7 @@ export type NativeAuthInput = {
   username: Scalars['String'];
 };
 
-/** Retured when attempting an operation that relies on the NativeAuthStrategy, if that strategy is not configured. */
+/** Returned when attempting an operation that relies on the NativeAuthStrategy, if that strategy is not configured. */
 export type NativeAuthStrategyError = ErrorResult & {
   __typename?: 'NativeAuthStrategyError';
   errorCode: ErrorCode;
@@ -1768,7 +1785,7 @@ export type NativeAuthStrategyError = ErrorResult & {
 
 export type NativeAuthenticationResult = CurrentUser | InvalidCredentialsError | NativeAuthStrategyError | NotVerifiedError;
 
-/** Retured when attemting to set a negative OrderLine quantity. */
+/** Returned when attempting to set a negative OrderLine quantity. */
 export type NegativeQuantityError = ErrorResult & {
   __typename?: 'NegativeQuantityError';
   errorCode: ErrorCode;
@@ -1797,6 +1814,11 @@ export type NotVerifiedError = ErrorResult & {
   __typename?: 'NotVerifiedError';
   errorCode: ErrorCode;
   message: Scalars['String'];
+};
+
+/** Operators for filtering on a list of Number fields */
+export type NumberListOperators = {
+  inList: Scalars['Float'];
 };
 
 /** Operators for filtering on a Int or Float field */
@@ -1946,7 +1968,7 @@ export type OrderItem = Node & {
   updatedAt: Scalars['DateTime'];
 };
 
-/** Retured when the maximum order size limit has been reached. */
+/** Returned when the maximum order size limit has been reached. */
 export type OrderLimitError = ErrorResult & {
   __typename?: 'OrderLimitError';
   errorCode: ErrorCode;
@@ -2095,7 +2117,7 @@ export type PaginatedList = {
   totalItems: Scalars['Int'];
 };
 
-/** Retured when attemting to verify a customer account with a password, when a password has already been set. */
+/** Returned when attempting to verify a customer account with a password, when a password has already been set. */
 export type PasswordAlreadySetError = ErrorResult & {
   __typename?: 'PasswordAlreadySetError';
   errorCode: ErrorCode;
@@ -2103,7 +2125,7 @@ export type PasswordAlreadySetError = ErrorResult & {
 };
 
 /**
- * Retured if the token used to reset a Customer's password is valid, but has
+ * Returned if the token used to reset a Customer's password is valid, but has
  * expired according to the `verificationTokenDuration` setting in the AuthOptions.
  */
 export type PasswordResetTokenExpiredError = ErrorResult & {
@@ -2113,13 +2135,21 @@ export type PasswordResetTokenExpiredError = ErrorResult & {
 };
 
 /**
- * Retured if the token used to reset a Customer's password is either
+ * Returned if the token used to reset a Customer's password is either
  * invalid or does not match any expected tokens.
  */
 export type PasswordResetTokenInvalidError = ErrorResult & {
   __typename?: 'PasswordResetTokenInvalidError';
   errorCode: ErrorCode;
   message: Scalars['String'];
+};
+
+/** Returned when attempting to register or verify a customer account where the given password fails password validation. */
+export type PasswordValidationError = ErrorResult & {
+  __typename?: 'PasswordValidationError';
+  errorCode: ErrorCode;
+  message: Scalars['String'];
+  validationErrorMessage: Scalars['String'];
 };
 
 export type Payment = Node & {
@@ -2639,7 +2669,7 @@ export type Query = {
    * general anonymous access to Order data.
    */
   orderByCode?: Maybe<Order>;
-  /** Get a Product either by id or slug. If neither 'id' nor 'slug' is speicified, an error will result. */
+  /** Get a Product either by id or slug. If neither 'id' nor 'slug' is specified, an error will result. */
   product?: Maybe<Product>;
   /** Get a list of Products */
   products: ProductList;
@@ -2714,7 +2744,7 @@ export type Refund = Node & {
   updatedAt: Scalars['DateTime'];
 };
 
-export type RegisterCustomerAccountResult = MissingPasswordError | NativeAuthStrategyError | Success;
+export type RegisterCustomerAccountResult = MissingPasswordError | NativeAuthStrategyError | PasswordValidationError | Success;
 
 export type RegisterCustomerInput = {
   emailAddress: Scalars['String'];
@@ -2746,7 +2776,7 @@ export type RequestPasswordResetResult = NativeAuthStrategyError | Success;
 
 export type RequestUpdateCustomerEmailAddressResult = EmailAddressConflictError | InvalidCredentialsError | NativeAuthStrategyError | Success;
 
-export type ResetPasswordResult = CurrentUser | NativeAuthStrategyError | NotVerifiedError | PasswordResetTokenExpiredError | PasswordResetTokenInvalidError;
+export type ResetPasswordResult = CurrentUser | NativeAuthStrategyError | NotVerifiedError | PasswordResetTokenExpiredError | PasswordResetTokenInvalidError | PasswordValidationError;
 
 export type Role = Node & {
   __typename?: 'Role';
@@ -2807,7 +2837,7 @@ export type SearchResult = {
   productVariantAsset?: Maybe<SearchResultAsset>;
   productVariantId: Scalars['ID'];
   productVariantName: Scalars['String'];
-  /** A relevence score for the result. Differs between database implementations */
+  /** A relevance score for the result. Differs between database implementations */
   score: Scalars['Float'];
   sku: Scalars['String'];
   slug: Scalars['String'];
@@ -2917,6 +2947,11 @@ export type StringFieldOption = {
   __typename?: 'StringFieldOption';
   label?: Maybe<Array<LocalizedString>>;
   value: Scalars['String'];
+};
+
+/** Operators for filtering on a list of String fields */
+export type StringListOperators = {
+  inList: Scalars['String'];
 };
 
 /** Operators for filtering on a String field */
@@ -3040,7 +3075,7 @@ export type UpdateCustomerInput = {
   title?: InputMaybe<Scalars['String']>;
 };
 
-export type UpdateCustomerPasswordResult = InvalidCredentialsError | NativeAuthStrategyError | Success;
+export type UpdateCustomerPasswordResult = InvalidCredentialsError | NativeAuthStrategyError | PasswordValidationError | Success;
 
 export type UpdateOrderInput = {
   customFields?: InputMaybe<Scalars['JSON']>;
@@ -3072,7 +3107,7 @@ export type VerificationTokenExpiredError = ErrorResult & {
 };
 
 /**
- * Retured if the verification token (used to verify a Customer's email address) is either
+ * Returned if the verification token (used to verify a Customer's email address) is either
  * invalid or does not match any expected tokens.
  */
 export type VerificationTokenInvalidError = ErrorResult & {
@@ -3081,7 +3116,7 @@ export type VerificationTokenInvalidError = ErrorResult & {
   message: Scalars['String'];
 };
 
-export type VerifyCustomerAccountResult = CurrentUser | MissingPasswordError | NativeAuthStrategyError | PasswordAlreadySetError | VerificationTokenExpiredError | VerificationTokenInvalidError;
+export type VerifyCustomerAccountResult = CurrentUser | MissingPasswordError | NativeAuthStrategyError | PasswordAlreadySetError | PasswordValidationError | VerificationTokenExpiredError | VerificationTokenInvalidError;
 
 export type Zone = Node & {
   __typename?: 'Zone';
