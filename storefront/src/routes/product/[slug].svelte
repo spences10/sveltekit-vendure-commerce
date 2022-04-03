@@ -10,8 +10,8 @@
   export const load = async ({ params, fetch }) : Promise<LoadOutput>=> {
     const { slug } = params
     const variables = { slug }
-    await KQL_GetProductDetail.query({ fetch, variables })
-    await KQL_GetCurrencyCode.query({ fetch })
+    await KQL_GetProductDetail.queryLoad({ fetch, variables })
+    await KQL_GetCurrencyCode.queryLoad({ fetch })
     return {}
   }
 </script>

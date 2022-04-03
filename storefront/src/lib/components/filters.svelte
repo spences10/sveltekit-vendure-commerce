@@ -4,7 +4,7 @@
   import { filtersStore } from '../../stores/filters'
 
   export const load = async ({ fetch }): Promise<LoadOutput> => {
-    await KQL_SearchProducts.query({ fetch })
+    await KQL_SearchProducts.queryLoad({ fetch })
     return {}
   }
 </script>

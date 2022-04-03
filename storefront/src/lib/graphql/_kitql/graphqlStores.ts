@@ -1,8 +1,27 @@
 import { browser } from '$app/env';
 import * as Types from '$lib/graphql/_kitql/graphqlTypes';
-import { clientNavigation, defaultStoreValue, RequestStatus, type PatchType, type RequestQueryParameters, type RequestResult } from '@kitql/client';
+import { defaultStoreValue, RequestStatus, ResponseResultType, type PatchType, type RequestParameters, type RequestQueryParameters, type RequestResult } from '@kitql/client';
 import { get, writable } from 'svelte/store';
 import { kitQLClient } from '../kitQLClient';
+ 
+/**
+ * Init KitQL (to have clientStarted = true!)
+ *
+ * Waiting for: https://github.com/sveltejs/kit/issues/4447
+ */
+export function KQL__Init() {}
+ 
+/* Internal. To skip await on a client side navigation in the load function (from queryLoad)! */
+let clientStarted = false; // Will be true on a client side navigation
+if (browser) {
+	addEventListener('sveltekit:start', () => {
+		clientStarted = true;
+	});
+}
+ 
+/**
+ * ResetAllCaches in One function!
+ */
 export function KQL__ResetAllCaches() {
 	KQL_GetCollections.resetCache();
 	KQL_GetCurrencyCode.resetCache();
@@ -10,11 +29,14 @@ export function KQL__ResetAllCaches() {
 	KQL_GetTopSellers.resetCache();
 	KQL_SearchProducts.resetCache();
 }
+ 
+/* Operations 👇 */
 function KQL_AddToCartStore() {
 	const operationName = 'KQL_AddToCart';
+	const operationType = ResponseResultType.Mutation;
 
 	// prettier-ignore
-	const { subscribe, set, update } = writable<RequestResult<Types.AddToCartMutation, Types.AddToCartMutationVariables>>({...defaultStoreValue, operationName});
+	const { subscribe, set, update } = writable<RequestResult<Types.AddToCartMutation, Types.AddToCartMutationVariables>>({...defaultStoreValue, operationName, operationType});
 
 		async function mutateLocal(
 			params?: RequestParameters<Types.AddToCartMutationVariables>
@@ -34,6 +56,7 @@ function KQL_AddToCartStore() {
 				document: Types.AddToCartDocument,
 				variables, 
 				operationName, 
+				operationType, 
 				browser
 			});
 			const result = { ...res, isFetching: false, status: RequestStatus.DONE, variables };
@@ -59,9 +82,10 @@ export const KQL_AddToCart = KQL_AddToCartStore();
 
 function KQL_GetCollectionsStore() {
 	const operationName = 'KQL_GetCollections';
+	const operationType = ResponseResultType.Query;
 
 	// prettier-ignore
-	const { subscribe, set, update } = writable<RequestResult<Types.GetCollectionsQuery, Types.GetCollectionsQueryVariables>>({...defaultStoreValue, operationName});
+	const { subscribe, set, update } = writable<RequestResult<Types.GetCollectionsQuery, Types.GetCollectionsQueryVariables>>({...defaultStoreValue, operationName, operationType});
 
 		async function queryLocal(
 			params?: RequestQueryParameters<Types.GetCollectionsQueryVariables>
@@ -107,6 +131,7 @@ function KQL_GetCollectionsStore() {
 				document: Types.GetCollectionsDocument,
 				variables, 
 				operationName, 
+				operationType, 
 				browser
 			});
 			const result = { ...res, isFetching: false, status: RequestStatus.DONE, variables };
@@ -130,8 +155,8 @@ function KQL_GetCollectionsStore() {
 		queryLoad: async (
 			params?: RequestQueryParameters<Types.GetCollectionsQueryVariables>
 		): Promise<void> => {
-			if (clientNavigation) {
-				queryLocal(params); // No await in clientNavigation mode.
+			if (clientStarted) {
+				queryLocal(params); // No await in purpose, we are in a client navigation.
 			} else {
 				await queryLocal(params);
 			}
@@ -178,9 +203,10 @@ export const KQL_GetCollections = KQL_GetCollectionsStore();
 
 function KQL_GetCurrencyCodeStore() {
 	const operationName = 'KQL_GetCurrencyCode';
+	const operationType = ResponseResultType.Query;
 
 	// prettier-ignore
-	const { subscribe, set, update } = writable<RequestResult<Types.GetCurrencyCodeQuery, Types.GetCurrencyCodeQueryVariables>>({...defaultStoreValue, operationName});
+	const { subscribe, set, update } = writable<RequestResult<Types.GetCurrencyCodeQuery, Types.GetCurrencyCodeQueryVariables>>({...defaultStoreValue, operationName, operationType});
 
 		async function queryLocal(
 			params?: RequestQueryParameters<Types.GetCurrencyCodeQueryVariables>
@@ -226,6 +252,7 @@ function KQL_GetCurrencyCodeStore() {
 				document: Types.GetCurrencyCodeDocument,
 				variables, 
 				operationName, 
+				operationType, 
 				browser
 			});
 			const result = { ...res, isFetching: false, status: RequestStatus.DONE, variables };
@@ -249,8 +276,8 @@ function KQL_GetCurrencyCodeStore() {
 		queryLoad: async (
 			params?: RequestQueryParameters<Types.GetCurrencyCodeQueryVariables>
 		): Promise<void> => {
-			if (clientNavigation) {
-				queryLocal(params); // No await in clientNavigation mode.
+			if (clientStarted) {
+				queryLocal(params); // No await in purpose, we are in a client navigation.
 			} else {
 				await queryLocal(params);
 			}
@@ -297,9 +324,10 @@ export const KQL_GetCurrencyCode = KQL_GetCurrencyCodeStore();
 
 function KQL_GetProductDetailStore() {
 	const operationName = 'KQL_GetProductDetail';
+	const operationType = ResponseResultType.Query;
 
 	// prettier-ignore
-	const { subscribe, set, update } = writable<RequestResult<Types.GetProductDetailQuery, Types.GetProductDetailQueryVariables>>({...defaultStoreValue, operationName});
+	const { subscribe, set, update } = writable<RequestResult<Types.GetProductDetailQuery, Types.GetProductDetailQueryVariables>>({...defaultStoreValue, operationName, operationType});
 
 		async function queryLocal(
 			params?: RequestQueryParameters<Types.GetProductDetailQueryVariables>
@@ -345,6 +373,7 @@ function KQL_GetProductDetailStore() {
 				document: Types.GetProductDetailDocument,
 				variables, 
 				operationName, 
+				operationType, 
 				browser
 			});
 			const result = { ...res, isFetching: false, status: RequestStatus.DONE, variables };
@@ -368,8 +397,8 @@ function KQL_GetProductDetailStore() {
 		queryLoad: async (
 			params?: RequestQueryParameters<Types.GetProductDetailQueryVariables>
 		): Promise<void> => {
-			if (clientNavigation) {
-				queryLocal(params); // No await in clientNavigation mode.
+			if (clientStarted) {
+				queryLocal(params); // No await in purpose, we are in a client navigation.
 			} else {
 				await queryLocal(params);
 			}
@@ -416,9 +445,10 @@ export const KQL_GetProductDetail = KQL_GetProductDetailStore();
 
 function KQL_GetTopSellersStore() {
 	const operationName = 'KQL_GetTopSellers';
+	const operationType = ResponseResultType.Query;
 
 	// prettier-ignore
-	const { subscribe, set, update } = writable<RequestResult<Types.GetTopSellersQuery, Types.GetTopSellersQueryVariables>>({...defaultStoreValue, operationName});
+	const { subscribe, set, update } = writable<RequestResult<Types.GetTopSellersQuery, Types.GetTopSellersQueryVariables>>({...defaultStoreValue, operationName, operationType});
 
 		async function queryLocal(
 			params?: RequestQueryParameters<Types.GetTopSellersQueryVariables>
@@ -464,6 +494,7 @@ function KQL_GetTopSellersStore() {
 				document: Types.GetTopSellersDocument,
 				variables, 
 				operationName, 
+				operationType, 
 				browser
 			});
 			const result = { ...res, isFetching: false, status: RequestStatus.DONE, variables };
@@ -487,8 +518,8 @@ function KQL_GetTopSellersStore() {
 		queryLoad: async (
 			params?: RequestQueryParameters<Types.GetTopSellersQueryVariables>
 		): Promise<void> => {
-			if (clientNavigation) {
-				queryLocal(params); // No await in clientNavigation mode.
+			if (clientStarted) {
+				queryLocal(params); // No await in purpose, we are in a client navigation.
 			} else {
 				await queryLocal(params);
 			}
@@ -535,9 +566,10 @@ export const KQL_GetTopSellers = KQL_GetTopSellersStore();
 
 function KQL_SearchProductsStore() {
 	const operationName = 'KQL_SearchProducts';
+	const operationType = ResponseResultType.Query;
 
 	// prettier-ignore
-	const { subscribe, set, update } = writable<RequestResult<Types.SearchProductsQuery, Types.SearchProductsQueryVariables>>({...defaultStoreValue, operationName});
+	const { subscribe, set, update } = writable<RequestResult<Types.SearchProductsQuery, Types.SearchProductsQueryVariables>>({...defaultStoreValue, operationName, operationType});
 
 		async function queryLocal(
 			params?: RequestQueryParameters<Types.SearchProductsQueryVariables>
@@ -583,6 +615,7 @@ function KQL_SearchProductsStore() {
 				document: Types.SearchProductsDocument,
 				variables, 
 				operationName, 
+				operationType, 
 				browser
 			});
 			const result = { ...res, isFetching: false, status: RequestStatus.DONE, variables };
@@ -606,8 +639,8 @@ function KQL_SearchProductsStore() {
 		queryLoad: async (
 			params?: RequestQueryParameters<Types.SearchProductsQueryVariables>
 		): Promise<void> => {
-			if (clientNavigation) {
-				queryLocal(params); // No await in clientNavigation mode.
+			if (clientStarted) {
+				queryLocal(params); // No await in purpose, we are in a client navigation.
 			} else {
 				await queryLocal(params);
 			}

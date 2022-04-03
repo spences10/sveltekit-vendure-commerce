@@ -14,13 +14,13 @@
     fetch,
   }): Promise<LoadOutput> => {
     // KQL_SearchProducts.resetCache()
-    await KQL_SearchProducts.query({
+    await KQL_SearchProducts.queryLoad({
       fetch,
       variables: { input: {} },
       // settings: { policy: 'cache-and-network' },
     })
     const { searchTerm } = params
-    await KQL_GetCurrencyCode.query({ fetch })
+    await KQL_GetCurrencyCode.queryLoad({ fetch })
     return { props: { searchTerm } }
   }
 </script>

@@ -3,7 +3,7 @@
   import type { LoadOutput } from '@sveltejs/kit/types/internal'
 
   export const load = async ({ fetch }): Promise<LoadOutput> => {
-    await KQL_GetCollections.query({ fetch })
+    await KQL_GetCollections.queryLoad({ fetch })
     return {}
   }
 </script>

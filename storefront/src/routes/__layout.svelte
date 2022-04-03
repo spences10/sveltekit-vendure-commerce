@@ -10,7 +10,7 @@
   import { userLocale } from '../stores/locale'
 
   export const load = async ({ url }): Promise<LoadOutput> => {
-    await KQL_GetCollections.query({ fetch })
+    await KQL_GetCollections.queryLoad({ fetch })
     return { props: { key: url.pathname } }
   }
 </script>

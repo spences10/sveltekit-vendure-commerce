@@ -9,9 +9,9 @@
   import type { LoadOutput } from '@sveltejs/kit/types/private'
 
   export const load = async ({ fetch }): Promise<LoadOutput> => {
-    await KQL_GetTopSellers.query({ fetch })
-    await KQL_GetCollections.query({ fetch })
-    await KQL_GetCurrencyCode.query({ fetch })
+    await KQL_GetTopSellers.queryLoad({ fetch })
+    await KQL_GetCollections.queryLoad({ fetch })
+    await KQL_GetCurrencyCode.queryLoad({ fetch })
     return {}
   }
 </script>
