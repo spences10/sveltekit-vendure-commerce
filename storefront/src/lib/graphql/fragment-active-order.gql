@@ -1,0 +1,15 @@
+fragment ActiveOrder on Order {
+  id
+  code
+  state
+  totalWithTax
+  totalQuantity
+  lines {
+    id
+    linePriceWithTax
+    quantity
+    featuredAsset {
+      preview
+    }
+  }
+}

@@ -23,7 +23,7 @@ if (browser) {
  * ResetAllCaches in One function!
  */
 export function KQL__ResetAllCaches() {
-	KQL_ActiveOrder.resetCache();
+	KQL_GetActiveOrder.resetCache();
 	KQL_GetCollections.resetCache();
 	KQL_GetCurrencyCode.resetCache();
 	KQL_GetProductDetail.resetCache();
@@ -32,20 +32,20 @@ export function KQL__ResetAllCaches() {
 }
  
 /* Operations 👇 */
-function KQL_ActiveOrderStore() {
-	const operationName = 'KQL_ActiveOrder';
+function KQL_GetActiveOrderStore() {
+	const operationName = 'KQL_GetActiveOrder';
 	const operationType = ResponseResultType.Query;
 
 	// prettier-ignore
-	const { subscribe, set, update } = writable<RequestResult<Types.ActiveOrderQuery, Types.ActiveOrderQueryVariables>>({...defaultStoreValue, operationName, operationType});
+	const { subscribe, set, update } = writable<RequestResult<Types.GetActiveOrderQuery, Types.GetActiveOrderQueryVariables>>({...defaultStoreValue, operationName, operationType});
 
 		async function queryLocal(
-			params?: RequestQueryParameters<Types.ActiveOrderQueryVariables>
-		): Promise<RequestResult<Types.ActiveOrderQuery, Types.ActiveOrderQueryVariables>> {
+			params?: RequestQueryParameters<Types.GetActiveOrderQueryVariables>
+		): Promise<RequestResult<Types.GetActiveOrderQuery, Types.GetActiveOrderQueryVariables>> {
 			let { fetch, variables, settings } = params ?? {};
 			let { cacheMs, policy } = settings ?? {};
 
-			const storedVariables = get(KQL_ActiveOrder).variables;
+			const storedVariables = get(KQL_GetActiveOrder).variables;
 			variables = variables ?? storedVariables;
 			policy = policy ?? kitQLClient.policy;
 
@@ -53,7 +53,7 @@ function KQL_ActiveOrderStore() {
 			if (browser) {
 				if (policy !== 'network-only') {
 					// prettier-ignore
-					const cachedData = kitQLClient.requestCache<Types.ActiveOrderQuery, Types.ActiveOrderQueryVariables>({
+					const cachedData = kitQLClient.requestCache<Types.GetActiveOrderQuery, Types.GetActiveOrderQueryVariables>({
 						variables, operationName, cacheMs,	browser
 					});
 					if (cachedData) {
@@ -78,9 +78,9 @@ function KQL_ActiveOrderStore() {
 			});
 
 			// prettier-ignore
-			const res = await kitQLClient.request<Types.ActiveOrderQuery, Types.ActiveOrderQueryVariables>({
+			const res = await kitQLClient.request<Types.GetActiveOrderQuery, Types.GetActiveOrderQueryVariables>({
 				skFetch: fetch,
-				document: Types.ActiveOrderDocument,
+				document: Types.GetActiveOrderDocument,
 				variables, 
 				operationName, 
 				operationType, 
@@ -105,7 +105,7 @@ function KQL_ActiveOrderStore() {
 		 * @returns fill this store & the cache
 		 */
 		queryLoad: async (
-			params?: RequestQueryParameters<Types.ActiveOrderQueryVariables>
+			params?: RequestQueryParameters<Types.GetActiveOrderQueryVariables>
 		): Promise<void> => {
 			if (clientStarted) {
 				queryLocal(params); // No await in purpose, we are in a client navigation.
@@ -118,7 +118,7 @@ function KQL_ActiveOrderStore() {
 		 * Reset Cache
 		 */
 		resetCache(
-			variables: Types.ActiveOrderQueryVariables | null = null,
+			variables: Types.GetActiveOrderQueryVariables | null = null,
 			allOperationKey: boolean = true,
 			withResetStore: boolean = true
 		) {
@@ -132,26 +132,26 @@ function KQL_ActiveOrderStore() {
 		 * Patch the store &&|| cache with some data.
 		 */
 		// prettier-ignore
-		patch(data: Types.ActiveOrderQuery, variables: Types.ActiveOrderQueryVariables | null = null, type: PatchType = 'cache-and-store'): void {
+		patch(data: Types.GetActiveOrderQuery, variables: Types.GetActiveOrderQueryVariables | null = null, type: PatchType = 'cache-and-store'): void {
 			let updatedCacheStore = undefined;
 			if(type === 'cache-only' || type === 'cache-and-store') {
-				updatedCacheStore = kitQLClient.cacheUpdate<Types.ActiveOrderQuery, Types.ActiveOrderQueryVariables>(operationName, data, { variables });
+				updatedCacheStore = kitQLClient.cacheUpdate<Types.GetActiveOrderQuery, Types.GetActiveOrderQueryVariables>(operationName, data, { variables });
 			}
 			if(type === 'store-only' ) {
-				let toReturn = { ...get(KQL_ActiveOrder), data, variables } ;
+				let toReturn = { ...get(KQL_GetActiveOrder), data, variables } ;
 				set(toReturn);
 			}
 			if(type === 'cache-and-store' ) {
-				set({...get(KQL_ActiveOrder), ...updatedCacheStore});
+				set({...get(KQL_GetActiveOrder), ...updatedCacheStore});
 			}
 			kitQLClient.logInfo(operationName, "patch", type);
 		}
 	};
 }
 /**
- * KitQL Svelte Store with the latest `ActiveOrder` Operation
+ * KitQL Svelte Store with the latest `GetActiveOrder` Operation
  */
-export const KQL_ActiveOrder = KQL_ActiveOrderStore();
+export const KQL_GetActiveOrder = KQL_GetActiveOrderStore();
 
 function KQL_AddToCartStore() {
 	const operationName = 'KQL_AddToCart';

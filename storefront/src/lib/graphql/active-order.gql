@@ -1,17 +1,5 @@
-query ActiveOrder {
+query GetActiveOrder {
   activeOrder {
-    id
-    code
-    state
-    totalWithTax
-    totalQuantity
-    lines {
-      id
-      linePriceWithTax
-      quantity
-      featuredAsset {
-        preview
-      }
-    }
+    ...ActiveOrder
   }
 }
