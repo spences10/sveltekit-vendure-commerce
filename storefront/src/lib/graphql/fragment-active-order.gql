@@ -1,4 +1,5 @@
 fragment ActiveOrder on Order {
+  __typename
   id
   code
   state
