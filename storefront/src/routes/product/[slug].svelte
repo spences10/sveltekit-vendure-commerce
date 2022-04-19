@@ -19,8 +19,8 @@
   let product = $KQL_GetProductDetail?.data?.product
   let currencyCode =
     $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
-  let { breadcrumbs } =
-    product.collections[product.collections.length - 1]
+  let { breadcrumbs } = (product &&
+    product.collections[product.collections.length - 1]) ?? {};
   let selected: { sku: string; priceWithTax: number }
   let quantity = 0
   
