@@ -59,13 +59,13 @@
 {/if}
 
 <div class="flex">
-  {#if Object.entries(facetValues).length >= 1}
+  {#if Object.entries(facetValues ?? {}).length >= 1}
     <Filters {facetValues} />
   {/if}
   <div
     class="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
   >
-    {#if Object.entries(products).length >= 1}
+    {#if products?.length >= 1}
       {#each products as item}
         <ProductCard {item} {currencyCode} />
       {/each}

@@ -16,7 +16,7 @@
 </script>
 
 <script lang="ts">
-  let items = $KQL_GetTopSellers.data?.search?.items
+  let items = $KQL_GetTopSellers.data?.search?.items ?? [];
   let currencyCode =
     $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
 
