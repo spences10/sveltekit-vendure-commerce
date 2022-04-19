@@ -17,9 +17,10 @@
     "@kitql/all-in": "0.6.3",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
-    "@typescript-eslint/eslint-plugin": "^5.18.0",
-    "@typescript-eslint/parser": "^5.18.0",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
     "autoprefixer": "^10.4.4",
+    "cookie": "0.5.0",
     "daisyui": "2.14.1",
     "eslint": "8.13.0",
     "eslint-config-prettier": "^8.5.0",
@@ -28,13 +29,14 @@
     "postcss": "^8.4.12",
     "postcss-load-config": "^3.1.4",
     "prettier": "^2.6.2",
-    "prettier-plugin-svelte": "^2.6.0",
-    "svelte": "^3.46.6",
-    "svelte-check": "^2.4.6",
-    "svelte-preprocess": "^4.10.5",
-    "tailwindcss": "^3.0.23",
+    "prettier-plugin-svelte": "^2.7.0",
+    "svelte": "^3.47.0",
+    "svelte-check": "^2.7.0",
+    "svelte-preprocess": "^4.10.6",
+    "tailwindcss": "^3.0.24",
     "tslib": "^2.3.1",
-    "typescript": "4.6.3"
+    "typescript": "4.6.3",
+    "uuid": "8.3.2"
   },
   "type": "module"
 }
