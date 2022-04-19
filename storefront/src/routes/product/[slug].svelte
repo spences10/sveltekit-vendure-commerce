@@ -1,13 +1,12 @@
 <script lang="ts" context="module">
   import {
-  KQL_AddToCart,
-  KQL_GetCurrencyCode,
-  KQL_GetProductDetail
+    KQL_AddToCart,
+    KQL_GetCurrencyCode,
+    KQL_GetProductDetail,
   } from '$lib/graphql/_kitql/graphqlStores'
   import { formatCurrency } from '$lib/utils'
-  import type { LoadOutput } from '@sveltejs/kit/types/private'
 
-  export const load = async ({ params, fetch }) : Promise<LoadOutput>=> {
+  export const load = async ({ params, fetch }) => {
     const { slug } = params
     const variables = { slug }
     await KQL_GetProductDetail.queryLoad({ fetch, variables })
@@ -22,10 +21,11 @@
     $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
   let { breadcrumbs } =
     product.collections[product.collections.length - 1]
-  let selected: { sku: string; priceWithTax: number; } 
-
+  let selected: { sku: string; priceWithTax: number }
+  let quantity = 0
+  
   const addToCart = async () => {
-    let variables = { productVariantId: '1', quantity: 10 }
+    let variables = { productVariantId: '1', quantity }
     console.log('=====================')
     console.log(await KQL_AddToCart.mutate({ fetch, variables }))
     console.log('=====================')
@@ -92,6 +92,7 @@
             max="99"
             placeholder="1"
             class="input input-primary input-bordered caret-primary"
+            bind:value={quantity}
           />
           <button
             on:click={addToCart}

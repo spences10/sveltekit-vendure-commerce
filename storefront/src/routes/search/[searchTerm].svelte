@@ -7,12 +7,8 @@
     KQL_SearchProducts,
   } from '$lib/graphql/_kitql/graphqlStores'
   import { filtersStore } from '$stores/filters'
-  import type { LoadOutput } from '@sveltejs/kit/types/internal'
 
-  export const load = async ({
-    params,
-    fetch,
-  }): Promise<LoadOutput> => {
+  export const load = async ({ params, fetch }) => {
     // KQL_SearchProducts.resetCache()
     await KQL_SearchProducts.queryLoad({
       fetch,

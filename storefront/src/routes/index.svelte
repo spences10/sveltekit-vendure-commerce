@@ -6,9 +6,8 @@
     KQL_GetCurrencyCode,
     KQL_GetTopSellers,
   } from '$lib/graphql/_kitql/graphqlStores'
-  import type { LoadOutput } from '@sveltejs/kit/types/private'
 
-  export const load = async ({ fetch }): Promise<LoadOutput> => {
+  export const load = async ({ fetch }) => {
     await KQL_GetTopSellers.queryLoad({ fetch })
     await KQL_GetCollections.queryLoad({ fetch })
     await KQL_GetCurrencyCode.queryLoad({ fetch })

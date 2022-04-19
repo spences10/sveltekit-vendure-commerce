@@ -9,12 +9,8 @@
   } from '$lib/graphql/_kitql/graphqlStores'
   import { filtersStore } from '$stores/filters'
   import { KitQLInfo } from '@kitql/all-in'
-  import type { LoadOutput } from '@sveltejs/kit/types/private'
 
-  export const load = async ({
-    params,
-    fetch,
-  }): Promise<LoadOutput> => {
+  export const load = async ({ params, fetch }) => {
     await KQL_GetCurrencyCode.queryLoad({ fetch })
     const { slug } = params
     await KQL_GetCollections.queryLoad({ fetch })
@@ -29,7 +25,7 @@
 </script>
 
 <script lang="ts">
-  export let slug
+  export let slug: string
   let currencyCode =
     $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
 
@@ -59,7 +55,7 @@
 <CategoryBanner {collections} />
 
 {#if dev}
-  <KitQLInfo store={KQL_GetCollections} />
+  <KitQLInfo store={KQL_SearchProducts} />
 {/if}
 
 <div class="flex">
