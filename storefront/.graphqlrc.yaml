@@ -1,13 +1,13 @@
 # Typical File for extension: vscode-graphql & CodeGen!
 projects:
   default:
-    schema: https://readonlydemo.vendure.io/shop-api
+    schema: ${VITE_GRAPHQL_API}
     documents:
       - '**/*.gql'
     extensions:
       endpoints:
         default:
-          url: https://readonlydemo.vendure.io/shop-api
+          url: ${VITE_GRAPHQL_API}
       codegen:
         generates:
           ./src/lib/graphql/_kitql/graphqlTypes.ts:

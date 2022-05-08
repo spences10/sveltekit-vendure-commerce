@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "prepare": "pnpm run gen",
-    "gen": "graphql-codegen --config ./.graphqlrc.yaml",
+    "gen": "graphql-codegen --require dotenv/config",
     "dev": "svelte-kit dev -p 3300",
     "build": "svelte-kit build",
     "package": "svelte-kit package",
