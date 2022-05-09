@@ -14,10 +14,12 @@
   export let isOpen: boolean = true
 </script>
 
+<button on:click={() => (isOpen = !isOpen)}>Click {isOpen}</button>
+
 {#if isOpen}
   <section
-    in:fly={{ duration: 5000 }}
-    out:fly
+    in:fly={{ x: 200, duration: 350 }}
+    out:fly={{ x: 400, duration: 350 }}
     class="top-0 right-0 fixed bg-primary h-full w-3/12 z-40"
   >
     <pre>
