@@ -5,7 +5,7 @@
   "scripts": {
     "run:server": "ts-node ./src/index.ts",
     "run:worker": "ts-node ./src/index-worker.ts",
-    "start": "concurrently yarn:run:*",
+    "start": "concurrently pnpm:run:*",
     "build": "tsc",
     "migration:generate": "ts-node migration generate",
     "migration:run": "ts-node migration run",
