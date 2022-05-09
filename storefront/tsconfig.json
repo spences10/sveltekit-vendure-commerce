@@ -12,6 +12,7 @@
     "src/**/*.d.ts",
     "src/**/*.js",
     "src/**/*.svelte",
-    "src/lib/utils/index.ts"
+    "src/lib/utils/index.ts",
+    "src/hooks/index.ts"
   ]
 }
