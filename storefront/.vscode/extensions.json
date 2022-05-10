@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "svelte.svelte-vscode",
+    "GraphQL.vscode-graphql"
+  ]
+}
