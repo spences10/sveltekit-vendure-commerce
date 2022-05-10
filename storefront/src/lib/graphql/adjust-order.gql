@@ -1,0 +1,11 @@
+mutation AdjustOrder($orderLineId: ID!, $quantity: Int!) {
+  adjustOrderLine(orderLineId: $orderLineId, quantity: $quantity) {
+    ... on Order {
+      ...ActiveOrder
+    }
+    ... on ErrorResult {
+      errorCode
+      message
+    }
+  }
+}

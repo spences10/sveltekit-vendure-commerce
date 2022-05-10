@@ -202,6 +202,55 @@ function KQL_AddToCartStore() {
  */
 export const KQL_AddToCart = KQL_AddToCartStore();
 
+function KQL_AdjustOrderStore() {
+	const operationName = 'KQL_AdjustOrder';
+	const operationType = ResponseResultType.Mutation;
+
+	// prettier-ignore
+	const { subscribe, set, update } = writable<RequestResult<Types.AdjustOrderMutation, Types.AdjustOrderMutationVariables>>({...defaultStoreValue, operationName, operationType});
+
+		async function mutateLocal(
+			params?: RequestParameters<Types.AdjustOrderMutationVariables>
+		): Promise<RequestResult<Types.AdjustOrderMutation, Types.AdjustOrderMutationVariables>> {
+			let { fetch, variables } = params ?? {};
+
+			const storedVariables = get(KQL_AdjustOrder).variables;
+			variables = variables ?? storedVariables;
+
+			update((c) => {
+				return { ...c, isFetching: true, status: RequestStatus.LOADING };
+			});
+
+			// prettier-ignore
+			const res = await kitQLClient.request<Types.AdjustOrderMutation, Types.AdjustOrderMutationVariables>({
+				skFetch: fetch,
+				document: Types.AdjustOrderDocument,
+				variables, 
+				operationName, 
+				operationType, 
+				browser
+			});
+			const result = { ...res, isFetching: false, status: RequestStatus.DONE, variables };
+			set(result);
+			return result;
+		}
+
+	return {
+		subscribe,
+
+		/**
+		 * Can be used for SSR, but simpler option is `.queryLoad`
+		 * @returns fill this store & the cache
+		 */
+		mutate: mutateLocal,
+
+	};
+}
+/**
+ * KitQL Svelte Store with the latest `AdjustOrder` Operation
+ */
+export const KQL_AdjustOrder = KQL_AdjustOrderStore();
+
 function KQL_GetCollectionsStore() {
 	const operationName = 'KQL_GetCollections';
 	const operationType = ResponseResultType.Query;
@@ -685,6 +734,55 @@ function KQL_GetTopSellersStore() {
  * KitQL Svelte Store with the latest `GetTopSellers` Operation
  */
 export const KQL_GetTopSellers = KQL_GetTopSellersStore();
+
+function KQL_RemoveFromCartStore() {
+	const operationName = 'KQL_RemoveFromCart';
+	const operationType = ResponseResultType.Mutation;
+
+	// prettier-ignore
+	const { subscribe, set, update } = writable<RequestResult<Types.RemoveFromCartMutation, Types.RemoveFromCartMutationVariables>>({...defaultStoreValue, operationName, operationType});
+
+		async function mutateLocal(
+			params?: RequestParameters<Types.RemoveFromCartMutationVariables>
+		): Promise<RequestResult<Types.RemoveFromCartMutation, Types.RemoveFromCartMutationVariables>> {
+			let { fetch, variables } = params ?? {};
+
+			const storedVariables = get(KQL_RemoveFromCart).variables;
+			variables = variables ?? storedVariables;
+
+			update((c) => {
+				return { ...c, isFetching: true, status: RequestStatus.LOADING };
+			});
+
+			// prettier-ignore
+			const res = await kitQLClient.request<Types.RemoveFromCartMutation, Types.RemoveFromCartMutationVariables>({
+				skFetch: fetch,
+				document: Types.RemoveFromCartDocument,
+				variables, 
+				operationName, 
+				operationType, 
+				browser
+			});
+			const result = { ...res, isFetching: false, status: RequestStatus.DONE, variables };
+			set(result);
+			return result;
+		}
+
+	return {
+		subscribe,
+
+		/**
+		 * Can be used for SSR, but simpler option is `.queryLoad`
+		 * @returns fill this store & the cache
+		 */
+		mutate: mutateLocal,
+
+	};
+}
+/**
+ * KitQL Svelte Store with the latest `RemoveFromCart` Operation
+ */
+export const KQL_RemoveFromCart = KQL_RemoveFromCartStore();
 
 function KQL_SearchProductsStore() {
 	const operationName = 'KQL_SearchProducts';

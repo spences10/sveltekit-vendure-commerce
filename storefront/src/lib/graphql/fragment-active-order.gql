@@ -5,12 +5,14 @@ fragment ActiveOrder on Order {
   state
   totalWithTax
   totalQuantity
+  shippingWithTax
   lines {
     id
     linePriceWithTax
     quantity
     productVariant {
       name
+      id
     }
     featuredAsset {
       preview

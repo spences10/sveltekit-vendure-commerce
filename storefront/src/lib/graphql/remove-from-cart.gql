@@ -1,0 +1,11 @@
+mutation RemoveFromCart($orderLineId: ID!) {
+  removeOrderLine(orderLineId: $orderLineId) {
+    ... on Order {
+      ...ActiveOrder
+    }
+    ... on ErrorResult {
+      errorCode
+      message
+    }
+  }
+}
