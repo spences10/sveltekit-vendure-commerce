@@ -9,6 +9,9 @@ fragment ActiveOrder on Order {
     id
     linePriceWithTax
     quantity
+    productVariant {
+      name
+    }
     featuredAsset {
       preview
     }
