@@ -1,7 +1,10 @@
 <script>
+  import { cartOpen } from '$stores/cart'
+  import ShoppingCart from './icons/shopping-cart.svelte'
   import Search from './search.svelte'
 
   export let collections = []
+  $: isCartOpen = $cartOpen
 </script>
 
 <nav
@@ -47,5 +50,13 @@
   <div class="hidden px-2 mx-2 navbar-center lg:flex" />
   <div class="navbar-end relative">
     <Search />
+    <button
+      on:click={() => {
+        cartOpen.set(!isCartOpen)
+      }}
+      class="btn btn-square btn-ghost"
+    >
+      <ShoppingCart />
+    </button>
   </div>
 </nav>
