@@ -4,38 +4,69 @@
   //   return {}
   // }
   import { browser } from '$app/env'
-  import { KQL_GetActiveOrder } from '$lib/graphql/_kitql/graphqlStores'
+  import {
+    KQL_GetActiveOrder,
+    KQL_GetCurrencyCode,
+  } from '$lib/graphql/_kitql/graphqlStores'
+  import { formatCurrency } from '$lib/utils'
+  import { cartOpen } from '$stores/cart'
   import { fly } from 'svelte/transition'
+  import Minus from './icons/minus.svelte'
+  import Plus from './icons/plus.svelte'
 </script>
 
 <script lang="ts">
   $: browser && KQL_GetActiveOrder.query()
 
-  export let isOpen: boolean = true
+  $: isOpen = $cartOpen
 
   let activeOrderLines =
     $KQL_GetActiveOrder?.data?.activeOrder?.lines || []
-</script>
+  let totalWithTax =
+    $KQL_GetActiveOrder?.data?.activeOrder?.totalWithTax || 0
+  let shippingWithTax =
+    $KQL_GetActiveOrder?.data?.activeOrder?.shippingWithTax || 0
+  let currencyCode =
+    $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
 
-<button on:click={() => (isOpen = !isOpen)}>Click {isOpen}</button>
+  // KQL_RemoveFromCart.mutate({ variables: { orderLineId: '6' } })
+  // KQL_AddToCart.mutate({
+  //   variables: { productVariantId: '1', quantity: 1 },
+  // })
+  // KQL_AdjustOrder.mutate({
+  //   variables: { orderLineId: '4', quantity: 1 },
+  // })
+
+  const adjustOrder = () => {
+    let optimisticData = $KQL_GetActiveOrder.data
+    // KQL_GetActiveOrder.patch(optimisticData, {}, 'store-only')
+  }
+</script>
 
 {#if isOpen}
   <section
     in:fly={{ x: 200, duration: 350 }}
     out:fly={{ x: 400, duration: 350 }}
-    class="p-10 top-0 right-0 fixed bg-base-100 shadow-xl h-full w-3/12 z-40"
+    class="px-8 pt-4 top-0 right-0 fixed bg-base-100 shadow-xl h-full w-[30rem] z-40"
   >
     <div class="flex justify-between align-middle text-3xl">
-      <button on:click={() => (isOpen = !isOpen)} class="block">
+      <button
+        on:click={() => {
+          cartOpen.set(!isOpen)
+        }}
+        class="block"
+      >
         &#10799;
       </button>
       <p>Cart</p>
     </div>
     {#if !activeOrderLines.length}
-      <p class="text-2xl text-base-300">Cart is empty</p>
+      <p class="text-3xl text-center pt-8 text-base-300">
+        Cart is empty
+      </p>
     {:else}
       {#each activeOrderLines as item}
-        <div class="my-6 flex ">
+        <div class="my-6 flex">
           <div class="">
             <img
               src={`${item.featuredAsset.preview}?w=300&h=300`}
@@ -45,18 +76,57 @@
           </div>
           <div class="flex flex-col flex-grow text-lg pl-3">
             <p class="">{item.productVariant.name}</p>
-            <div class="flex justify-between align-middle">
-              <p>price</p>
-              <p>plus minus</p>
-              <p>Total</p>
+            <div class="flex align-center justify-between">
+              <p>
+                {formatCurrency(
+                  currencyCode,
+                  item.linePriceWithTax
+                ) || 0}
+              </p>
+              <div>
+                <button
+                  on:click={adjustOrder}
+                  class="btn btn-xs btn-outline hover:btn-primary shadow-md"
+                >
+                  <Plus />
+                </button>
+                <span>{item.quantity}</span>
+                <button
+                  on:click={adjustOrder}
+                  class="btn btn-xs btn-outline hover:btn-primary shadow-md"
+                >
+                  <Minus />
+                </button>
+              </div>
+              <p>
+                {formatCurrency(
+                  currencyCode,
+                  item.linePriceWithTax * item.quantity
+                ) || 0}
+              </p>
             </div>
           </div>
         </div>
       {/each}
+      <span class="divider" />
+      <div class="flex justify-between align-middle text-lg">
+        <p>Shipping</p>
+        <p>
+          {formatCurrency(currencyCode, shippingWithTax) || 0}
+        </p>
+      </div>
+      <span class="divider" />
+      <div class="flex justify-between align-middle text-lg mb-10">
+        <p class="text-xl">Total</p>
+        <p>
+          {formatCurrency(currencyCode, totalWithTax) || 0}
+        </p>
+      </div>
+      <button class="btn btn-block">Checkout</button>
     {/if}
   </section>
 {/if}
 
-<!-- <pre class="flex flex-col flex-grow">
+<pre class="flex flex-col flex-grow">
   {JSON.stringify($KQL_GetActiveOrder.data, null, 2)}
-</pre> -->
+</pre>
