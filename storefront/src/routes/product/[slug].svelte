@@ -17,26 +17,30 @@
 </script>
 
 <script lang="ts">
-
-  import type { GetProductDetailQuery } from '$lib/graphql/_kitql/graphqlTypes';
+  import type { GetProductDetailQuery } from '$lib/graphql/_kitql/graphqlTypes'
   let product = $KQL_GetProductDetail?.data?.product
   let currencyCode =
     $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
-  let { breadcrumbs } = (product &&
-    product.collections[product.collections.length - 1]) ?? {};
-  let selected: GetProductDetailQuery['product']['variants'][number] = product?.variants?.[0] ?? {};
+  let { breadcrumbs } =
+    (product &&
+      product.collections[product.collections.length - 1]) ??
+    {}
+  let selected: GetProductDetailQuery['product']['variants'][number] =
+    product?.variants?.[0] ?? {}
   let quantity = 1
-  
+
   const addToCart = async () => {
     let variables = { productVariantId: selected.id, quantity }
 
-    const result = await KQL_AddToCart.mutate({ fetch, variables });
+    const result = await KQL_AddToCart.mutate({ fetch, variables })
     console.log('=====================')
     console.log(result)
     console.log('=====================')
     if (result.data.addItemToOrder.__typename === 'Order') {
       // Patch the activeOrder query with the updated Order object.
-      KQL_GetActiveOrder.patch({activeOrder: result.data.addItemToOrder});
+      KQL_GetActiveOrder.patch({
+        activeOrder: result.data.addItemToOrder,
+      })
     } else {
       // An ErrorResult was returned, so we need to handle that properly,
       // e.g. display a toast notification
