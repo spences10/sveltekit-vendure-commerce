@@ -1,10 +1,11 @@
 <script lang="ts" context="module">
   import {
     KQL_AddToCart,
+    KQL_GetActiveOrder,
     KQL_GetCurrencyCode,
     KQL_GetProductDetail,
-    KQL_GetActiveOrder,
   } from '$lib/graphql/_kitql/graphqlStores'
+  import type { GetProductDetailQuery } from '$lib/graphql/_kitql/graphqlTypes'
   import { formatCurrency } from '$lib/utils'
 
   export const load = async ({ params, fetch }) => {
@@ -17,8 +18,7 @@
 </script>
 
 <script lang="ts">
-  import type { GetProductDetailQuery } from '$lib/graphql/_kitql/graphqlTypes'
-  let product = $KQL_GetProductDetail?.data?.product
+  $: product = $KQL_GetProductDetail?.data?.product
   let currencyCode =
     $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
   let { breadcrumbs } =
@@ -26,7 +26,7 @@
       product.collections[product.collections.length - 1]) ??
     {}
   let selected: GetProductDetailQuery['product']['variants'][number] =
-    product?.variants?.[0] ?? {}
+    product?.variants?.[0]
   let quantity = 1
 
   const addToCart = async () => {
@@ -50,7 +50,8 @@
 </script>
 
 <div class="my-5">
-  {#each breadcrumbs as breadcrumb}
+  <!-- TODO -->
+  <!-- {#each breadcrumbs as breadcrumb}
     {#if breadcrumb.slug === '__root_collection__'}
       <a class="link link-primary mr-2" href="/">Home</a>
     {:else}
@@ -62,7 +63,7 @@
         {breadcrumb.name}
       </a>
     {/if}
-  {/each}
+  {/each} -->
 </div>
 
 <div class="flex">
@@ -91,7 +92,6 @@
     <div class="flex items-center justify-between my-4">
       <p class="inline-block align-bottom text-2xl text-neutral">
         {selected?.sku || product.variants[0].sku}
-        {console.log(selected?.sku)}
       </p>
       <div class="flex items-center">
         <p
