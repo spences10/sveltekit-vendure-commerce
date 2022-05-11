@@ -30,7 +30,8 @@
   let quantity = 1
 
   const addToCart = async () => {
-    let variables = { productVariantId: selected.id, quantity }
+    let id = (!selected) ?  product.variants[0].id : selected.id
+    let variables = { productVariantId: id, quantity }
 
     const result = await KQL_AddToCart.mutate({ fetch, variables })
     console.log('=====================')
