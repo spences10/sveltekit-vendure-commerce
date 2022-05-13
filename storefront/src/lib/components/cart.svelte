@@ -1,8 +1,4 @@
 <script lang="ts" context="module">
-  // export const load = async ({ fetch }) => {
-  //   await KQL_GetActiveOrder.queryLoad({ fetch })
-  //   return {}
-  // }
   import { browser } from '$app/env'
   import {
     KQL_GetActiveOrder,
@@ -13,12 +9,16 @@
   import { fly } from 'svelte/transition'
   import Minus from './icons/minus.svelte'
   import Plus from './icons/plus.svelte'
+
+  export const load = async ({ fetch }) => {
+    await KQL_GetActiveOrder.queryLoad({ fetch })
+    return {}
+  }
 </script>
 
 <script lang="ts">
-  $: browser && KQL_GetActiveOrder.query()
-
-  $: isOpen = $cartOpen
+  export let key
+  $: browser && key && KQL_GetActiveOrder.query()
 
   let activeOrderLines =
     $KQL_GetActiveOrder?.data?.activeOrder?.lines || []
@@ -37,22 +37,25 @@
   //   variables: { orderLineId: '4', quantity: 1 },
   // })
 
-  const adjustOrder = () => {
+  const adjustOrder = value => {
+    console.log('=====================')
+    console.log('adjustOrder', value)
+    console.log('=====================')
     let optimisticData = $KQL_GetActiveOrder.data
     // KQL_GetActiveOrder.patch(optimisticData, {}, 'store-only')
   }
 </script>
 
-{#if isOpen}
+{#if $cartOpen}
   <section
-    in:fly={{ x: 200, duration: 350 }}
-    out:fly={{ x: 400, duration: 350 }}
+    in:fly={{ x: 200, duration: 150 }}
+    out:fly={{ x: 400, duration: 150 }}
     class="px-8 pt-4 top-0 right-0 fixed bg-base-100 shadow-xl h-full w-[30rem] z-40"
   >
     <div class="flex justify-between align-middle text-3xl">
       <button
         on:click={() => {
-          cartOpen.set(!isOpen)
+          $cartOpen = !$cartOpen
         }}
         class="block"
       >
@@ -75,7 +78,7 @@
             />
           </div>
           <div class="flex flex-col flex-grow text-lg pl-3">
-            <p class="">{item.productVariant.name}</p>
+            <p class="text-xl pb-1">{item.productVariant.name}</p>
             <div class="flex align-center justify-between">
               <p>
                 {formatCurrency(
@@ -92,7 +95,10 @@
                 </button>
                 <span>{item.quantity}</span>
                 <button
-                  on:click={adjustOrder}
+                  on:click={() =>
+                    adjustOrder(
+                      item.quantity > 0 ? --item.quantity : 0
+                    )}
                   class="btn btn-xs btn-outline hover:btn-primary shadow-md"
                 >
                   <Minus />
@@ -127,6 +133,6 @@
   </section>
 {/if}
 
-<pre class="flex flex-col flex-grow">
+<!-- <pre class="flex flex-col flex-grow">
   {JSON.stringify($KQL_GetActiveOrder.data, null, 2)}
-</pre>
+</pre> -->

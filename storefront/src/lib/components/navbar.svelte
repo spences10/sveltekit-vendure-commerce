@@ -4,7 +4,6 @@
   import Search from './search.svelte'
 
   export let collections = []
-  $: isCartOpen = $cartOpen
 </script>
 
 <nav
@@ -52,7 +51,7 @@
     <Search />
     <button
       on:click={() => {
-        cartOpen.set(!isCartOpen)
+        $cartOpen = !$cartOpen
       }}
       class="btn btn-square btn-ghost"
     >
