@@ -9,5 +9,5 @@ To get started:
   - choose the SQLite option
   - `pnpm run start` to start the server.
 - open another terminal `cd` into the `/storefront` directory and run `pnpm install`.
-  - `cp .env.sample .env`
+  - `cp .envsample .env`
   - `pnpm run dev`
