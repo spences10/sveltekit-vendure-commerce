@@ -5,7 +5,7 @@
     KQL_GetCurrencyCode,
     KQL_GetProductDetail,
   } from '$lib/graphql/_kitql/graphqlStores'
-  import type { GetProductDetailQuery } from '$lib/graphql/_kitql/graphqlTypes'
+  import type { VariantFragment } from '$lib/graphql/_kitql/graphqlTypes'
   import { formatCurrency } from '$lib/utils'
 
   export const load = async ({ params, fetch }) => {
@@ -25,12 +25,11 @@
     (product &&
       product.collections[product.collections.length - 1]) ??
     {}
-  let selected: GetProductDetailQuery['product']['variants'][number] =
-    product?.variants?.[0]
+  let selected: VariantFragment = product?.variants?.[0]
   let quantity = 1
 
   const addToCart = async () => {
-    let id = (!selected) ?  product.variants[0].id : selected.id
+    let id = !selected ? product.variants[0].id : selected.id
     let variables = { productVariantId: id, quantity }
 
     const result = await KQL_AddToCart.mutate({ fetch, variables })
