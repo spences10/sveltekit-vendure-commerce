@@ -22,9 +22,8 @@
   let currencyCode =
     $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
 
-    $: ({ breadcrumbs } =
-    (product &&
-      product.collections[product.collections.length - 1]))
+  $: ({ breadcrumbs } =
+    product && product.collections[product.collections.length - 1])
   let selected: VariantFragment = product?.variants?.[0]
   let quantity = 1
 
@@ -53,10 +52,13 @@
   <!-- TODO -->
   {#each breadcrumbs as breadcrumb}
     {#if breadcrumb.slug === '__root_collection__'}
-      <a class="link link-primary mr-2" href="/">Home</a>
+      <a sveltekit:prefetch class="link link-primary mr-2" href="/"
+        >Home</a
+      >
     {:else}
       <span class="before:mr-2 before:content-['/']" />
       <a
+        sveltekit:prefetch
         class="link link-primary mr-2"
         href={`/category/${breadcrumb.slug}`}
       >

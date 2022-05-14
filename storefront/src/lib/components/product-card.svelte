@@ -6,7 +6,7 @@
 </script>
 
 <section>
-  <a href={`/product/${item.slug}`} class="">
+  <a sveltekit:prefetch href={`/product/${item.slug}`} class="">
     <img
       class="object-cover rounded-2xl"
       src={`${item.productAsset.preview}?w=200&h=200`}
