@@ -13,6 +13,12 @@ declare namespace App {
   // interface Stuff {}
 }
 
+declare namespace svelte.JSX {
+  interface DOMAttributes<T> {
+    onclick_outside?: CompositionEventHandler<T>
+  }
+}
+
 interface ImportMetaEnv {
   readonly VITE_GRAPHQL_API: string
 }

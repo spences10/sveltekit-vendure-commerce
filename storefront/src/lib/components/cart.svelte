@@ -4,7 +4,7 @@
     KQL_GetActiveOrder,
     KQL_GetCurrencyCode,
   } from '$lib/graphql/_kitql/graphqlStores'
-  import { formatCurrency } from '$lib/utils'
+  import { clickOutside, formatCurrency } from '$lib/utils'
   import { cartOpen, cartTotalQuantity } from '$stores/cart'
   import { fly } from 'svelte/transition'
   import Minus from './icons/minus.svelte'
@@ -17,7 +17,7 @@
 </script>
 
 <script lang="ts">
-  export let key
+  export let key: string
   $: browser && key && KQL_GetActiveOrder.query()
 
   let activeOrderLines =
@@ -47,11 +47,17 @@
     // KQL_GetActiveOrder.patch(optimisticData, {}, 'store-only')
   }
 
+  const handleClickOutside = () => {
+    $cartOpen = !$cartOpen
+  }
+
   $cartTotalQuantity = cartTotal
 </script>
 
 {#if $cartOpen}
   <section
+    use:clickOutside
+    on:click_outside={handleClickOutside}
     in:fly={{ x: 200, duration: 150 }}
     out:fly={{ x: 400, duration: 150 }}
     class="px-8 pt-4 top-0 right-0 fixed bg-base-100 shadow-xl h-full w-[30rem] z-40"

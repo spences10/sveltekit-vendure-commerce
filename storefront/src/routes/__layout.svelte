@@ -16,7 +16,7 @@
 </script>
 
 <script lang="ts">
-  export let key
+  export let key: string
 
   $: collections =
     $KQL_GetCollections.data?.collections.items.filter(

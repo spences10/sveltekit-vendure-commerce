@@ -7,8 +7,8 @@
   }
 </script>
 
-<script>
-  export let key
+<script lang="ts">
+  export let key: string
 
   $: [parent] = $KQL_GetCollections.data?.collections?.items.filter(
     item => item.slug === key.substring(key.lastIndexOf(`/`) + 1)
