@@ -21,10 +21,10 @@
   $: product = $KQL_GetProductDetail?.data?.product
   let currencyCode =
     $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
-  let { breadcrumbs } =
+
+    $: ({ breadcrumbs } =
     (product &&
-      product.collections[product.collections.length - 1]) ??
-    {}
+      product.collections[product.collections.length - 1]))
   let selected: VariantFragment = product?.variants?.[0]
   let quantity = 1
 
@@ -51,7 +51,7 @@
 
 <div class="my-5">
   <!-- TODO -->
-  <!-- {#each breadcrumbs as breadcrumb}
+  {#each breadcrumbs as breadcrumb}
     {#if breadcrumb.slug === '__root_collection__'}
       <a class="link link-primary mr-2" href="/">Home</a>
     {:else}
@@ -63,7 +63,7 @@
         {breadcrumb.name}
       </a>
     {/if}
-  {/each} -->
+  {/each}
 </div>
 
 <div class="flex">
