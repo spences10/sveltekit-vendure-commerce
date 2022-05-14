@@ -11,6 +11,7 @@
   import { KitQLInfo } from '@kitql/all-in'
 
   export const load = async ({ params, fetch }) => {
+    KQL_SearchProducts.resetCache()
     await KQL_GetCurrencyCode.queryLoad({ fetch })
     const { slug } = params
     await KQL_GetCollections.queryLoad({ fetch })
