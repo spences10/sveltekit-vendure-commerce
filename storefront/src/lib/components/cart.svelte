@@ -5,7 +5,7 @@
     KQL_GetCurrencyCode,
   } from '$lib/graphql/_kitql/graphqlStores'
   import { formatCurrency } from '$lib/utils'
-  import { cartOpen } from '$stores/cart'
+  import { cartOpen, cartTotalQuantity } from '$stores/cart'
   import { fly } from 'svelte/transition'
   import Minus from './icons/minus.svelte'
   import Plus from './icons/plus.svelte'
@@ -26,6 +26,8 @@
     $KQL_GetActiveOrder?.data?.activeOrder?.totalWithTax || 0
   let shippingWithTax =
     $KQL_GetActiveOrder?.data?.activeOrder?.shippingWithTax || 0
+  let cartTotal =
+    $KQL_GetActiveOrder?.data?.activeOrder?.totalQuantity || 0
   let currencyCode =
     $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
 
@@ -44,6 +46,8 @@
     let optimisticData = $KQL_GetActiveOrder.data
     // KQL_GetActiveOrder.patch(optimisticData, {}, 'store-only')
   }
+
+  $cartTotalQuantity = cartTotal
 </script>
 
 {#if $cartOpen}

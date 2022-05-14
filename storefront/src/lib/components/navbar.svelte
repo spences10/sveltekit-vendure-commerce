@@ -1,5 +1,5 @@
 <script>
-  import { cartOpen } from '$stores/cart'
+  import { cartOpen, cartTotalQuantity } from '$stores/cart'
   import ShoppingCart from './icons/shopping-cart.svelte'
   import Search from './search.svelte'
 
@@ -49,13 +49,19 @@
   <div class="hidden px-2 mx-2 navbar-center lg:flex" />
   <div class="navbar-end relative">
     <Search />
-    <button
-      on:click={() => {
-        $cartOpen = !$cartOpen
-      }}
-      class="btn btn-square btn-ghost"
-    >
-      <ShoppingCart />
-    </button>
+    <div class="relative flex justify-center items-center">
+      <span
+        class="absolute -right-1 -top-1 leading-[1.25rem] text-[70%] font-bold text-center bg-secondary text-secondary-content rounded-2xl h-5 w-7"
+        >{$cartTotalQuantity}</span
+      >
+      <button
+        on:click={() => {
+          $cartOpen = !$cartOpen
+        }}
+        class="btn btn-square btn-ghost"
+      >
+        <ShoppingCart />
+      </button>
+    </div>
   </div>
 </nav>
