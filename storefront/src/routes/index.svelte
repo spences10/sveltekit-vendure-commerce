@@ -8,8 +8,8 @@
   } from '$lib/graphql/_kitql/graphqlStores'
 
   export const load = async ({ fetch }) => {
+    
     await KQL_GetTopSellers.queryLoad({ fetch })
-    await KQL_GetCollections.queryLoad({ fetch })
     await KQL_GetCurrencyCode.queryLoad({ fetch })
     return {}
   }
