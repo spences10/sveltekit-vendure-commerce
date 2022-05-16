@@ -8,27 +8,25 @@
     KQL_SearchProducts,
   } from '$lib/graphql/_kitql/graphqlStores'
   import { filtersStore } from '$stores/filters'
-  import { KitQLInfo } from '@kitql/all-in'
 
   export const load = async ({ params, fetch }) => {
-    KQL_SearchProducts.resetCache()
-    await KQL_GetCurrencyCode.queryLoad({ fetch })
     const { slug } = params
-    await KQL_GetCollections.queryLoad({ fetch })
+
+    await KQL_GetCurrencyCode.queryLoad({ fetch });
+    await KQL_GetCollections.queryLoad({ fetch });
     await KQL_SearchProducts.queryLoad({
       fetch,
       variables: { input: { collectionSlug: slug } },
-    })
+    });
+    
     return { props: { slug } }
   }
-
-  let dev = import.meta.env.DEV
 </script>
 
 <script lang="ts">
   export let slug: string
-  let currencyCode =
-    $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
+
+  $: currencyCode = $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
 
   $: collections =
     $KQL_GetCollections.data?.collections?.items?.filter(
@@ -37,27 +35,9 @@
 
   $: products = $KQL_SearchProducts?.data?.search?.items
   $: facetValues = $KQL_SearchProducts?.data?.search?.facetValues
-
-  $: {
-    KQL_SearchProducts.query({
-      variables: {
-        input: {
-          collectionSlug: slug,
-          groupByProduct: true,
-          facetValueIds: $filtersStore,
-          take: 24,
-          skip: 0,
-        },
-      },
-    })
-  }
 </script>
 
 <CategoryBanner {collections} />
-
-{#if dev}
-  <KitQLInfo store={KQL_SearchProducts} />
-{/if}
 
 <div class="flex">
   {#if Object.entries(facetValues ?? {}).length >= 1}
