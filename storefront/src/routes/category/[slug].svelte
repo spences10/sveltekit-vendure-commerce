@@ -13,7 +13,6 @@
     const { slug } = params
 
     await KQL_GetCurrencyCode.queryLoad({ fetch });
-    await KQL_GetCollections.queryLoad({ fetch });
     await KQL_SearchProducts.queryLoad({
       fetch,
       variables: { input: { collectionSlug: slug } },
