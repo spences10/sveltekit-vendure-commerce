@@ -9,7 +9,7 @@
   import '../app.css'
   import { userLocale } from '../stores/locale'
 
-  export const load = async ({ url }) => {
+  export const load = async ({ fetch, url }) => {
     await KQL_GetCollections.queryLoad({ fetch })
     return { props: { key: url.pathname } }
   }
