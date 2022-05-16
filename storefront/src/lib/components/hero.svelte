@@ -1,13 +1,6 @@
-<script lang="ts" context="module">
+<script lang="ts">
   import { KQL_GetCollections } from '$lib/graphql/_kitql/graphqlStores'
 
-  export const load = async ({ fetch }) => {
-    await KQL_GetCollections.queryLoad({ fetch })
-    return {}
-  }
-</script>
-
-<script lang="ts">
   export let key: string
 
   $: [parent] = $KQL_GetCollections.data?.collections?.items.filter(
