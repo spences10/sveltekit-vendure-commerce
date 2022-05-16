@@ -8,16 +8,25 @@
     KQL_SearchProducts,
   } from '$lib/graphql/_kitql/graphqlStores'
   import { filtersStore } from '$stores/filters'
+  import { get } from 'svelte/store'
 
   export const load = async ({ params, fetch }) => {
     const { slug } = params
 
-    await KQL_GetCurrencyCode.queryLoad({ fetch });
+    await KQL_GetCurrencyCode.queryLoad({ fetch })
     await KQL_SearchProducts.queryLoad({
       fetch,
-      variables: { input: { collectionSlug: slug } },
-    });
-    
+      variables: {
+        input: {
+          collectionSlug: slug,
+          groupByProduct: true,
+          facetValueIds: get(filtersStore),
+          take: 24,
+          skip: 0,
+        },
+      },
+    })
+
     return { props: { slug } }
   }
 </script>
@@ -25,7 +34,8 @@
 <script lang="ts">
   export let slug: string
 
-  $: currencyCode = $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
+  $: currencyCode =
+    $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
 
   $: collections =
     $KQL_GetCollections.data?.collections?.items?.filter(
