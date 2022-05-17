@@ -1,6 +1,7 @@
 <script lang="ts" context="module">
   import { browser } from '$app/env'
   import {
+    KQL_AdjustOrder,
     KQL_GetActiveOrder,
     KQL_GetCurrencyCode,
   } from '$lib/graphql/_kitql/graphqlStores'
@@ -39,12 +40,35 @@
   //   variables: { orderLineId: '4', quantity: 1 },
   // })
 
-  const adjustOrder = value => {
+  const adjustOrder = async (value: number, id: string) => {
     console.log('=====================')
-    console.log('adjustOrder', value)
+    console.log('adjustOrder', value, id)
     console.log('=====================')
     let optimisticData = $KQL_GetActiveOrder.data
-    // KQL_GetActiveOrder.patch(optimisticData, {}, 'store-only')
+    let optimisticDataId =
+      $KQL_GetActiveOrder.data?.activeOrder?.lines[id]
+
+    // patch with optimistic data
+    KQL_GetActiveOrder.patch(
+      optimisticData,
+      optimisticDataId,
+      'store-only'
+    )
+
+    // send mutation
+    await KQL_AdjustOrder.mutate({
+      variables: { orderLineId: id, quantity: value },
+    })
+
+    // patch with new data
+    KQL_GetActiveOrder.patch(
+      $KQL_GetActiveOrder.data,
+      optimisticDataId,
+      'cache-and-store'
+    )
+    // KQL_AdjustOrder.mutate({
+    //   variables: { orderLineId: id, quantity: value },
+    // })
   }
 
   const handleClickOutside = () => {
@@ -98,7 +122,8 @@
               </p>
               <div>
                 <button
-                  on:click={adjustOrder}
+                  on:click={() =>
+                    adjustOrder(++item.quantity, item.id)}
                   class="btn btn-xs btn-outline hover:btn-primary shadow-md"
                 >
                   <Plus />
@@ -107,7 +132,8 @@
                 <button
                   on:click={() =>
                     adjustOrder(
-                      item.quantity > 0 ? --item.quantity : 0
+                      item.quantity > 0 ? --item.quantity : 0,
+                      item.id
                     )}
                   class="btn btn-xs btn-outline hover:btn-primary shadow-md"
                 >
@@ -143,6 +169,6 @@
   </section>
 {/if}
 
-<!-- <pre class="flex flex-col flex-grow">
+<pre class="flex flex-col flex-grow">
   {JSON.stringify($KQL_GetActiveOrder.data, null, 2)}
-</pre> -->
+</pre>
