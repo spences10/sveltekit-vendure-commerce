@@ -169,6 +169,7 @@
   </section>
 {/if}
 
-<pre class="flex flex-col flex-grow">
+<!-- debug -->
+<!-- <pre class="flex flex-col flex-grow">
   {JSON.stringify($KQL_GetActiveOrder.data, null, 2)}
-</pre>
+</pre> -->
