@@ -6,6 +6,7 @@
     await KQL_SearchProducts.queryLoad({ fetch })
     return {}
   }
+  // TODO remove
 </script>
 
 <script lang="ts">

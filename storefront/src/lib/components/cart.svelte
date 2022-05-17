@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts">
   import { browser } from '$app/env'
   import {
     KQL_AdjustOrder,
@@ -6,30 +6,23 @@
     KQL_GetCurrencyCode,
   } from '$lib/graphql/_kitql/graphqlStores'
   import { clickOutside, formatCurrency } from '$lib/utils'
-  import { cartOpen, cartTotalQuantity } from '$stores/cart'
+  import { cartOpen } from '$stores/cart'
   import { fly } from 'svelte/transition'
   import Minus from './icons/minus.svelte'
   import Plus from './icons/plus.svelte'
 
-  export const load = async ({ fetch }) => {
-    await KQL_GetActiveOrder.queryLoad({ fetch })
-    return {}
-  }
-</script>
-
-<script lang="ts">
   export let key: string
   $: browser && key && KQL_GetActiveOrder.query()
 
-  let activeOrderLines =
+  $: activeOrderLines =
     $KQL_GetActiveOrder?.data?.activeOrder?.lines || []
-  let totalWithTax =
+  $: totalWithTax =
     $KQL_GetActiveOrder?.data?.activeOrder?.totalWithTax || 0
-  let shippingWithTax =
+  $: shippingWithTax =
     $KQL_GetActiveOrder?.data?.activeOrder?.shippingWithTax || 0
-  let cartTotal =
+  $: cartTotal =
     $KQL_GetActiveOrder?.data?.activeOrder?.totalQuantity || 0
-  let currencyCode =
+  $: currencyCode =
     $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
 
   // KQL_RemoveFromCart.mutate({ variables: { orderLineId: '6' } })
@@ -39,43 +32,21 @@
   // KQL_AdjustOrder.mutate({
   //   variables: { orderLineId: '4', quantity: 1 },
   // })
+  const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
   const adjustOrder = async (value: number, id: string) => {
-    console.log('=====================')
-    console.log('adjustOrder', value, id)
-    console.log('=====================')
-    let optimisticData = $KQL_GetActiveOrder.data
-    let optimisticDataId =
-      $KQL_GetActiveOrder.data?.activeOrder?.lines[id]
-
-    // patch with optimistic data
-    KQL_GetActiveOrder.patch(
-      optimisticData,
-      optimisticDataId,
-      'store-only'
-    )
-
     // send mutation
     await KQL_AdjustOrder.mutate({
       variables: { orderLineId: id, quantity: value },
     })
-
-    // patch with new data
-    KQL_GetActiveOrder.patch(
-      $KQL_GetActiveOrder.data,
-      optimisticDataId,
-      'cache-and-store'
-    )
-    // KQL_AdjustOrder.mutate({
-    //   variables: { orderLineId: id, quantity: value },
-    // })
+    await KQL_GetActiveOrder.query({
+      settings: { policy: 'network-only' },
+    })
   }
 
   const handleClickOutside = () => {
     $cartOpen = !$cartOpen
   }
-
-  $cartTotalQuantity = cartTotal
 </script>
 
 {#if $cartOpen}
@@ -123,14 +94,6 @@
               <div>
                 <button
                   on:click={() =>
-                    adjustOrder(++item.quantity, item.id)}
-                  class="btn btn-xs btn-outline hover:btn-primary shadow-md"
-                >
-                  <Plus />
-                </button>
-                <span>{item.quantity}</span>
-                <button
-                  on:click={() =>
                     adjustOrder(
                       item.quantity > 0 ? --item.quantity : 0,
                       item.id
@@ -138,6 +101,14 @@
                   class="btn btn-xs btn-outline hover:btn-primary shadow-md"
                 >
                   <Minus />
+                </button>
+                <span>{item.quantity}</span>
+                <button
+                  on:click={() =>
+                    adjustOrder(++item.quantity, item.id)}
+                  class="btn btn-xs btn-outline hover:btn-primary shadow-md"
+                >
+                  <Plus />
                 </button>
               </div>
               <p>

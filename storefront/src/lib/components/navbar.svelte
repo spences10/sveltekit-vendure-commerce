@@ -1,5 +1,6 @@
 <script>
-  import { cartOpen, cartTotalQuantity } from '$stores/cart'
+  import { KQL_GetActiveOrder } from '$lib/graphql/_kitql/graphqlStores'
+  import { cartOpen } from '$stores/cart'
   import ShoppingCart from './icons/shopping-cart.svelte'
   import Search from './search.svelte'
 
@@ -52,8 +53,9 @@
     <div class="relative flex justify-center items-center">
       <span
         class="absolute -right-1 -top-1 leading-[1.25rem] text-[70%] font-bold text-center bg-secondary text-secondary-content rounded-2xl h-5 w-7"
-        >{$cartTotalQuantity}</span
       >
+        {$KQL_GetActiveOrder?.data?.activeOrder?.totalQuantity || ``}
+      </span>
       <button
         on:click={() => {
           $cartOpen = !$cartOpen
