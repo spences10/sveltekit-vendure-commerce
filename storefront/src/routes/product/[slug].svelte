@@ -7,8 +7,9 @@
   } from '$lib/graphql/_kitql/graphqlStores'
   import type { VariantFragment } from '$lib/graphql/_kitql/graphqlTypes'
   import { formatCurrency } from '$lib/utils'
+  import type { Load } from '@sveltejs/kit'
 
-  export const load = async ({ params, fetch }) => {
+  export const load: Load = async ({ params, fetch }) => {
     const { slug } = params
     const variables = { slug }
 

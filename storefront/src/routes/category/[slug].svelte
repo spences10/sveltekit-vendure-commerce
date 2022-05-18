@@ -8,9 +8,10 @@
     KQL_SearchProducts,
   } from '$lib/graphql/_kitql/graphqlStores'
   import { filtersStore } from '$stores/filters'
+  import type { Load } from '@sveltejs/kit'
   import { get } from 'svelte/store'
 
-  export const load = async ({ params, fetch }) => {
+  export const load: Load = async ({ params, fetch }) => {
     const { slug } = params
 
     await KQL_GetCurrencyCode.queryLoad({ fetch })
