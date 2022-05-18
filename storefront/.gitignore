@@ -7,3 +7,5 @@ node_modules
 .env.*
 !.env.example
 .pnpm-debug.log
+.vercel_build_output
+.vercel
