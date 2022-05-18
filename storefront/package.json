@@ -2,7 +2,7 @@
   "name": "storefront",
   "version": "0.0.1",
   "scripts": {
-    "prepare": "pnpm run gen",
+    "prepare": "svelte-kit sync && pnpm run gen",
     "gen": "graphql-codegen --require dotenv/config",
     "dev": "svelte-kit dev -p 3300",
     "build": "svelte-kit build",
