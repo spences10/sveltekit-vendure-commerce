@@ -2827,7 +2827,6 @@ export type SearchInput = {
   facetValueIds?: InputMaybe<Array<Scalars['ID']>>;
   facetValueOperator?: InputMaybe<LogicalOperator>;
   groupByProduct?: InputMaybe<Scalars['Boolean']>;
-  inStock?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   sort?: InputMaybe<SearchResultSortParameter>;
   take?: InputMaybe<Scalars['Int']>;
@@ -2855,7 +2854,6 @@ export type SearchResult = {
   description: Scalars['String'];
   facetIds: Array<Scalars['ID']>;
   facetValueIds: Array<Scalars['ID']>;
-  inStock: Scalars['Boolean'];
   price: SearchResultPrice;
   priceWithTax: SearchResultPrice;
   productAsset?: Maybe<SearchResultAsset>;
