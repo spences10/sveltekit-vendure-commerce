@@ -1,21 +1,25 @@
 <script lang="ts" context="module">
+  import { GQL_GetCollections } from '$houdini'
   import Cart from '$lib/components/cart.svelte'
   import Footer from '$lib/components/footer.svelte'
   import Hero from '$lib/components/hero.svelte'
   import Navbar from '$lib/components/navbar.svelte'
   import PageTransition from '$lib/components/page-transition.svelte'
-  import { KQL_GetCollections } from '$lib/graphql/_kitql/graphqlStores'
   import type { Load } from '@sveltejs/kit'
   import { onMount } from 'svelte'
   import '../app.css'
   import { userLocale } from '../stores/locale'
 
-  export const load: Load = async ({ fetch, url, session }) => {
-    await KQL_GetCollections.queryLoad({ fetch })
+  import { houdiniClient } from '$lib/graphql/client'
+
+  houdiniClient.init()
+
+  export const load: Load = async event => {
+    await GQL_GetCollections.fetch({ event })
     console.log('=====================')
-    console.log('layout', session)
+    console.log('layout', event.session)
     console.log('=====================')
-    return { props: { key: url.pathname } }
+    return { props: { key: event.url.pathname } }
   }
 </script>
 
@@ -23,7 +27,7 @@
   export let key: string
 
   $: collections =
-    $KQL_GetCollections.data?.collections.items.filter(
+    $GQL_GetCollections.data?.collections.items.filter(
       item => item?.parent?.name === '__root_collection__'
     ) || []
 

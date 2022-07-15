@@ -1,5 +1,5 @@
 <script>
-  import { KQL_GetActiveOrder } from '$lib/graphql/_kitql/graphqlStores'
+  import { GQL_GetActiveOrder } from '$houdini'
   import { cartOpen } from '$stores/cart'
   import ShoppingCart from './icons/shopping-cart.svelte'
   import Search from './search.svelte'
@@ -54,7 +54,7 @@
       <span
         class="absolute -right-1 -top-1 leading-[1.25rem] text-[70%] font-bold text-center bg-secondary text-secondary-content rounded-2xl h-5 w-7"
       >
-        {$KQL_GetActiveOrder?.data?.activeOrder?.totalQuantity || 0}
+        {$GQL_GetActiveOrder?.data?.activeOrder?.totalQuantity || 0}
       </span>
       <button
         on:click={() => {

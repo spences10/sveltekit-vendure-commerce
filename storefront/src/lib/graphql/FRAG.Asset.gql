@@ -1,0 +1,11 @@
+fragment Asset on Asset {
+  id
+  width
+  height
+  name
+  preview
+  focalPoint {
+    x
+    y
+  }
+}

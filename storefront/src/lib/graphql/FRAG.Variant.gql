@@ -1,0 +1,11 @@
+fragment Variant on ProductVariant {
+  id
+  name
+  options {
+    code
+    name
+  }
+  price
+  priceWithTax
+  sku
+}

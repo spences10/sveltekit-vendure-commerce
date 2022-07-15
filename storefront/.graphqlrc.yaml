@@ -8,20 +8,20 @@ projects:
       endpoints:
         default:
           url: ${VITE_GRAPHQL_API}
-      codegen:
-        generates:
-          ./src/lib/graphql/_kitql/graphqlTypes.ts:
-            plugins:
-              - typescript
-              - typescript-operations
-              - typed-document-node
-              - typescript-document-nodes
+      # codegen:
+      #   generates:
+      #     ./src/lib/graphql/_kitql/graphqlTypes.ts:
+      #       plugins:
+      #         - typescript
+      #         - typescript-operations
+      #         - typed-document-node
+      #         - typescript-document-nodes
 
-          ./src/lib/graphql/_kitql/graphqlStores.ts:
-            plugins:
-              - '@kitql/graphql-codegen'
-            config:
-              importBaseTypesFrom: $lib/graphql/_kitql/graphqlTypes
+      #     ./src/lib/graphql/_kitql/graphqlStores.ts:
+      #       plugins:
+      #         - '@kitql/graphql-codegen'
+      #       config:
+      #         importBaseTypesFrom: $lib/graphql/_kitql/graphqlTypes
 
-        config:
-          useTypeImports: true
+      #   config:
+      #     useTypeImports: true

@@ -1,6 +1,5 @@
 import watchAndRun from '@kitql/vite-plugin-watch-and-run'
 import { sveltekit } from '@sveltejs/kit/vite'
-import { resolve } from 'path'
 
 /** @type {import('vite').UserConfig} */
 const config = {
@@ -13,13 +12,12 @@ const config = {
       },
     ]),
   ],
-  resolve: {
-    alias: {
-      $components: resolve('./src/lib/components'),
-      $lib: resolve('./src/lib'),
-      $stores: resolve('./src/stores'),
-    },
-  },
+  server: {
+    fs: {
+      // Allow serving files from one level up to the project root
+      allow: ['.']
+    }
+  }
 }
 
 export default config

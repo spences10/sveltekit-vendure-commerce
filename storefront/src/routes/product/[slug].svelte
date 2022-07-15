@@ -1,57 +1,65 @@
 <script lang="ts" context="module">
   import {
-    KQL_AddToCart,
-    KQL_GetActiveOrder,
-    KQL_GetCurrencyCode,
-    KQL_GetProductDetail,
-  } from '$lib/graphql/_kitql/graphqlStores'
-  import type { VariantFragment } from '$lib/graphql/_kitql/graphqlTypes'
+    CachePolicy,
+    GQL_AddToCart,
+    GQL_GetActiveOrder,
+    GQL_GetCurrencyCode,
+    GQL_GetProductDetail,
+    type Variant$data,
+  } from '$houdini'
   import { formatCurrency } from '$lib/utils'
   import type { Load } from '@sveltejs/kit'
 
-  export const load: Load = async ({ params, fetch }) => {
-    const { slug } = params
+  export const load: Load = async event => {
+    const { slug } = event.params
     const variables = { slug }
 
-    await KQL_GetProductDetail.queryLoad({ fetch, variables })
-    await KQL_GetCurrencyCode.queryLoad({ fetch })
+    await GQL_GetProductDetail.fetch({ event, variables })
+    await GQL_GetCurrencyCode.fetch({ event })
 
     return {}
   }
 </script>
 
 <script lang="ts">
-  $: product = $KQL_GetProductDetail?.data?.product
+  $: product = $GQL_GetProductDetail?.data?.product
 
   $: currencyCode =
-    $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
+    $GQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
 
   $: breadcrumbs =
     product &&
     product.collections &&
     product.collections[product.collections.length - 1].breadcrumbs
 
-  let selected: VariantFragment = product?.variants?.[0]
+  let selected: Variant$data = product?.variants?.[0]
   let quantity = 1
 
   const addToCart = async () => {
     let id = !selected ? product.variants[0].id : selected.id
     let variables = { productVariantId: id, quantity }
 
-    const result = await KQL_AddToCart.mutate({ fetch, variables })
+    const result = await GQL_AddToCart.mutate({ variables })
     console.log('=====================')
     console.log(result)
     console.log('=====================')
-    if (result.data.addItemToOrder.__typename === 'Order') {
-      // Patch the activeOrder query with the updated Order object.
-      KQL_GetActiveOrder.patch({
-        activeOrder: result.data.addItemToOrder,
-      })
-    } else {
-      // An ErrorResult was returned, so we need to handle that properly,
-      // e.g. display a toast notification
-      console.log(result.data.addItemToOrder)
-    }
+
+console.log('coucou')
+    await GQL_GetActiveOrder.fetch({
+      policy: CachePolicy.NetworkOnly,
+    })
+    console.log('sdsd', JSON.stringify($GQL_GetActiveOrder.data, null, 2))
+
+    //if (result.data.addItemToOrder.__typename === 'Order') {
+    // Patch the activeOrder query with the updated Order object.
+    //  GQL_GetActiveOrder.patch({
+    //    activeOrder: result.data.addItemToOrder,
+    //  })
+    //} else {
+    // An ErrorResult was returned, so we need to handle that properly,
+    // e.g. display a toast notification
+    // console.log(result.data.addItemToOrder)
+    //}
   }
 </script>
 

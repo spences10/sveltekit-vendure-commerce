@@ -9,3 +9,6 @@ node_modules
 .pnpm-debug.log
 .vercel_build_output
 .vercel
+
+$houdini
+$kitql

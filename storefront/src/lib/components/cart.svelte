@@ -1,10 +1,12 @@
 <script lang="ts">
   import { browser } from '$app/env'
   import {
-    KQL_AdjustOrder,
-    KQL_GetActiveOrder,
-    KQL_GetCurrencyCode,
-  } from '$lib/graphql/_kitql/graphqlStores'
+    CachePolicy,
+    GQL_AdjustOrder,
+    GQL_GetActiveOrder,
+    GQL_GetCurrencyCode,
+  } from '$houdini'
+
   import { clickOutside, formatCurrency } from '$lib/utils'
   import { cartOpen } from '$stores/cart'
   import { fly } from 'svelte/transition'
@@ -12,35 +14,37 @@
   import Plus from './icons/plus.svelte'
 
   export let key: string
-  $: browser && key && KQL_GetActiveOrder.query()
+  $: browser && key && GQL_GetActiveOrder.fetch()
 
   $: activeOrderLines =
-    $KQL_GetActiveOrder?.data?.activeOrder?.lines || []
+    $GQL_GetActiveOrder?.data?.activeOrder?.lines || []
   $: totalWithTax =
-    $KQL_GetActiveOrder?.data?.activeOrder?.totalWithTax || 0
+    $GQL_GetActiveOrder?.data?.activeOrder?.totalWithTax || 0
   $: shippingWithTax =
-    $KQL_GetActiveOrder?.data?.activeOrder?.shippingWithTax || 0
+    $GQL_GetActiveOrder?.data?.activeOrder?.shippingWithTax || 0
   $: cartTotal =
-    $KQL_GetActiveOrder?.data?.activeOrder?.totalQuantity || 0
+    $GQL_GetActiveOrder?.data?.activeOrder?.totalQuantity || 0
   $: currencyCode =
-    $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
+    $GQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
 
-  // KQL_RemoveFromCart.mutate({ variables: { orderLineId: '6' } })
-  // KQL_AddToCart.mutate({
+  // GQL_RemoveFromCart.mutate({ variables: { orderLineId: '6' } })
+  // GQL_AddToCart.mutate({
   //   variables: { productVariantId: '1', quantity: 1 },
   // })
-  // KQL_AdjustOrder.mutate({
+  // GQL_AdjustOrder.mutate({
   //   variables: { orderLineId: '4', quantity: 1 },
   // })
   const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
   const adjustOrder = async (value: number, id: string) => {
     // send mutation
-    await KQL_AdjustOrder.mutate({
+    await GQL_AdjustOrder.mutate({
       variables: { orderLineId: id, quantity: value },
+      // optimisticResponse: {adjustOrderLine}
     })
-    await KQL_GetActiveOrder.query({
-      settings: { policy: 'network-only' },
+    console.log('todo houdini')
+    await GQL_GetActiveOrder.fetch({
+      policy: CachePolicy.NetworkOnly,
     })
   }
 
@@ -95,7 +99,7 @@
                 <button
                   on:click={() =>
                     adjustOrder(
-                      item.quantity > 0 ? --item.quantity : 0,
+                      item.quantity > 0 ? item.quantity - 1 : 0,
                       item.id
                     )}
                   class="btn btn-xs btn-outline hover:btn-primary shadow-md"
@@ -105,7 +109,7 @@
                 <span>{item.quantity}</span>
                 <button
                   on:click={() =>
-                    adjustOrder(++item.quantity, item.id)}
+                    adjustOrder(item.quantity + 1, item.id)}
                   class="btn btn-xs btn-outline hover:btn-primary shadow-md"
                 >
                   <Plus />
@@ -142,5 +146,5 @@
 
 <!-- debug -->
 <!-- <pre class="flex flex-col flex-grow">
-  {JSON.stringify($KQL_GetActiveOrder.data, null, 2)}
+  {JSON.stringify($GQL_GetActiveOrder.data, null, 2)}
 </pre> -->

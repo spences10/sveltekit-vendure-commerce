@@ -2,25 +2,25 @@
   import CategoryBanner from '$lib/components/category-banner.svelte'
   import ProductCard from '$lib/components/product-card.svelte'
   import {
-    KQL_GetCollections,
-    KQL_GetCurrencyCode,
-    KQL_GetTopSellers,
-  } from '$lib/graphql/_kitql/graphqlStores'
+    GQL_GetCollections,
+    GQL_GetCurrencyCode,
+    GQL_GetTopSellers,
+  } from '$houdini'
   import type { Load } from '@sveltejs/kit'
 
-  export const load: Load = async ({ fetch }) => {
-    await KQL_GetTopSellers.queryLoad({ fetch })
-    await KQL_GetCurrencyCode.queryLoad({ fetch })
+  export const load: Load = async event => {
+    await GQL_GetTopSellers.fetch({event})
+    await GQL_GetCurrencyCode.fetch({event})
     return {}
   }
 </script>
 
 <script lang="ts">
-  $: items = $KQL_GetTopSellers.data?.search?.items ?? []
+  $: items = $GQL_GetTopSellers.data?.search?.items ?? []
   let currencyCode =
-    $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
+    $GQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
 
-  $: collections = $KQL_GetCollections.data?.collections.items.filter(
+  $: collections = $GQL_GetCollections.data?.collections.items.filter(
     item => item.parent.name === '__root_collection__'
   )
 </script>

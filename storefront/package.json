@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "prepare": "svelte-kit sync && pnpm run gen",
-    "gen": "graphql-codegen --require dotenv/config",
+    "gen": "houdini generate",
+    "gen2": "graphql-codegen --require dotenv/config",
     "dev": "vite dev",
     "build": "vite build",
     "package": "svelte-kit package",
@@ -46,8 +47,8 @@
   },
   "type": "module",
   "dependencies": {
-    "@kitql/all-in": "0.6.3",
+    "@kitql/all-in": "0.7.3",
     "cookie": "0.5.0",
-    "graphql": "16.3.0"
+    "graphql": "16.5.0"
   }
 }

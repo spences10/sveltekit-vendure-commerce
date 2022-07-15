@@ -1,10 +1,10 @@
 <script lang="ts" context="module">
-  import { KQL_SearchProducts } from '$lib/graphql/_kitql/graphqlStores'
+  import { GQL_SearchProducts } from '$houdini'
   import type { Load } from '@sveltejs/kit'
   import { filtersStore } from '../../stores/filters'
 
-  export const load: Load = async ({ fetch }) => {
-    await KQL_SearchProducts.queryLoad({ fetch })
+  export const load: Load = async (event) => {
+    await GQL_SearchProducts.fetch({event})
     return {}
   }
   // TODO remove
@@ -23,7 +23,7 @@
   }[]
   let filterValues = []
 
-  $: facetValues = $KQL_SearchProducts?.data?.search?.facetValues
+  $: facetValues = $GQL_SearchProducts?.data?.search?.facetValues
 
   $: filtersStore.set(filterValues)
 
