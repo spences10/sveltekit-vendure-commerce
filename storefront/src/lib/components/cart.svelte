@@ -13,8 +13,7 @@
   import Minus from './icons/minus.svelte'
   import Plus from './icons/plus.svelte'
 
-  export let key: string
-  $: browser && key && GQL_GetActiveOrder.fetch()
+  $: browser && GQL_GetActiveOrder.fetch()
 
   $: activeOrderLines =
     $GQL_GetActiveOrder?.data?.activeOrder?.lines || []
@@ -22,19 +21,8 @@
     $GQL_GetActiveOrder?.data?.activeOrder?.totalWithTax || 0
   $: shippingWithTax =
     $GQL_GetActiveOrder?.data?.activeOrder?.shippingWithTax || 0
-  $: cartTotal =
-    $GQL_GetActiveOrder?.data?.activeOrder?.totalQuantity || 0
   $: currencyCode =
     $GQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
-
-  // GQL_RemoveFromCart.mutate({ variables: { orderLineId: '6' } })
-  // GQL_AddToCart.mutate({
-  //   variables: { productVariantId: '1', quantity: 1 },
-  // })
-  // GQL_AdjustOrder.mutate({
-  //   variables: { orderLineId: '4', quantity: 1 },
-  // })
-  const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
   const adjustOrder = async (value: number, id: string) => {
     // send mutation

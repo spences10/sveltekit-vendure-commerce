@@ -1,28 +1,45 @@
 import type { RequestHandlerArgs } from '$houdini'
 import { HoudiniClient } from '$houdini'
+import { browser } from '$app/env'
+
+const AUTH_TOKEN_KEY = 'auth_token'
 
 async function fetchQuery({
   fetch,
   text = '',
   variables = {},
-  session,
-  metadata,
-}: RequestHandlerArgs) {
+}: // session,
+// metadata,
+RequestHandlerArgs) {
   const url =
     import.meta.env.VITE_GRAPHQL_ENDPOINT ||
     'http://localhost:3000/shop-api'
 
+  const headers = {}
+  headers['Content-Type'] = 'application/json'
+
+  if (browser) {
+    const token = localStorage.getItem(AUTH_TOKEN_KEY)
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`
+    }
+  }
+
   const result = await fetch(url, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      credential: 'include',
-    },
+    headers,
     body: JSON.stringify({
       query: text,
       variables,
     }),
   })
+
+  if (browser) {
+    const authToken = result.headers.get('vendure-auth-token')
+    if (authToken) {
+      localStorage.setItem(AUTH_TOKEN_KEY, authToken)
+    }
+  }
 
   return await result.json()
 }

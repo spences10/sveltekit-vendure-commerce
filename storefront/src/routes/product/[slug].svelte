@@ -41,14 +41,13 @@
 
     const result = await GQL_AddToCart.mutate({ variables })
     console.log('=====================')
-    console.log(result)
+    console.log("addToCart", result)
     console.log('=====================')
 
-console.log('coucou')
     await GQL_GetActiveOrder.fetch({
       policy: CachePolicy.NetworkOnly,
     })
-    console.log('sdsd', JSON.stringify($GQL_GetActiveOrder.data, null, 2))
+    console.log('todo houdini')
 
     //if (result.data.addItemToOrder.__typename === 'Order') {
     // Patch the activeOrder query with the updated Order object.

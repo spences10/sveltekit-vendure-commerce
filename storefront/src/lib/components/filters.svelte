@@ -27,7 +27,7 @@
 
   $: filtersStore.set(filterValues)
 
-  $: groupFacetValues = facetValues => {
+  $: groupFacetValues = (facetValues: any) => {
     const facetMap = new Map()
 
     for (const {

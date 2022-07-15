@@ -32,9 +32,10 @@ export const config: VendureConfig = {
       identifier: "superadmin",
       password: "superadmin",
     },
-    cookieOptions: {
-      secret: process.env.COOKIE_SECRET || "cookie-secret",
-    },
+    tokenMethod: "bearer",
+    // cookieOptions: {
+    //   secret: process.env.COOKIE_SECRET || "cookie-secret",
+    // },
   },
   dbConnectionOptions: {
     type: "better-sqlite3",

@@ -37,7 +37,7 @@
 </script>
 
 <PageTransition refresh={key}>
-  <Cart {key} />
+  <Cart />
   <Navbar {collections} />
   <Hero {key} />
   <main class="container max-w-6xl mx-auto px-4 mb-20">

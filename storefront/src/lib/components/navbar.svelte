@@ -1,10 +1,14 @@
 <script>
+import { browser } from '$app/env';
+
   import { GQL_GetActiveOrder } from '$houdini'
   import { cartOpen } from '$stores/cart'
   import ShoppingCart from './icons/shopping-cart.svelte'
   import Search from './search.svelte'
 
   export let collections = []
+
+  $: browser && GQL_GetActiveOrder.fetch()
 </script>
 
 <nav
@@ -57,13 +61,14 @@
         {$GQL_GetActiveOrder?.data?.activeOrder?.totalQuantity || 0}
       </span>
       <button
-        on:click={() => {
-          $cartOpen = !$cartOpen
-        }}
+      on:click={() => {
+        $cartOpen = !$cartOpen
+      }}
         class="btn btn-square btn-ghost"
-      >
+        >
         <ShoppingCart />
       </button>
     </div>
   </div>
 </nav>
+{JSON.stringify($GQL_GetActiveOrder.data, null, 2)}
