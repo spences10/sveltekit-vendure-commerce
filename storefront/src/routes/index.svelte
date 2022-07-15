@@ -1,16 +1,16 @@
 <script lang="ts" context="module">
-  import CategoryBanner from '$lib/components/category-banner.svelte'
-  import ProductCard from '$lib/components/product-card.svelte'
   import {
     GQL_GetCollections,
     GQL_GetCurrencyCode,
     GQL_GetTopSellers,
   } from '$houdini'
+  import CategoryBanner from '$lib/components/category-banner.svelte'
+  import ProductCard from '$lib/components/product-card.svelte'
   import type { Load } from '@sveltejs/kit'
 
   export const load: Load = async event => {
-    await GQL_GetTopSellers.fetch({event})
-    await GQL_GetCurrencyCode.fetch({event})
+    await GQL_GetTopSellers.fetch({ event })
+    await GQL_GetCurrencyCode.fetch({ event })
     return {}
   }
 </script>
