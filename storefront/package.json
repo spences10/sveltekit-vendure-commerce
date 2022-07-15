@@ -4,10 +4,10 @@
   "scripts": {
     "prepare": "svelte-kit sync && pnpm run gen",
     "gen": "graphql-codegen --require dotenv/config",
-    "dev": "svelte-kit dev -p 3300",
-    "build": "svelte-kit build",
+    "dev": "vite dev",
+    "build": "vite build",
     "package": "svelte-kit package",
-    "preview": "svelte-kit preview -p 3300",
+    "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "eslint --ignore-path .gitignore .",
@@ -41,7 +41,8 @@
     "tailwindcss": "3.1.4",
     "tslib": "2.4.0",
     "typescript": "4.7.4",
-    "uuid": "8.3.2"
+    "uuid": "8.3.2",
+    "vite": "3.0.0"
   },
   "type": "module",
   "dependencies": {
