@@ -21,6 +21,6 @@
   },
   "devDependencies": {
     "concurrently": "7.2.2",
-    "ts-node": "10.8.2"
+    "ts-node": "10.9.1"
   }
 }
