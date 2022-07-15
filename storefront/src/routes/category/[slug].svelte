@@ -1,12 +1,12 @@
 <script lang="ts" context="module">
-  import CategoryBanner from '$lib/components/category-banner.svelte'
-  import Filters from '$lib/components/filters.svelte'
-  import ProductCard from '$lib/components/product-card.svelte'
   import {
     GQL_GetCollections,
     GQL_GetCurrencyCode,
     GQL_SearchProducts,
   } from '$houdini'
+  import CategoryBanner from '$lib/components/category-banner.svelte'
+  import Filters from '$lib/components/filters.svelte'
+  import ProductCard from '$lib/components/product-card.svelte'
   import { filtersStore } from '$stores/filters'
   import { get } from 'svelte/store'
   import type { Load } from './__types/[slug]'
@@ -14,7 +14,7 @@
   export const load: Load = async event => {
     const { slug } = event.params
 
-    await GQL_GetCurrencyCode.fetch({event})
+    await GQL_GetCurrencyCode.fetch({ event })
     await GQL_SearchProducts.fetch({
       event,
       variables: {

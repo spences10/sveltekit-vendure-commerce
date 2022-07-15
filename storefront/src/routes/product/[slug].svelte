@@ -44,11 +44,14 @@
     console.log(result)
     console.log('=====================')
 
-console.log('coucou')
+    console.log('coucou')
     await GQL_GetActiveOrder.fetch({
       policy: CachePolicy.NetworkOnly,
     })
-    console.log('sdsd', JSON.stringify($GQL_GetActiveOrder.data, null, 2))
+    console.log(
+      'sdsd',
+      JSON.stringify($GQL_GetActiveOrder.data, null, 2)
+    )
 
     //if (result.data.addItemToOrder.__typename === 'Order') {
     // Patch the activeOrder query with the updated Order object.

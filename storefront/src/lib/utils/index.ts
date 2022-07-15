@@ -1,4 +1,4 @@
-import type { CurrencyCode } from '$lib/graphql/_kitql/graphqlTypes'
+import type { CurrencyCode } from '$houdini'
 
 export const formatCurrency = (
   currency: CurrencyCode,

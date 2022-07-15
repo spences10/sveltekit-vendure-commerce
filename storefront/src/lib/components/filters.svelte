@@ -3,8 +3,8 @@
   import type { Load } from '@sveltejs/kit'
   import { filtersStore } from '../../stores/filters'
 
-  export const load: Load = async (event) => {
-    await GQL_SearchProducts.fetch({event})
+  export const load: Load = async event => {
+    await GQL_SearchProducts.fetch({ event })
     return {}
   }
   // TODO remove

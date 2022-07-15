@@ -5,12 +5,11 @@
   import Hero from '$lib/components/hero.svelte'
   import Navbar from '$lib/components/navbar.svelte'
   import PageTransition from '$lib/components/page-transition.svelte'
+  import { houdiniClient } from '$lib/graphql/client'
   import type { Load } from '@sveltejs/kit'
   import { onMount } from 'svelte'
   import '../app.css'
   import { userLocale } from '../stores/locale'
-
-  import { houdiniClient } from '$lib/graphql/client'
 
   houdiniClient.init()
 
