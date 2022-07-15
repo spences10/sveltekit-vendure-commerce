@@ -13,7 +13,7 @@ specifiers:
   eslint: 8.19.0
   eslint-config-prettier: 8.5.0
   eslint-plugin-svelte3: 4.0.0
-  graphql: 16.3.0
+  graphql: 16.5.0
   husky: 8.0.1
   postcss: 8.4.14
   postcss-load-config: 4.0.1
@@ -32,7 +32,7 @@ specifiers:
 dependencies:
   '@kitql/all-in': 0.6.3_typescript@4.7.4
   cookie: 0.5.0
-  graphql: 16.3.0
+  graphql: 16.5.0
 
 devDependencies:
   '@sveltejs/adapter-auto': 1.0.0-next.60
@@ -3388,6 +3388,11 @@ packages:
   /graphql/16.3.0:
     resolution: {integrity: sha512-xm+ANmA16BzCT5pLjuXySbQVFwH3oJctUVdy81w1sV0vBU0KgDdBGtxQOUd5zqOBk/JayAFeG8Dlmeq74rjm/A==}
     engines: {node: ^12.22.0 || ^14.16.0 || >=16.0.0}
+    dev: false
+
+  /graphql/16.5.0:
+    resolution: {integrity: sha512-qbHgh8Ix+j/qY+a/ZcJnFQ+j8ezakqPiHwPiZhV/3PgGlgf96QMBB5/f2rkiC9sgLoy/xvT6TSiaf2nTHJh5iA==}
+    engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
     dev: false
 
   /has-ansi/2.0.0:
