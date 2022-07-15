@@ -1,5 +1,4 @@
-import type { Handle } from '@sveltejs/kit'
-import type { RequestEvent } from '@sveltejs/kit/types/private'
+import type { Handle, RequestEvent } from '@sveltejs/kit'
 import cookie from 'cookie'
 import { v4 as uuidv4 } from 'uuid'
 

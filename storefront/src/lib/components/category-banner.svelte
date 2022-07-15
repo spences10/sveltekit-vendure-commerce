@@ -9,11 +9,12 @@
     <a href={`/category/${collection.slug}`}>
       <div class="card shadow-xl image-full">
         <figure>
-          <img
+          <!-- <img
             class="object-cover"
             src={`${collection.featuredAsset.preview}?w=350&h=100`}
             alt={collection.name}
-          />
+          /> -->
+          img
         </figure>
         <div class="justify-end card-body p-5">
           <h2 class="text-xl lg:text-3xl font-bold tracking-widest">

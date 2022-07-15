@@ -4,15 +4,13 @@ const config = {
   sourceGlob: 'src/**/*.{svelte,gql,graphql}',
   module: 'esm',
   framework: 'kit',
-  apiUrl: 'https://readonlydemo.vendure.io/shop-api',
+  apiUrl: 'http://localhost:3000/shop-api',
   scalars: {
-    /* in your case, something like */
     DateTime: {
-      // <- The GraphQL Scalar
-      type: 'string', // <-  The TypeScript type
+      type: 'string',
     },
   },
-  disableMasking: true
+  disableMasking: true,
 }
 
 export default config

@@ -4,7 +4,6 @@
   "scripts": {
     "prepare": "svelte-kit sync && pnpm run gen",
     "gen": "houdini generate",
-    "gen2": "graphql-codegen --require dotenv/config",
     "dev": "vite dev",
     "build": "vite build",
     "package": "svelte-kit package",

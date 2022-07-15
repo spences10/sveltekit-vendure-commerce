@@ -22,7 +22,7 @@
 
   $: collections = $GQL_GetCollections.data?.collections.items.filter(
     item => item.parent.name === '__root_collection__'
-  )
+  ) ?? []
 </script>
 
 <CategoryBanner {collections} />

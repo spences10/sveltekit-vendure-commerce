@@ -86,10 +86,11 @@ console.log('coucou')
 
   <div class="flex">
     <div class="basis-full">
-      <img
+      <!-- <img
         src={product.featuredAsset.preview}
         alt={product.featuredAsset.name}
-      />
+      /> -->
+      img
     </div>
     <div class="basis-full ml-8">
       <h2 class="text-5xl text-neutral mb-8">{product.name}</h2>

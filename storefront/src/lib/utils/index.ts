@@ -1,12 +1,12 @@
-import type { CurrencyCode } from '$lib/graphql/_kitql/graphqlTypes'
+import type { CurrencyCode } from '$houdini'
 
 export const formatCurrency = (
   currency: CurrencyCode,
   value: number
 ) => {
-  if (typeof value === 'number') {
+  if (typeof value === 'number' && currency) {
     const majorUnits = value / 100
-    return new Intl.NumberFormat(undefined, {
+    return new Intl.NumberFormat('en-EN', {
       style: 'currency',
       currency,
     }).format(majorUnits)

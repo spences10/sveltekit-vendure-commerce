@@ -80,11 +80,12 @@
       {#each activeOrderLines as item}
         <div class="my-6 flex">
           <div class="">
-            <img
+            <!-- <img
               src={`${item.featuredAsset.preview}?w=300&h=300`}
               alt={item.productVariant.name}
               class="object-cover rounded-lg h-16 w-16"
-            />
+            /> -->
+            img
           </div>
           <div class="flex flex-col flex-grow text-lg pl-3">
             <p class="text-xl pb-1">{item.productVariant.name}</p>
