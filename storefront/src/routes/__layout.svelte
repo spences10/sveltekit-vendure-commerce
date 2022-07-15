@@ -11,14 +11,15 @@
   import { userLocale } from '../stores/locale'
 
   import { houdiniClient } from '$lib/graphql/client'
+  import { browser } from '$app/env'
 
   houdiniClient.init()
 
   export const load: Load = async event => {
-    await GQL_GetCollections.fetch({ event })
-    console.log('=====================')
-    console.log('layout', event.session)
-    console.log('=====================')
+    // await GQL_GetCollections.fetch({ event })
+    // console.log('=====================')
+    // console.log('layout', event.session)
+    // console.log('=====================')
     return { props: { key: event.url.pathname } }
   }
 </script>
@@ -26,6 +27,8 @@
 <script lang="ts">
   export let key: string
 
+  $: browser && GQL_GetCollections.fetch()
+  
   $: collections =
     $GQL_GetCollections.data?.collections.items.filter(
       item => item?.parent?.name === '__root_collection__'

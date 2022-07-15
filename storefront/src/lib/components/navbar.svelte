@@ -1,5 +1,5 @@
 <script>
-import { browser } from '$app/env';
+  import { browser } from '$app/env'
 
   import { GQL_GetActiveOrder } from '$houdini'
   import { cartOpen } from '$stores/cart'
@@ -61,14 +61,13 @@ import { browser } from '$app/env';
         {$GQL_GetActiveOrder?.data?.activeOrder?.totalQuantity || 0}
       </span>
       <button
-      on:click={() => {
-        $cartOpen = !$cartOpen
-      }}
+        on:click={() => {
+          $cartOpen = !$cartOpen
+        }}
         class="btn btn-square btn-ghost"
-        >
+      >
         <ShoppingCart />
       </button>
     </div>
   </div>
 </nav>
-{JSON.stringify($GQL_GetActiveOrder.data, null, 2)}
