@@ -1,4 +1,5 @@
 import adapter from '@sveltejs/adapter-vercel'
+import houdini from 'houdini/preprocess'
 import { resolve } from 'path'
 import preprocess from 'svelte-preprocess'
 
@@ -10,6 +11,7 @@ const config = {
     preprocess({
       postcss: true,
     }),
+    houdini(),
   ],
 
   kit: {
