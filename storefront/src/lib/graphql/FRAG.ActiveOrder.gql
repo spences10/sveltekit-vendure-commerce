@@ -6,7 +6,7 @@ fragment ActiveOrder on Order {
   totalWithTax
   totalQuantity
   shippingWithTax
-  lines @list(name: "GQL_ActiveOrder_lines") {
+  lines {
     id
     linePriceWithTax
     quantity
