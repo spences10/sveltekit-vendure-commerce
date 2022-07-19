@@ -13,7 +13,7 @@ async function fetchQuery({
 RequestHandlerArgs) {
   const url =
     import.meta.env.VITE_GRAPHQL_ENDPOINT ||
-    'http://localhost:3000/shop-api'
+    'https://readonlydemo.vendure.io/shop-api'
 
   const headers = {}
   headers['Content-Type'] = 'application/json'

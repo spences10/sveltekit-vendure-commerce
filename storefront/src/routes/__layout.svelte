@@ -1,5 +1,6 @@
 <script lang="ts" context="module">
-  import { GQL_GetCollections } from '$houdini'
+import { GQL_GetCollections, GQL_GetCurrencyCode, GQL_GetTopSellers } from '$houdini';
+
   import Cart from '$lib/components/cart.svelte'
   import Footer from '$lib/components/footer.svelte'
   import Hero from '$lib/components/hero.svelte'
@@ -14,25 +15,18 @@
   houdiniClient.init()
 
   export const load: Load = async event => {
-    // await GQL_GetCollections.fetch({ event })
-    // console.log('=====================')
-    // console.log('layout', event.session)
-    // console.log('=====================')
+
+    // SSR for these 3 queries
+    await GQL_GetTopSellers.fetch({ event })
+    await GQL_GetCurrencyCode.fetch({ event })
+    await GQL_GetCollections.fetch({ event })
+    
     return { props: { key: event.url.pathname } }
   }
 </script>
 
 <script lang="ts">
-import { browser } from '$app/env'
-
-  export let key: string
-
-  $: browser && GQL_GetCollections.fetch()
-
-  $: collections =
-    $GQL_GetCollections.data?.collections.items.filter(
-      item => item?.parent?.name === '__root_collection__'
-    ) || []
+  export let key: string 
 
   onMount(() => {
     userLocale.set(navigator.languages[0] as any)
@@ -41,7 +35,7 @@ import { browser } from '$app/env'
 
 <PageTransition refresh={key}>
   <Cart />
-  <Navbar {collections} />
+  <Navbar />
   <Hero {key} />
   <main class="container max-w-6xl mx-auto px-4 mb-20">
     <slot />

@@ -13,8 +13,6 @@
   import Minus from './icons/minus.svelte'
   import Plus from './icons/plus.svelte'
 
-  $: browser && GQL_GetActiveOrder.fetch()
-
   $: activeOrderLines =
     $GQL_GetActiveOrder?.data?.activeOrder?.lines || []
   $: totalWithTax =
@@ -31,9 +29,9 @@
       // optimisticResponse: {adjustOrderLine}
     })
     console.log('todo houdini')
-    await GQL_GetActiveOrder.fetch({
-      policy: CachePolicy.NetworkOnly,
-    })
+    // await GQL_GetActiveOrder.fetch({
+    //   policy: CachePolicy.NetworkOnly,
+    // })
   }
 
   const handleClickOutside = () => {
@@ -68,12 +66,11 @@
       {#each activeOrderLines as item}
         <div class="my-6 flex">
           <div class="">
-            <!-- <img
+            <img
               src={`${item.featuredAsset.preview}?w=300&h=300`}
               alt={item.productVariant.name}
               class="object-cover rounded-lg h-16 w-16"
-            /> -->
-            img
+            />
           </div>
           <div class="flex flex-col flex-grow text-lg pl-3">
             <p class="text-xl pb-1">{item.productVariant.name}</p>

@@ -1,1 +1,1 @@
-VITE_GRAPHQL_API=http://localhost:3000/shop-api
+VITE_GRAPHQL_API=https://readonlydemo.vendure.io/shop-api

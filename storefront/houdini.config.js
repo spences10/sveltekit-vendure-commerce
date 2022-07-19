@@ -2,9 +2,7 @@
 const config = {
   schemaPath: './schema.graphql',
   sourceGlob: 'src/**/*.{svelte,gql,graphql}',
-  module: 'esm',
-  framework: 'kit',
-  apiUrl: 'http://localhost:3000/shop-api',
+  apiUrl: 'https://readonlydemo.vendure.io/shop-api',
   scalars: {
     DateTime: {
       type: 'string',

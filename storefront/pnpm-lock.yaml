@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@kitql/all-in': 0.7.3
+  '@kitql/all-in': 0.7.6
   '@sveltejs/adapter-auto': next
   '@sveltejs/adapter-vercel': 1.0.0-next.62
   '@sveltejs/kit': next
@@ -28,13 +28,13 @@ specifiers:
   vite: 3.0.0
 
 dependencies:
-  '@kitql/all-in': 0.7.3_nx5rldzsxkqp2qf2miljeykxp4
+  '@kitql/all-in': 0.7.6_nx5rldzsxkqp2qf2miljeykxp4
   graphql: 16.5.0
 
 devDependencies:
-  '@sveltejs/adapter-auto': 1.0.0-next.61
+  '@sveltejs/adapter-auto': 1.0.0-next.62
   '@sveltejs/adapter-vercel': 1.0.0-next.62
-  '@sveltejs/kit': 1.0.0-next.377_svelte@3.49.0+vite@3.0.0
+  '@sveltejs/kit': 1.0.0-next.379_svelte@3.49.0+vite@3.0.0
   '@typescript-eslint/eslint-plugin': 5.30.6_2vt5mtrqleafs33qg2bhpmbaqm
   '@typescript-eslint/parser': 5.30.6_4x5o4skxv6sl53vpwefgt23khm
   autoprefixer: 10.4.7_postcss@8.4.14
@@ -1383,8 +1383,8 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
 
-  /@kitql/all-in/0.7.3_nx5rldzsxkqp2qf2miljeykxp4:
-    resolution: {integrity: sha512-iC6xMqxS0YjtXE1JaGUI+VcAq5mtL9cE3z/zYhvXUMaFKGTnuZvhmcS86ebobUaWpLat0veNllCHuLHSEr1XQw==}
+  /@kitql/all-in/0.7.6_nx5rldzsxkqp2qf2miljeykxp4:
+    resolution: {integrity: sha512-Yt2wGT3UYVZ1LsL8cI7CJydWhBz74WO3jqRg5xZE2TzDypTQCMoApJAfoWl3I+wSdwsqIAJEq/5DSJhH8YQx4g==}
     peerDependencies:
       graphql: ^15.0.0 || ^16.0.0
     dependencies:
@@ -1402,11 +1402,11 @@ packages:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.5.0
       '@graphql-yoga/common': 2.10.0_graphql@16.5.0
       '@kitql/module-codegen': 0.3.10_graphql@16.5.0
-      '@kitql/vite-plugin-watch-and-run': 0.4.0
+      '@kitql/vite-plugin-watch-and-run': 0.4.2
       graphql: 16.5.0
       graphql-modules: 2.1.0_graphql@16.5.0
       graphql-scalars: 1.17.0_graphql@16.5.0
-      houdini: 0.15.5
+      houdini: 0.15.6
     transitivePeerDependencies:
       - '@types/node'
       - bufferutil
@@ -1433,8 +1433,8 @@ packages:
       yaml: 2.1.1
     dev: false
 
-  /@kitql/vite-plugin-watch-and-run/0.4.0:
-    resolution: {integrity: sha512-9PSZhY3/rgPBpC2uKDeNTKTdiQuyeS1BjNXznv5TO/20LoH1EXD2gQhzhi81pfyqrb6z2brprb5hLtuJpLwAyw==}
+  /@kitql/vite-plugin-watch-and-run/0.4.2:
+    resolution: {integrity: sha512-GKt6Hwp/qsMZVSNRGzckJZ7s7+k3QEpkVLpjSwqtW+6XVUsWPQr2k0Bi55imd4CgD8Rr7RkwAmnjcOo57DugPg==}
     dependencies:
       '@kitql/helper': 0.3.5
       micromatch: 4.0.5
@@ -1519,12 +1519,12 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
-  /@sveltejs/adapter-auto/1.0.0-next.61:
-    resolution: {integrity: sha512-0DwAx4BHhbY4irMx6GyT7cDhH22udUoWkeVHEIhmDtCAfjjzlqfWmyY9qt46Gjp8EApIBrXD2rJB6lJy4jYurQ==}
+  /@sveltejs/adapter-auto/1.0.0-next.62:
+    resolution: {integrity: sha512-+yZZ3SzjBQEXXuIs12DfqgRmV9CQSCcEnYvaQ4R2LFyAxUOiGUJt2DtRJIELF+2dwHVxnvrR2CssqaNJ7J9bAA==}
     dependencies:
       '@sveltejs/adapter-cloudflare': 1.0.0-next.29
       '@sveltejs/adapter-netlify': 1.0.0-next.69
-      '@sveltejs/adapter-vercel': 1.0.0-next.63
+      '@sveltejs/adapter-vercel': 1.0.0-next.64
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -1557,8 +1557,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/adapter-vercel/1.0.0-next.63:
-    resolution: {integrity: sha512-awb1zmT+hAAHv+x7gOY/8Ch64spxKX6H/DQb+S/VGYRQ6i1WvNgsBUF9vk88KR//7tUY8y/xiTLAb99hJ57WhA==}
+  /@sveltejs/adapter-vercel/1.0.0-next.64:
+    resolution: {integrity: sha512-UpDQAm3upsKsA6fca3+lOntHaX77EnL0OBYewOycdicJqlnoLq/DDr44xNeSjtW95Y8CVqALMxkPS6oMPipAYQ==}
     dependencies:
       '@vercel/nft': 0.20.1
       esbuild: 0.14.49
@@ -1567,8 +1567,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.377_svelte@3.49.0+vite@3.0.0:
-    resolution: {integrity: sha512-DH2v2yUBUuDZ7vzjPXUd/yt1AMR3BIkZN0ubLAvS2C+q5Wbvk7ZvAJhfPZ3OYc3ZpQXe4ZGEcptOjvEYvd1lLA==}
+  /@sveltejs/kit/1.0.0-next.379_svelte@3.49.0+vite@3.0.0:
+    resolution: {integrity: sha512-mhy0GW4KUJ3tq6mDMF0fs/B6Nh2oJM6ZAA2fwilTOdqzhKD3f2WJLH9RXx1Z5/8eodFeQsURTPRn5a0r3QAZew==}
     engines: {node: '>=16.9'}
     hasBin: true
     peerDependencies:
@@ -3611,8 +3611,8 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /houdini/0.15.5:
-    resolution: {integrity: sha512-PUI6bVQghtplUmbSIPj2E3/EW1k59utwIKuAeUxBOSTE1C1WmSdzRI33isyCO4lg6O1Fw7g04ADfgiCqu+F/VA==}
+  /houdini/0.15.6:
+    resolution: {integrity: sha512-DZhGArqjFJpZlceXt5VwZvEfIBS/Tlvh/p6rk2WUWxzoeJ2dewyuYU9jXhdmxU6s97Vc/dNMLoyiaSXa3C4yoA==}
     hasBin: true
     dependencies:
       '@babel/parser': 7.18.8

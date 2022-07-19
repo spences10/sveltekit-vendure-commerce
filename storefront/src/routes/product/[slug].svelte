@@ -1,11 +1,8 @@
 <script lang="ts" context="module">
   import {
-    CachePolicy,
-    GQL_AddToCart,
-    GQL_GetActiveOrder,
-    GQL_GetCurrencyCode,
-    GQL_GetProductDetail,
-    type Variant$data,
+  GQL_AddToCart,GQL_GetCurrencyCode,
+  GQL_GetProductDetail,
+  type Variant$data
   } from '$houdini'
   import { formatCurrency } from '$lib/utils'
   import type { Load } from '@sveltejs/kit'
@@ -44,9 +41,9 @@
     console.log("addToCart", result)
     console.log('=====================')
 
-    await GQL_GetActiveOrder.fetch({
-      policy: CachePolicy.NetworkOnly,
-    })
+    // await GQL_GetActiveOrder.fetch({
+    //   policy: CachePolicy.NetworkOnly,
+    // })
     console.log('todo houdini')
 
     //if (result.data.addItemToOrder.__typename === 'Order') {
@@ -85,11 +82,10 @@
 
   <div class="flex">
     <div class="basis-full">
-      <!-- <img
+      <img
         src={product.featuredAsset.preview}
         alt={product.featuredAsset.name}
-      /> -->
-      img
+      />
     </div>
     <div class="basis-full ml-8">
       <h2 class="text-5xl text-neutral mb-8">{product.name}</h2>
