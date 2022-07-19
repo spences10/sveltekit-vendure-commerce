@@ -1,12 +1,17 @@
 import type { CurrencyCode } from '$houdini'
+import { get } from 'svelte/store'
 
+import { userLocale } from '../../stores/locale'
 export const formatCurrency = (
   currency: CurrencyCode,
   value: number
 ) => {
   if (typeof value === 'number' && currency) {
     const majorUnits = value / 100
-    return new Intl.NumberFormat('en-EN', {
+
+    const locale = get(userLocale) ?? 'en-US'
+
+    return new Intl.NumberFormat(locale, {
       style: 'currency',
       currency,
     }).format(majorUnits)

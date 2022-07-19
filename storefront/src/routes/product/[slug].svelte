@@ -36,26 +36,7 @@
     let id = !selected ? product.variants[0].id : selected.id
     let variables = { productVariantId: id, quantity }
 
-    const result = await GQL_AddToCart.mutate({ variables })
-    console.log('=====================')
-    console.log("addToCart", result)
-    console.log('=====================')
-
-    // await GQL_GetActiveOrder.fetch({
-    //   policy: CachePolicy.NetworkOnly,
-    // })
-    console.log('todo houdini')
-
-    //if (result.data.addItemToOrder.__typename === 'Order') {
-    // Patch the activeOrder query with the updated Order object.
-    //  GQL_GetActiveOrder.patch({
-    //    activeOrder: result.data.addItemToOrder,
-    //  })
-    //} else {
-    // An ErrorResult was returned, so we need to handle that properly,
-    // e.g. display a toast notification
-    // console.log(result.data.addItemToOrder)
-    //}
+    await GQL_AddToCart.mutate({ variables })
   }
 </script>
 

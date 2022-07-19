@@ -23,15 +23,9 @@
     $GQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
 
   const adjustOrder = async (value: number, id: string) => {
-    // send mutation
     await GQL_AdjustOrder.mutate({
       variables: { orderLineId: id, quantity: value },
-      // optimisticResponse: {adjustOrderLine}
     })
-    console.log('todo houdini')
-    // await GQL_GetActiveOrder.fetch({
-    //   policy: CachePolicy.NetworkOnly,
-    // })
   }
 
   const handleClickOutside = () => {
@@ -78,7 +72,7 @@
               <p>
                 {formatCurrency(
                   currencyCode,
-                  item.linePriceWithTax
+                  item.unitPriceWithTax
                 ) || 0}
               </p>
               <div>
@@ -104,7 +98,7 @@
               <p>
                 {formatCurrency(
                   currencyCode,
-                  item.linePriceWithTax * item.quantity
+                  item.linePriceWithTax
                 ) || 0}
               </p>
             </div>

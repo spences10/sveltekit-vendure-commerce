@@ -28,10 +28,14 @@ import { GQL_GetCollections, GQL_GetCurrencyCode, GQL_GetTopSellers } from '$hou
 <script lang="ts">
   export let key: string 
 
-  onMount(() => {
+  onMount(() => {    
     userLocale.set(navigator.languages[0] as any)
   })
 </script>
+
+<svelte:head>
+  <title>Vendure & SvelteKit & KitQL & Houdini</title>
+</svelte:head>
 
 <PageTransition refresh={key}>
   <Cart />
