@@ -6,14 +6,10 @@
   import ShoppingCart from './icons/shopping-cart.svelte'
   import Search from './search.svelte'
 
-  // export let collections = []
-  $: browser && GQL_GetCollections.fetch()
-
-$: collections =
-  $GQL_GetCollections.data?.collections.items.filter(
-    item => item?.parent?.name === '__root_collection__'
-  ) || []
-  $: browser && GQL_GetActiveOrder.fetch()
+  $: collections =
+    $GQL_GetCollections.data?.collections.items.filter(
+      item => item?.parent?.name === '__root_collection__'
+    ) || []
 </script>
 
 <nav

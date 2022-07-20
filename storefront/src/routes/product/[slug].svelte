@@ -1,8 +1,8 @@
 <script lang="ts" context="module">
   import {
-  GQL_AddToCart,GQL_GetCurrencyCode,
-  GQL_GetProductDetail,
-  type Variant$data
+    GQL_AddToCart,GQL_GetCurrencyCode,
+    GQL_GetProductDetail,
+    type Variant$data
   } from '$houdini'
   import { formatCurrency } from '$lib/utils'
   import type { Load } from '@sveltejs/kit'
@@ -12,13 +12,14 @@
     const variables = { slug }
 
     await GQL_GetProductDetail.fetch({ event, variables })
-    await GQL_GetCurrencyCode.fetch({ event })
 
     return {}
   }
 </script>
 
 <script lang="ts">
+import { browser } from '$app/env';
+
   $: product = $GQL_GetProductDetail?.data?.product
 
   $: currencyCode =

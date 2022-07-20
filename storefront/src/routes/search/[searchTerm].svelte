@@ -7,14 +7,12 @@
   import type { Load } from '@sveltejs/kit'
 
   export const load: Load = async event => {
-    // GQL_SearchProducts.resetCache()
     await GQL_SearchProducts.fetch({
       event,
       variables: { input: {} },
-      // settings: { policy: 'cache-and-network' },
     })
     const { searchTerm } = event.params
-    await GQL_GetCurrencyCode.fetch({ event })
+    
     return { props: { searchTerm } }
   }
 </script>

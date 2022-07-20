@@ -14,7 +14,6 @@
   export const load: Load = async event => {
     const { slug } = event.params
 
-    await GQL_GetCurrencyCode.fetch({ event })
     await GQL_SearchProducts.fetch({
       event,
       variables: {

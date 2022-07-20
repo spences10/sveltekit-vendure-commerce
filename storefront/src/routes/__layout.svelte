@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-import { GQL_GetCollections, GQL_GetCurrencyCode, GQL_GetTopSellers } from '$houdini';
+import { GQL_GetActiveOrder, GQL_GetCollections, GQL_GetCurrencyCode, GQL_GetTopSellers } from '$houdini';
 
   import Cart from '$lib/components/cart.svelte'
   import Footer from '$lib/components/footer.svelte'
@@ -11,9 +11,11 @@ import { GQL_GetCollections, GQL_GetCurrencyCode, GQL_GetTopSellers } from '$hou
   import { onMount } from 'svelte'
   import '../app.css'
   import { userLocale } from '../stores/locale'
-
+import cache from '$houdini/runtime/cache';
   houdiniClient.init()
-
+  if(browser){
+    window.cache = cache
+  }
   export const load: Load = async event => {
 
     // SSR for these 3 queries
@@ -26,7 +28,17 @@ import { GQL_GetCollections, GQL_GetCurrencyCode, GQL_GetTopSellers } from '$hou
 </script>
 
 <script lang="ts">
+import { browser } from '$app/env';
+
   export let key: string 
+
+  // Synchro of the 3 SSR queries
+  $: browser && GQL_GetTopSellers.fetch()
+  $: browser && GQL_GetCurrencyCode.fetch()
+  $: browser && GQL_GetCollections.fetch()
+
+  // Only browser side because depending on the localstorage
+  $: browser && GQL_GetActiveOrder.fetch()
 
   onMount(() => {    
     userLocale.set(navigator.languages[0] as any)
