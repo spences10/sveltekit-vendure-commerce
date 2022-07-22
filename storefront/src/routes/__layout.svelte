@@ -1,6 +1,5 @@
 <script lang="ts" context="module">
   import {
-    CachePolicy,
     GQL_GetActiveOrder,
     GQL_GetCollections,
     GQL_GetCurrencyCode,
@@ -8,7 +7,6 @@
   } from '$houdini'
 
   import { browser } from '$app/env'
-  import cache from '$houdini/runtime/cache'
   import Cart from '$lib/components/cart.svelte'
   import Footer from '$lib/components/footer.svelte'
   import Hero from '$lib/components/hero.svelte'
@@ -45,10 +43,6 @@
 
   onMount(async () => {
     userLocale.set(navigator.languages[0] as any)
-    // await GQL_GetActiveOrder.fetch()
-    // await GQL_GetActiveOrder.fetch({
-    //   policy: CachePolicy.NetworkOnly,
-    // })
   })
 </script>
 
