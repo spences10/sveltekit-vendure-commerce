@@ -5,7 +5,7 @@
 
   $: [parent] = $GQL_GetCollections.data?.collections?.items.filter(
     item => item.slug === key.substring(key.lastIndexOf(`/`) + 1)
-  )
+  ) ?? [null]
 </script>
 
 {#if key === '/'}

@@ -8,13 +8,15 @@ fragment ActiveOrder on Order {
   shippingWithTax
   lines {
     id
-    linePriceWithTax
+    unitPriceWithTax
     quantity
+    linePriceWithTax
     productVariant {
-      name
       id
+      name
     }
     featuredAsset {
+      id
       preview
     }
   }

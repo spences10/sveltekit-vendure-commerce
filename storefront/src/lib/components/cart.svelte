@@ -1,20 +1,16 @@
 <script lang="ts">
   import { browser } from '$app/env'
   import {
-    CachePolicy,
-    GQL_AdjustOrder,
-    GQL_GetActiveOrder,
-    GQL_GetCurrencyCode,
+  GQL_AdjustOrder,
+  GQL_GetActiveOrder,
+  GQL_GetCurrencyCode
   } from '$houdini'
 
-  import { clickOutside, formatCurrency } from '$lib/utils'
+  import { clickOutside,formatCurrency } from '$lib/utils'
   import { cartOpen } from '$stores/cart'
   import { fly } from 'svelte/transition'
   import Minus from './icons/minus.svelte'
   import Plus from './icons/plus.svelte'
-
-  export let key: string
-  $: browser && key && GQL_GetActiveOrder.fetch()
 
   $: activeOrderLines =
     $GQL_GetActiveOrder?.data?.activeOrder?.lines || []
@@ -22,29 +18,12 @@
     $GQL_GetActiveOrder?.data?.activeOrder?.totalWithTax || 0
   $: shippingWithTax =
     $GQL_GetActiveOrder?.data?.activeOrder?.shippingWithTax || 0
-  $: cartTotal =
-    $GQL_GetActiveOrder?.data?.activeOrder?.totalQuantity || 0
   $: currencyCode =
     $GQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
 
-  // GQL_RemoveFromCart.mutate({ variables: { orderLineId: '6' } })
-  // GQL_AddToCart.mutate({
-  //   variables: { productVariantId: '1', quantity: 1 },
-  // })
-  // GQL_AdjustOrder.mutate({
-  //   variables: { orderLineId: '4', quantity: 1 },
-  // })
-  const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
-
   const adjustOrder = async (value: number, id: string) => {
-    // send mutation
     await GQL_AdjustOrder.mutate({
       variables: { orderLineId: id, quantity: value },
-      // optimisticResponse: {adjustOrderLine}
-    })
-    console.log('todo houdini')
-    await GQL_GetActiveOrder.fetch({
-      policy: CachePolicy.NetworkOnly,
     })
   }
 
@@ -92,7 +71,7 @@
               <p>
                 {formatCurrency(
                   currencyCode,
-                  item.linePriceWithTax
+                  item.unitPriceWithTax
                 ) || 0}
               </p>
               <div>
@@ -118,7 +97,7 @@
               <p>
                 {formatCurrency(
                   currencyCode,
-                  item.linePriceWithTax * item.quantity
+                  item.linePriceWithTax
                 ) || 0}
               </p>
             </div>

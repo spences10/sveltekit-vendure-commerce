@@ -7,10 +7,11 @@
     await GQL_SearchProducts.fetch({ event })
     return {}
   }
-  // TODO remove
 </script>
 
 <script lang="ts">
+import { browser } from '$app/env';
+
   export let facetValues: {
     __typename?: 'FacetValueResult'
     count: number
@@ -23,11 +24,13 @@
   }[]
   let filterValues = []
 
+  $: browser && GQL_SearchProducts.fetch()
+
   $: facetValues = $GQL_SearchProducts?.data?.search?.facetValues
 
   $: filtersStore.set(filterValues)
 
-  $: groupFacetValues = facetValues => {
+  $: groupFacetValues = (facetValues: any) => {
     const facetMap = new Map()
 
     for (const {

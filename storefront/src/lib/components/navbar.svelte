@@ -1,10 +1,15 @@
 <script>
-  import { GQL_GetActiveOrder } from '$houdini'
+  import { browser } from '$app/env'
+
+  import { GQL_GetActiveOrder, GQL_GetCollections } from '$houdini'
   import { cartOpen } from '$stores/cart'
   import ShoppingCart from './icons/shopping-cart.svelte'
   import Search from './search.svelte'
 
-  export let collections = []
+  $: collections =
+    $GQL_GetCollections.data?.collections.items.filter(
+      item => item?.parent?.name === '__root_collection__'
+    ) || []
 </script>
 
 <nav

@@ -14,7 +14,6 @@
   export const load: Load = async event => {
     const { slug } = event.params
 
-    await GQL_GetCurrencyCode.fetch({ event })
     await GQL_SearchProducts.fetch({
       event,
       variables: {
@@ -41,7 +40,7 @@
   $: collections =
     $GQL_GetCollections.data?.collections?.items?.filter(
       item => item?.parent?.slug === slug
-    )
+    ) ?? []
 
   $: products = $GQL_SearchProducts?.data?.search?.items
   $: facetValues = $GQL_SearchProducts?.data?.search?.facetValues

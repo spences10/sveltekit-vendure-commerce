@@ -4,7 +4,6 @@
   "scripts": {
     "prepare": "svelte-kit sync && pnpm run gen",
     "gen": "houdini generate",
-    "gen2": "graphql-codegen --require dotenv/config",
     "dev": "vite dev",
     "build": "vite build",
     "package": "svelte-kit package",
@@ -12,7 +11,7 @@
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "eslint --ignore-path .gitignore .",
-    "format": "pretty-quick --staged"
+    "format": "pretty-quick"
   },
   "husky": {
     "hooks": {
@@ -42,13 +41,11 @@
     "tailwindcss": "3.1.6",
     "tslib": "2.4.0",
     "typescript": "4.7.4",
-    "uuid": "8.3.2",
     "vite": "3.0.0"
   },
   "type": "module",
   "dependencies": {
-    "@kitql/all-in": "0.7.3",
-    "cookie": "0.5.0",
+    "@kitql/all-in": "0.7.7",
     "graphql": "16.5.0"
   }
 }

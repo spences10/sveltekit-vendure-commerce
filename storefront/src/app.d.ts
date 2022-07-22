@@ -2,16 +2,12 @@
 
 // See https://kit.svelte.dev/docs/types#the-app-namespace
 // for information about these interfaces
-declare namespace App {
-  interface Locals {
-    kitqlCartId: string
-  }
-  // interface Platform {}
-  interface Session {
-    kitqlCartId: string
-  }
-  // interface Stuff {}
-}
+// declare namespace App {
+//   interface Locals {}
+//   // interface Platform {}
+//   // interface Session {}
+//   // interface Stuff {}
+// }
 
 declare namespace svelte.JSX {
   interface DOMAttributes<T> {
@@ -20,5 +16,5 @@ declare namespace svelte.JSX {
 }
 
 interface ImportMetaEnv {
-  readonly VITE_GRAPHQL_API: string
+  readonly VITE_GRAPHQL_ENDPOINT: string
 }

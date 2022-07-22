@@ -1,11 +1,8 @@
 <script lang="ts" context="module">
   import {
-    CachePolicy,
-    GQL_AddToCart,
-    GQL_GetActiveOrder,
-    GQL_GetCurrencyCode,
+    GQL_AddToCart,GQL_GetCurrencyCode,
     GQL_GetProductDetail,
-    type Variant$data,
+    type Variant$data
   } from '$houdini'
   import { formatCurrency } from '$lib/utils'
   import type { Load } from '@sveltejs/kit'
@@ -15,13 +12,14 @@
     const variables = { slug }
 
     await GQL_GetProductDetail.fetch({ event, variables })
-    await GQL_GetCurrencyCode.fetch({ event })
 
     return {}
   }
 </script>
 
 <script lang="ts">
+import { browser } from '$app/env';
+
   $: product = $GQL_GetProductDetail?.data?.product
 
   $: currencyCode =
@@ -39,30 +37,7 @@
     let id = !selected ? product.variants[0].id : selected.id
     let variables = { productVariantId: id, quantity }
 
-    const result = await GQL_AddToCart.mutate({ variables })
-    console.log('=====================')
-    console.log(result)
-    console.log('=====================')
-
-    console.log('coucou')
-    await GQL_GetActiveOrder.fetch({
-      policy: CachePolicy.NetworkOnly,
-    })
-    console.log(
-      'sdsd',
-      JSON.stringify($GQL_GetActiveOrder.data, null, 2)
-    )
-
-    //if (result.data.addItemToOrder.__typename === 'Order') {
-    // Patch the activeOrder query with the updated Order object.
-    //  GQL_GetActiveOrder.patch({
-    //    activeOrder: result.data.addItemToOrder,
-    //  })
-    //} else {
-    // An ErrorResult was returned, so we need to handle that properly,
-    // e.g. display a toast notification
-    // console.log(result.data.addItemToOrder)
-    //}
+    await GQL_AddToCart.mutate({ variables })
   }
 </script>
 

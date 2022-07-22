@@ -1,18 +1,11 @@
 <script lang="ts" context="module">
   import {
-    GQL_GetCollections,
-    GQL_GetCurrencyCode,
-    GQL_GetTopSellers,
+  GQL_GetCollections,
+  GQL_GetCurrencyCode,
+  GQL_GetTopSellers
   } from '$houdini'
   import CategoryBanner from '$lib/components/category-banner.svelte'
   import ProductCard from '$lib/components/product-card.svelte'
-  import type { Load } from '@sveltejs/kit'
-
-  export const load: Load = async event => {
-    await GQL_GetTopSellers.fetch({ event })
-    await GQL_GetCurrencyCode.fetch({ event })
-    return {}
-  }
 </script>
 
 <script lang="ts">
@@ -22,7 +15,7 @@
 
   $: collections = $GQL_GetCollections.data?.collections.items.filter(
     item => item.parent.name === '__root_collection__'
-  )
+  ) ?? []
 </script>
 
 <CategoryBanner {collections} />
