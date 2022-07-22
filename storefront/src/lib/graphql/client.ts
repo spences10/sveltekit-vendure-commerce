@@ -1,6 +1,6 @@
+import { browser } from '$app/env'
 import type { RequestHandlerArgs } from '$houdini'
 import { HoudiniClient } from '$houdini'
-import { browser } from '$app/env'
 
 const AUTH_TOKEN_KEY = 'auth_token'
 
