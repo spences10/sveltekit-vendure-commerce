@@ -1,24 +1,35 @@
 <script lang="ts" context="module">
   import {
-    GQL_AddToCart,GQL_GetCurrencyCode,
+    GQL_GetActiveOrder,
+    GQL_AddToCart,
+    GQL_GetCurrencyCode,
     GQL_GetProductDetail,
-    type Variant$data
+    type Variant$data,
+    type GetProductDetail$input,
+    CachePolicy,
   } from '$houdini'
   import { formatCurrency } from '$lib/utils'
-  import type { Load } from '@sveltejs/kit'
+  import type { Load } from './__types/[slug]'
 
-  export const load: Load = async event => {
+  export const load: Load<
+    {},
+    { variables: GetProductDetail$input }
+  > = async event => {
     const { slug } = event.params
     const variables = { slug }
 
     await GQL_GetProductDetail.fetch({ event, variables })
 
-    return {}
+    return { props: { variables } }
   }
 </script>
 
 <script lang="ts">
-import { browser } from '$app/env';
+  import { browser } from '$app/env'
+
+  export let variables: GetProductDetail$input
+
+  $: browser && GQL_GetProductDetail.fetch({ variables })
 
   $: product = $GQL_GetProductDetail?.data?.product
 
@@ -38,6 +49,14 @@ import { browser } from '$app/env';
     let variables = { productVariantId: id, quantity }
 
     await GQL_AddToCart.mutate({ variables })
+
+    // If we never had activeOrder, we need to fetch it again after adding to cart
+    // Only once, because we don't want to fetch it every time we add to cart!
+    if ($GQL_GetActiveOrder.data?.activeOrder === null) {
+      await GQL_GetActiveOrder.fetch({
+        policy: CachePolicy.NetworkOnly,
+      })
+    }
   }
 </script>
 
@@ -109,6 +128,7 @@ import { browser } from '$app/env';
               bind:value={quantity}
             />
             <button
+              disabled={$GQL_GetActiveOrder.data === null}
               on:click={addToCart}
               class="rounded-lg btn btn-primary"
             >
