@@ -1,56 +1,61 @@
 <script lang="ts" context="module">
   import {
-    KQL_AddToCart,
-    KQL_GetActiveOrder,
-    KQL_GetCurrencyCode,
-    KQL_GetProductDetail,
-  } from '$lib/graphql/_kitql/graphqlStores'
-  import type { VariantFragment } from '$lib/graphql/_kitql/graphqlTypes'
+    GQL_GetActiveOrder,
+    GQL_AddToCart,
+    GQL_GetCurrencyCode,
+    GQL_GetProductDetail,
+    type Variant$data,
+    type GetProductDetail$input,
+    CachePolicy,
+  } from '$houdini'
   import { formatCurrency } from '$lib/utils'
-  import type { Load } from '@sveltejs/kit'
+  import type { Load } from './__types/[slug]'
 
-  export const load: Load = async ({ params, fetch }) => {
-    const { slug } = params
+  export const load: Load<
+    {},
+    { variables: GetProductDetail$input }
+  > = async event => {
+    const { slug } = event.params
     const variables = { slug }
 
-    await KQL_GetProductDetail.queryLoad({ fetch, variables })
-    await KQL_GetCurrencyCode.queryLoad({ fetch })
+    await GQL_GetProductDetail.fetch({ event, variables })
 
-    return {}
+    return { props: { variables } }
   }
 </script>
 
 <script lang="ts">
-  $: product = $KQL_GetProductDetail?.data?.product
+  import { browser } from '$app/env'
+
+  export let variables: GetProductDetail$input
+
+  $: browser && GQL_GetProductDetail.fetch({ variables })
+
+  $: product = $GQL_GetProductDetail?.data?.product
 
   $: currencyCode =
-    $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
+    $GQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
 
   $: breadcrumbs =
     product &&
     product.collections &&
     product.collections[product.collections.length - 1].breadcrumbs
 
-  let selected: VariantFragment = product?.variants?.[0]
+  let selected: Variant$data = product?.variants?.[0]
   let quantity = 1
 
   const addToCart = async () => {
     let id = !selected ? product.variants[0].id : selected.id
     let variables = { productVariantId: id, quantity }
 
-    const result = await KQL_AddToCart.mutate({ fetch, variables })
-    console.log('=====================')
-    console.log(result)
-    console.log('=====================')
-    if (result.data.addItemToOrder.__typename === 'Order') {
-      // Patch the activeOrder query with the updated Order object.
-      KQL_GetActiveOrder.patch({
-        activeOrder: result.data.addItemToOrder,
+    await GQL_AddToCart.mutate({ variables })
+
+    // If we never had activeOrder, we need to fetch it again after adding to cart
+    // Only once, because we don't want to fetch it every time we add to cart!
+    if ($GQL_GetActiveOrder.data?.activeOrder === null) {
+      await GQL_GetActiveOrder.fetch({
+        policy: CachePolicy.NetworkOnly,
       })
-    } else {
-      // An ErrorResult was returned, so we need to handle that properly,
-      // e.g. display a toast notification
-      console.log(result.data.addItemToOrder)
     }
   }
 </script>
@@ -123,6 +128,7 @@
               bind:value={quantity}
             />
             <button
+              disabled={$GQL_GetActiveOrder.data === null}
               on:click={addToCart}
               class="rounded-lg btn btn-primary"
             >

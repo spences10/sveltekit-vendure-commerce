@@ -1,16 +1,17 @@
 <script lang="ts" context="module">
-  import { KQL_SearchProducts } from '$lib/graphql/_kitql/graphqlStores'
+  import { GQL_SearchProducts } from '$houdini'
   import type { Load } from '@sveltejs/kit'
   import { filtersStore } from '../../stores/filters'
 
-  export const load: Load = async ({ fetch }) => {
-    await KQL_SearchProducts.queryLoad({ fetch })
+  export const load: Load = async event => {
+    await GQL_SearchProducts.fetch({ event })
     return {}
   }
-  // TODO remove
 </script>
 
 <script lang="ts">
+import { browser } from '$app/env';
+
   export let facetValues: {
     __typename?: 'FacetValueResult'
     count: number
@@ -23,11 +24,13 @@
   }[]
   let filterValues = []
 
-  $: facetValues = $KQL_SearchProducts?.data?.search?.facetValues
+  $: browser && GQL_SearchProducts.fetch()
+
+  $: facetValues = $GQL_SearchProducts?.data?.search?.facetValues
 
   $: filtersStore.set(filterValues)
 
-  $: groupFacetValues = facetValues => {
+  $: groupFacetValues = (facetValues: any) => {
     const facetMap = new Map()
 
     for (const {

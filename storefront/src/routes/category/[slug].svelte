@@ -1,22 +1,21 @@
 <script lang="ts" context="module">
+  import {
+    GQL_GetCollections,
+    GQL_GetCurrencyCode,
+    GQL_SearchProducts,
+  } from '$houdini'
   import CategoryBanner from '$lib/components/category-banner.svelte'
   import Filters from '$lib/components/filters.svelte'
   import ProductCard from '$lib/components/product-card.svelte'
-  import {
-    KQL_GetCollections,
-    KQL_GetCurrencyCode,
-    KQL_SearchProducts,
-  } from '$lib/graphql/_kitql/graphqlStores'
   import { filtersStore } from '$stores/filters'
-  import type { Load } from '@sveltejs/kit'
   import { get } from 'svelte/store'
+  import type { Load } from './__types/[slug]'
 
-  export const load: Load = async ({ params, fetch }) => {
-    const { slug } = params
+  export const load: Load = async event => {
+    const { slug } = event.params
 
-    await KQL_GetCurrencyCode.queryLoad({ fetch })
-    await KQL_SearchProducts.queryLoad({
-      fetch,
+    await GQL_SearchProducts.fetch({
+      event,
       variables: {
         input: {
           collectionSlug: slug,
@@ -36,15 +35,15 @@
   export let slug: string
 
   $: currencyCode =
-    $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
+    $GQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
 
   $: collections =
-    $KQL_GetCollections.data?.collections?.items?.filter(
+    $GQL_GetCollections.data?.collections?.items?.filter(
       item => item?.parent?.slug === slug
-    )
+    ) ?? []
 
-  $: products = $KQL_SearchProducts?.data?.search?.items
-  $: facetValues = $KQL_SearchProducts?.data?.search?.facetValues
+  $: products = $GQL_SearchProducts?.data?.search?.items
+  $: facetValues = $GQL_SearchProducts?.data?.search?.facetValues
 </script>
 
 <CategoryBanner {collections} />

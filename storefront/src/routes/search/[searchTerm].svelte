@@ -1,23 +1,18 @@
 <script lang="ts" context="module">
+  import { GQL_GetCurrencyCode, GQL_SearchProducts } from '$houdini'
   import Filters from '$lib/components/filters.svelte'
   import SadFace from '$lib/components/icons/sad-face.svelte'
   import ProductCard from '$lib/components/product-card.svelte'
-  import {
-    KQL_GetCurrencyCode,
-    KQL_SearchProducts,
-  } from '$lib/graphql/_kitql/graphqlStores'
   import { filtersStore } from '$stores/filters'
   import type { Load } from '@sveltejs/kit'
 
-  export const load: Load = async ({ params, fetch }) => {
-    // KQL_SearchProducts.resetCache()
-    await KQL_SearchProducts.queryLoad({
-      fetch,
+  export const load: Load = async event => {
+    await GQL_SearchProducts.fetch({
+      event,
       variables: { input: {} },
-      // settings: { policy: 'cache-and-network' },
     })
-    const { searchTerm } = params
-    await KQL_GetCurrencyCode.queryLoad({ fetch })
+    const { searchTerm } = event.params
+    
     return { props: { searchTerm } }
   }
 </script>
@@ -26,9 +21,9 @@
   export let searchTerm: string
 
   let currencyCode =
-    $KQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
+    $GQL_GetCurrencyCode?.data?.activeChannel?.currencyCode
 
-  $: KQL_SearchProducts.query({
+  $: GQL_SearchProducts.fetch({
     variables: {
       input: {
         collectionSlug: '',
@@ -41,9 +36,9 @@
     },
   })
 
-  $: products = $KQL_SearchProducts?.data?.search?.items || []
+  $: products = $GQL_SearchProducts?.data?.search?.items || []
   $: facetValues =
-    $KQL_SearchProducts?.data?.search?.facetValues || []
+    $GQL_SearchProducts?.data?.search?.facetValues || []
 </script>
 
 <div class="flex">

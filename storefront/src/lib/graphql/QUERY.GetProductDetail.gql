@@ -1,27 +1,3 @@
-fragment Asset on Asset {
-  id
-  width
-  height
-  name
-  preview
-  focalPoint {
-    x
-    y
-  }
-}
-
-fragment Variant on ProductVariant {
-  id
-  name
-  options {
-    code
-    name
-  }
-  price
-  priceWithTax
-  sku
-}
-
 query GetProductDetail($slug: String!) {
   product(slug: $slug) {
     id

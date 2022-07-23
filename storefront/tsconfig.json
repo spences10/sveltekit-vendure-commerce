@@ -5,7 +5,9 @@
     "paths": {
       "$lib": ["src/lib"],
       "$lib/*": ["src/lib/*"],
-      "$stores/*": ["src/stores/*"]
+      "$stores/*": ["src/stores/*"],
+      "$houdini": ["$houdini"],
+      "$houdini/*": ["$houdini/*"]
     }
   },
   "include": [

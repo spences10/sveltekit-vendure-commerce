@@ -1,10 +1,15 @@
 <script>
-  import { KQL_GetActiveOrder } from '$lib/graphql/_kitql/graphqlStores'
+  import { browser } from '$app/env'
+
+  import { GQL_GetActiveOrder, GQL_GetCollections } from '$houdini'
   import { cartOpen } from '$stores/cart'
   import ShoppingCart from './icons/shopping-cart.svelte'
   import Search from './search.svelte'
 
-  export let collections = []
+  $: collections =
+    $GQL_GetCollections.data?.collections.items.filter(
+      item => item?.parent?.name === '__root_collection__'
+    ) || []
 </script>
 
 <nav
@@ -54,7 +59,7 @@
       <span
         class="absolute -right-1 -top-1 leading-[1.25rem] text-[70%] font-bold text-center bg-secondary text-secondary-content rounded-2xl h-5 w-7"
       >
-        {$KQL_GetActiveOrder?.data?.activeOrder?.totalQuantity || 0}
+        {$GQL_GetActiveOrder?.data?.activeOrder?.totalQuantity || 0}
       </span>
       <button
         on:click={() => {

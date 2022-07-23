@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { KQL_GetCollections } from '$lib/graphql/_kitql/graphqlStores'
+  import { GQL_GetCollections } from '$houdini'
 
   export let key: string
 
-  $: [parent] = $KQL_GetCollections.data?.collections?.items.filter(
+  $: [parent] = $GQL_GetCollections.data?.collections?.items.filter(
     item => item.slug === key.substring(key.lastIndexOf(`/`) + 1)
-  )
+  ) ?? [null]
 </script>
 
 {#if key === '/'}

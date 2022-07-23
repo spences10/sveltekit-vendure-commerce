@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "prepare": "svelte-kit sync && pnpm run gen",
-    "gen": "graphql-codegen --require dotenv/config",
+    "gen": "houdini generate",
     "dev": "vite dev",
     "build": "vite build",
     "package": "svelte-kit package",
@@ -11,7 +11,7 @@
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "eslint --ignore-path .gitignore .",
-    "format": "pretty-quick --staged"
+    "format": "pretty-quick"
   },
   "husky": {
     "hooks": {
@@ -22,10 +22,10 @@
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/adapter-vercel": "1.0.0-next.65",
     "@sveltejs/kit": "next",
-    "@typescript-eslint/eslint-plugin": "5.30.6",
-    "@typescript-eslint/parser": "5.30.6",
+    "@typescript-eslint/eslint-plugin": "5.30.7",
+    "@typescript-eslint/parser": "5.30.7",
     "autoprefixer": "10.4.7",
-    "daisyui": "2.19.0",
+    "daisyui": "2.19.1",
     "eslint": "8.20.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-svelte3": "4.0.0",
@@ -41,13 +41,11 @@
     "tailwindcss": "3.1.6",
     "tslib": "2.4.0",
     "typescript": "4.7.4",
-    "uuid": "8.3.2",
-    "vite": "3.0.0"
+    "vite": "3.0.2"
   },
   "type": "module",
   "dependencies": {
-    "@kitql/all-in": "0.6.3",
-    "cookie": "0.5.0",
-    "graphql": "16.3.0"
+    "@kitql/all-in": "0.7.7",
+    "graphql": "16.5.0"
   }
 }
