@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@vendure/admin-ui-plugin': 1.6.4
   '@vendure/asset-server-plugin': 1.6.3
-  '@vendure/core': 1.6.3
+  '@vendure/core': 1.6.4
   '@vendure/email-plugin': 1.6.3
   better-sqlite3: 7.6.0
   concurrently: 7.2.2
@@ -13,7 +13,7 @@ specifiers:
 dependencies:
   '@vendure/admin-ui-plugin': 1.6.4
   '@vendure/asset-server-plugin': 1.6.3
-  '@vendure/core': 1.6.3_better-sqlite3@7.6.0
+  '@vendure/core': 1.6.4_better-sqlite3@7.6.0
   '@vendure/email-plugin': 1.6.3
   better-sqlite3: 7.6.0
   typescript: 4.7.4
@@ -223,8 +223,8 @@ packages:
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0
     dependencies:
-      '@graphql-tools/schema': 7.1.3_graphql@15.5.1
-      '@graphql-tools/utils': 7.7.3_graphql@15.5.1
+      '@graphql-tools/schema': 7.1.5_graphql@15.5.1
+      '@graphql-tools/utils': 7.10.0_graphql@15.5.1
       graphql: 15.5.1
       tslib: 2.2.0
     dev: false
@@ -255,7 +255,7 @@ packages:
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0
     dependencies:
-      '@graphql-tools/utils': 7.7.3_graphql@15.5.1
+      '@graphql-tools/utils': 7.10.0_graphql@15.5.1
       graphql: 15.5.1
       tslib: 2.1.0
     dev: false
@@ -933,12 +933,12 @@ packages:
       sharp: 0.29.3
     dev: false
 
-  /@vendure/common/1.6.3:
-    resolution: {integrity: sha512-dzx++/6spwOky2q3g80B68s0JJ49n4l/llZSDuqf5iaB7nllY23TXOfgVx2etJQ7ncGZOhbqol7xa42TL8D50w==}
+  /@vendure/common/1.6.4:
+    resolution: {integrity: sha512-9PX73ZhFpofN0U01Coet6pG+BjPfcFs/bmX/rk0FicCBYXvGylsZsC2fSk/Tm6OebiC64w+PqDKJgXtO9hS83w==}
     dev: false
 
-  /@vendure/core/1.6.3_better-sqlite3@7.6.0:
-    resolution: {integrity: sha512-3CSjrCKUCZJVxe+32PgI0eiklrOoRyZ/UnQh/4cUDRk67Ycg3O7277y0vS8QKNcCAgIx/emyA6IGkyfZO5a0Iw==}
+  /@vendure/core/1.6.4_better-sqlite3@7.6.0:
+    resolution: {integrity: sha512-UPZY/oaFjzqo9Vq2MC2P/UxmFfKq5NDh5OMZNIcQdjlc+M2jhxQ4YJ3lXje0g4PQapMKE86dCGsrVpVpC1dxng==}
     hasBin: true
     dependencies:
       '@graphql-tools/stitch': 7.5.3_graphql@15.5.1
@@ -950,7 +950,7 @@ packages:
       '@nestjs/testing': 7.6.17_43uwzkcw472qvhccg4ok655xvy
       '@nestjs/typeorm': 7.1.5_lnr5ghvjhju5dct4h4oin6pmdi
       '@types/fs-extra': 9.0.13
-      '@vendure/common': 1.6.3
+      '@vendure/common': 1.6.4
       apollo-server-express: 2.24.1_graphql@15.5.1
       bcrypt: 5.0.1
       body-parser: 1.20.0
@@ -1645,6 +1645,7 @@ packages:
 
   /call-bind/1.0.2:
     resolution: {integrity: sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==}
+    requiresBuild: true
     dependencies:
       function-bind: 1.1.1
       get-intrinsic: 1.1.2
@@ -1661,7 +1662,7 @@ packages:
     resolution: {integrity: sha512-gxGWBrTT1JuMx6R+o5PTXMmUnhnVzLQ9SNutD4YqKtI6ap897t3tKECYla6gCWEkplXnlNybEkZg9GEGxKFCgw==}
     dependencies:
       pascal-case: 3.1.2
-      tslib: 2.2.0
+      tslib: 2.4.0
     dev: false
 
   /chalk/4.1.2:
@@ -2554,6 +2555,7 @@ packages:
 
   /function-bind/1.1.1:
     resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
+    requiresBuild: true
     dev: false
 
   /function.prototype.name/1.1.5:
@@ -2593,6 +2595,7 @@ packages:
 
   /get-intrinsic/1.1.2:
     resolution: {integrity: sha512-Jfm3OyCxHh9DJyc28qGk+JmfkpO41A4XkneDSujN9MDXrm4oDKdHvndhZ2dN94+ERNfkYJWDclW6k2L/ZGHjXA==}
+    requiresBuild: true
     dependencies:
       function-bind: 1.1.1
       has: 1.0.3
@@ -2747,6 +2750,7 @@ packages:
   /has-symbols/1.0.3:
     resolution: {integrity: sha512-l3LCuF6MgDNwTDKkdYGEihYjt5pRPbEg46rtlmnSPlUbgmB8LOIrKJbYYFBSbnPaJexMKtiPO8hmeRjRz2Td+A==}
     engines: {node: '>= 0.4'}
+    requiresBuild: true
     dev: false
 
   /has-tostringtag/1.0.0:
@@ -2764,6 +2768,7 @@ packages:
   /has/1.0.3:
     resolution: {integrity: sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==}
     engines: {node: '>= 0.4.0'}
+    requiresBuild: true
     dependencies:
       function-bind: 1.1.1
     dev: false
@@ -3327,7 +3332,7 @@ packages:
   /lower-case/2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
     dependencies:
-      tslib: 2.2.0
+      tslib: 2.4.0
     dev: false
 
   /lru-cache/4.1.5:
@@ -3963,7 +3968,7 @@ packages:
     resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.2.0
+      tslib: 2.4.0
     dev: false
 
   /node-abi/3.22.0:
@@ -4038,6 +4043,7 @@ packages:
 
   /object-inspect/1.12.2:
     resolution: {integrity: sha512-z+cPxW0QGUp0mcqcsgQyLVRDoXFQbXOwBaqyF7VIgI4TWNQsDHrBpUQslRmIfAoYWdYzs6UlKJtB2XJpTaNSpQ==}
+    requiresBuild: true
     dev: false
 
   /object-is/1.1.5:
@@ -4150,7 +4156,7 @@ packages:
     resolution: {integrity: sha512-uWlGT3YSnK9x3BQJaOdcZwrnV6hPpd8jFH1/ucpiLRPh/2zCVJKS19E4GvYHvaCcACn3foXZ0cLB9Wrx1KGe5g==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.2.0
+      tslib: 2.4.0
     dev: false
 
   /path-browserify/1.0.1:
