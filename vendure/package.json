@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@vendure/admin-ui-plugin": "1.6.4",
-    "@vendure/asset-server-plugin": "1.6.3",
+    "@vendure/asset-server-plugin": "1.6.4",
     "@vendure/core": "1.6.4",
     "@vendure/email-plugin": "1.6.4",
     "better-sqlite3": "7.6.2",
