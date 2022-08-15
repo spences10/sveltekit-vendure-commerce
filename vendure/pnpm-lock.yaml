@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@vendure/admin-ui-plugin': 1.6.4
+  '@vendure/admin-ui-plugin': 1.6.5
   '@vendure/asset-server-plugin': 1.6.4
   '@vendure/core': 1.6.4
   '@vendure/email-plugin': 1.6.4
@@ -11,7 +11,7 @@ specifiers:
   typescript: 4.7.4
 
 dependencies:
-  '@vendure/admin-ui-plugin': 1.6.4
+  '@vendure/admin-ui-plugin': 1.6.5
   '@vendure/asset-server-plugin': 1.6.4
   '@vendure/core': 1.6.4_better-sqlite3@7.6.2
   '@vendure/email-plugin': 1.6.4
@@ -919,8 +919,8 @@ packages:
     resolution: {integrity: sha512-fbF6oTd4sGGy0xjHPKAt+eS2CrxJ3+6gQ3FGcBoIJR2TLAyCkCyI8JqZNy+FeON0AhVgNJoUumVoZQjBFUqHkw==}
     dev: false
 
-  /@vendure/admin-ui-plugin/1.6.4:
-    resolution: {integrity: sha512-PisLhCrYFzHx8nSNnEZbN7Amo+AB83ZOzVD8c4E0yYCVBIDc67ryvrFbTZNFiWm3FuGAcuPcydrsOr3WgFw4tQ==}
+  /@vendure/admin-ui-plugin/1.6.5:
+    resolution: {integrity: sha512-11KIxCWiWYFhOnNwYAl8KabotgDuaYeykrTjvG2Ehu0J5wQk500A63Kca3oVeYi7T93TvwW6wDQSL2pdXFCiiA==}
     dependencies:
       fs-extra: 10.1.0
     dev: false
