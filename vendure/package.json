@@ -12,7 +12,7 @@
     "migration:revert": "ts-node migration revert"
   },
   "dependencies": {
-    "@vendure/admin-ui-plugin": "1.6.4",
+    "@vendure/admin-ui-plugin": "1.6.5",
     "@vendure/asset-server-plugin": "1.6.4",
     "@vendure/core": "1.6.4",
     "@vendure/email-plugin": "1.6.5",
