@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@vendure/admin-ui-plugin': 1.6.5
+  '@vendure/admin-ui-plugin': 1.8.4
   '@vendure/asset-server-plugin': 1.6.4
   '@vendure/core': 1.6.5
   '@vendure/email-plugin': 1.6.5
@@ -11,7 +11,7 @@ specifiers:
   typescript: 4.7.4
 
 dependencies:
-  '@vendure/admin-ui-plugin': 1.6.5
+  '@vendure/admin-ui-plugin': 1.8.4
   '@vendure/asset-server-plugin': 1.6.4
   '@vendure/core': 1.6.5_better-sqlite3@7.6.2
   '@vendure/email-plugin': 1.6.5
@@ -615,6 +615,7 @@ packages:
   /@npmcli/move-file/1.1.2:
     resolution: {integrity: sha512-1SUf/Cg2GzGDyaf15aR9St9TWlb+XvbZXWpDx8YKs7MLzMH/BCeopv+y9vzrzgkfykCGuWOlSu3mZhj2+FQcrg==}
     engines: {node: '>=10'}
+    deprecated: This functionality has been moved to @npmcli/fs
     requiresBuild: true
     dependencies:
       mkdirp: 1.0.4
@@ -919,8 +920,8 @@ packages:
     resolution: {integrity: sha512-fbF6oTd4sGGy0xjHPKAt+eS2CrxJ3+6gQ3FGcBoIJR2TLAyCkCyI8JqZNy+FeON0AhVgNJoUumVoZQjBFUqHkw==}
     dev: false
 
-  /@vendure/admin-ui-plugin/1.6.5:
-    resolution: {integrity: sha512-11KIxCWiWYFhOnNwYAl8KabotgDuaYeykrTjvG2Ehu0J5wQk500A63Kca3oVeYi7T93TvwW6wDQSL2pdXFCiiA==}
+  /@vendure/admin-ui-plugin/1.8.4:
+    resolution: {integrity: sha512-TanhwZ5uk40Ukkt8jDT9f5E8Hd+Uh6Rbn7unES9aJBCBCpJZ3QuusbEqQ3wnuxCfDG8gghJMDWuR07b9qz/SKQ==}
     dependencies:
       fs-extra: 10.1.0
     dev: false
@@ -1174,6 +1175,7 @@ packages:
 
   /apollo-reporting-protobuf/0.6.2:
     resolution: {integrity: sha512-WJTJxLM+MRHNUxt1RTl4zD0HrLdH44F2mDzMweBj1yHL0kSt8I1WwoiF/wiGVSpnG48LZrBegCaOJeuVbJTbtw==}
+    deprecated: The `apollo-reporting-protobuf` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023). This package's functionality is now found in the `@apollo/usage-reporting-protobuf` package. See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
     requiresBuild: true
     dependencies:
       '@apollo/protobufjs': 1.2.4
@@ -1195,6 +1197,7 @@ packages:
   /apollo-server-caching/0.6.0:
     resolution: {integrity: sha512-SfjKaccrhRzUQ8TAke9FrYppp4pZV3Rp8KCs+4Ox3kGtbco68acRPJkiYYtSVc4idR8XNAUOOVfAEZVNHdZQKQ==}
     engines: {node: '>=6'}
+    deprecated: This package is part of the legacy caching implementation used by Apollo Server v2 and v3, and is no longer maintained. We recommend you switch to the newer Keyv-based implementation (which is compatible with all versions of Apollo Server). See https://www.apollographql.com/docs/apollo-server/v3/performance/cache-backends#legacy-caching-implementation for more details.
     requiresBuild: true
     dependencies:
       lru-cache: 6.0.0
@@ -1327,6 +1330,7 @@ packages:
   /apollo-server-types/0.7.0_graphql@15.5.1:
     resolution: {integrity: sha512-pJ6ri2N4xJ+e2PUUPHeCNpMDzHUagJyn0DDZGQmXDz6aoMlSd4B2KUvK81hHyHkw3wHk9clgcpfM9hKqbfZweA==}
     engines: {node: '>=6'}
+    deprecated: The `apollo-server-types` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023). This package's functionality is now found in the `@apollo/server` package. See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
     requiresBuild: true
     peerDependencies:
       graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
