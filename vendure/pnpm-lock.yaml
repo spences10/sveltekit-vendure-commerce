@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@vendure/admin-ui-plugin': 1.6.5
   '@vendure/asset-server-plugin': 1.6.4
-  '@vendure/core': 1.6.5
+  '@vendure/core': 1.8.4
   '@vendure/email-plugin': 1.6.5
   better-sqlite3: 7.6.2
   concurrently: 7.3.0
@@ -13,7 +13,7 @@ specifiers:
 dependencies:
   '@vendure/admin-ui-plugin': 1.6.5
   '@vendure/asset-server-plugin': 1.6.4
-  '@vendure/core': 1.6.5_better-sqlite3@7.6.2
+  '@vendure/core': 1.8.4_better-sqlite3@7.6.2
   '@vendure/email-plugin': 1.6.5
   better-sqlite3: 7.6.2
   typescript: 4.7.4
@@ -384,8 +384,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@mapbox/node-pre-gyp/1.0.9:
-    resolution: {integrity: sha512-aDF3S3rK9Q2gey/WAttUlISduDItz5BU3306M9Eyv6/oS40aMprnopshtlKTykxRNIBEZuRMaZAnbrQ4QtKGyw==}
+  /@mapbox/node-pre-gyp/1.0.10:
+    resolution: {integrity: sha512-4ySo4CjzStuprMwk35H5pPbkymjv1SF3jGLj6rAHp/xT/RF7TL7bd9CTm1xDY49K2qF7jmR/g7k+SkLETP6opA==}
     hasBin: true
     dependencies:
       detect-libc: 2.0.1
@@ -565,7 +565,7 @@ packages:
       tslib: 2.2.0
     dev: false
 
-  /@nestjs/typeorm/7.1.5_lnr5ghvjhju5dct4h4oin6pmdi:
+  /@nestjs/typeorm/7.1.5_fpfhgwsik4iqrebsbzhcf3hga4:
     resolution: {integrity: sha512-utE1FkYM/gyCXUqw3zKYYS0YZ3DfkAnzsCx4T48cNnSDTCeWS+u3yt0FMDFjwSiQSaLrzpiSff/FaxJQvRlYow==}
     peerDependencies:
       '@nestjs/common': ^6.7.0 || ^7.0.0
@@ -578,7 +578,7 @@ packages:
       '@nestjs/core': 7.6.17_jk6xfjujeb73jeqs6vukgp3rqm
       reflect-metadata: 0.1.13
       rxjs: 6.6.7
-      typeorm: 0.2.41_better-sqlite3@7.6.2
+      typeorm: 0.2.45_better-sqlite3@7.6.2
       uuid: 8.3.1
     dev: false
 
@@ -615,6 +615,7 @@ packages:
   /@npmcli/move-file/1.1.2:
     resolution: {integrity: sha512-1SUf/Cg2GzGDyaf15aR9St9TWlb+XvbZXWpDx8YKs7MLzMH/BCeopv+y9vzrzgkfykCGuWOlSu3mZhj2+FQcrg==}
     engines: {node: '>=10'}
+    deprecated: This functionality has been moved to @npmcli/fs
     requiresBuild: true
     dependencies:
       mkdirp: 1.0.4
@@ -933,12 +934,12 @@ packages:
       sharp: 0.29.3
     dev: false
 
-  /@vendure/common/1.6.5:
-    resolution: {integrity: sha512-KhZzRiOlneQfkKJPoNriKMRtd06+twq8ricsCfuQNcHvB7Pkh/4YW5YdeZ4OJSUs0WeEfsABSOWVYAxn8lGIvA==}
+  /@vendure/common/1.8.4:
+    resolution: {integrity: sha512-DsOMLimV8YJJjNu+fwMXYVoKEN0+7vHlJ2wObgjwfLX1vbtXA2Ekb2P2cF/NHdGP3UxAcHtVBAvUHUa3vAoPPA==}
     dev: false
 
-  /@vendure/core/1.6.5_better-sqlite3@7.6.2:
-    resolution: {integrity: sha512-LHdQln1Z4c/P+g9Hs8n6QOykNbEJZFzCiwQ5boq/pEabedVIV5h0T33CuYE5xFfNHtj9UeGjI5ipRiZIVAXtnw==}
+  /@vendure/core/1.8.4_better-sqlite3@7.6.2:
+    resolution: {integrity: sha512-5/2W8zYwg5n1brVTQ7aJEXDYLUScT6xE194XTDpEx296AKQslBY7MLBSflDcYhvZS2mk7eksYSGXb48ZYnJYbw==}
     hasBin: true
     dependencies:
       '@graphql-tools/stitch': 7.5.3_graphql@15.5.1
@@ -948,11 +949,11 @@ packages:
       '@nestjs/platform-express': 7.6.17_nmiaobrnhiu5adfv4t65tnpusq
       '@nestjs/terminus': 7.2.0_sq55244uj2f3ijdgoxhzwgglbi
       '@nestjs/testing': 7.6.17_43uwzkcw472qvhccg4ok655xvy
-      '@nestjs/typeorm': 7.1.5_lnr5ghvjhju5dct4h4oin6pmdi
+      '@nestjs/typeorm': 7.1.5_fpfhgwsik4iqrebsbzhcf3hga4
       '@types/fs-extra': 9.0.13
-      '@vendure/common': 1.6.5
+      '@vendure/common': 1.8.4
       apollo-server-express: 2.24.1_graphql@15.5.1
-      bcrypt: 5.0.1
+      bcrypt: 5.1.0
       body-parser: 1.20.0
       chalk: 4.1.2
       commander: 7.2.0
@@ -977,7 +978,7 @@ packages:
       progress: 2.0.3
       reflect-metadata: 0.1.13
       rxjs: 6.6.7
-      typeorm: 0.2.41_better-sqlite3@7.6.2
+      typeorm: 0.2.45_better-sqlite3@7.6.2
     transitivePeerDependencies:
       - '@nestjs/microservices'
       - '@nestjs/websockets'
@@ -1129,6 +1130,7 @@ packages:
   /apollo-datasource/0.9.0:
     resolution: {integrity: sha512-y8H99NExU1Sk4TvcaUxTdzfq2SZo6uSj5dyh75XSQvbpH6gdAXIW9MaBcvlNC7n0cVPsidHmOcHOWxJ/pTXGjA==}
     engines: {node: '>=6'}
+    deprecated: The `apollo-datasource` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023). See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
     dependencies:
       apollo-server-caching: 0.7.0
       apollo-server-env: 3.1.0
@@ -1174,6 +1176,7 @@ packages:
 
   /apollo-reporting-protobuf/0.6.2:
     resolution: {integrity: sha512-WJTJxLM+MRHNUxt1RTl4zD0HrLdH44F2mDzMweBj1yHL0kSt8I1WwoiF/wiGVSpnG48LZrBegCaOJeuVbJTbtw==}
+    deprecated: The `apollo-reporting-protobuf` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023). This package's functionality is now found in the `@apollo/usage-reporting-protobuf` package. See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
     requiresBuild: true
     dependencies:
       '@apollo/protobufjs': 1.2.4
@@ -1182,12 +1185,14 @@ packages:
 
   /apollo-reporting-protobuf/0.7.0:
     resolution: {integrity: sha512-PC+zDqPPJcseemqmvUEqFiDi45pz6UaPWt6czgmrrbcQ+9VWp6IEkm08V5xBKk7V1WGUw19YwiJ7kqXpcgVNyw==}
+    deprecated: The `apollo-reporting-protobuf` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023). This package's functionality is now found in the `@apollo/usage-reporting-protobuf` package. See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
     dependencies:
       '@apollo/protobufjs': 1.2.2
     dev: false
 
   /apollo-reporting-protobuf/0.8.0:
     resolution: {integrity: sha512-B3XmnkH6Y458iV6OsA7AhfwvTgeZnFq9nPVjbxmLKnvfkEl8hYADtz724uPa0WeBiD7DSFcnLtqg9yGmCkBohg==}
+    deprecated: The `apollo-reporting-protobuf` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023). This package's functionality is now found in the `@apollo/usage-reporting-protobuf` package. See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
     dependencies:
       '@apollo/protobufjs': 1.2.2
     dev: false
@@ -1195,6 +1200,7 @@ packages:
   /apollo-server-caching/0.6.0:
     resolution: {integrity: sha512-SfjKaccrhRzUQ8TAke9FrYppp4pZV3Rp8KCs+4Ox3kGtbco68acRPJkiYYtSVc4idR8XNAUOOVfAEZVNHdZQKQ==}
     engines: {node: '>=6'}
+    deprecated: This package is part of the legacy caching implementation used by Apollo Server v2 and v3, and is no longer maintained. We recommend you switch to the newer Keyv-based implementation (which is compatible with all versions of Apollo Server). See https://www.apollographql.com/docs/apollo-server/v3/performance/cache-backends#legacy-caching-implementation for more details.
     requiresBuild: true
     dependencies:
       lru-cache: 6.0.0
@@ -1204,6 +1210,7 @@ packages:
   /apollo-server-caching/0.7.0:
     resolution: {integrity: sha512-MsVCuf/2FxuTFVhGLK13B+TZH9tBd2qkyoXKKILIiGcZ5CDUEBO14vIV63aNkMkS1xxvK2U4wBcuuNj/VH2Mkw==}
     engines: {node: '>=6'}
+    deprecated: This package is part of the legacy caching implementation used by Apollo Server v2 and v3, and is no longer maintained. We recommend you switch to the newer Keyv-based implementation (which is compatible with all versions of Apollo Server). See https://www.apollographql.com/docs/apollo-server/v3/performance/cache-backends#legacy-caching-implementation for more details.
     dependencies:
       lru-cache: 6.0.0
     dev: false
@@ -1211,6 +1218,7 @@ packages:
   /apollo-server-core/2.25.4_graphql@15.5.1:
     resolution: {integrity: sha512-1u3BnFKbCt6F9SPM7ZoWmtHK6ubme56H8hV5Mjv3KbfSairU76SU79IhO05BEJE57S6N+ddb1rm3Uk93X6YeGw==}
     engines: {node: '>=6'}
+    deprecated: The `apollo-server-core` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023). This package's functionality is now found in the `@apollo/server` package. See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
     peerDependencies:
       graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
     dependencies:
@@ -1249,6 +1257,7 @@ packages:
   /apollo-server-env/3.1.0:
     resolution: {integrity: sha512-iGdZgEOAuVop3vb0F2J3+kaBVi4caMoxefHosxmgzAbbSpvWehB8Y1QiSyyMeouYC38XNVk5wnZl+jdGSsWsIQ==}
     engines: {node: '>=6'}
+    deprecated: The `apollo-server-env` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023). This package's functionality is now found in the `@apollo/utils.fetcher` package. See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
     dependencies:
       node-fetch: 2.6.7
       util.promisify: 1.1.1
@@ -1259,6 +1268,7 @@ packages:
   /apollo-server-errors/2.5.0_graphql@15.5.1:
     resolution: {integrity: sha512-lO5oTjgiC3vlVg2RKr3RiXIIQ5pGXBFxYGGUkKDhTud3jMIhs+gel8L8zsEjKaKxkjHhCQAA/bcEfYiKkGQIvA==}
     engines: {node: '>=6'}
+    deprecated: The `apollo-server-errors` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023). This package's functionality is now found in the `@apollo/server` package. See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
     peerDependencies:
       graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
     dependencies:
@@ -1268,6 +1278,7 @@ packages:
   /apollo-server-express/2.24.1_graphql@15.5.1:
     resolution: {integrity: sha512-waBGJYG6Ht86RHMcTQLjy3YNeccg5IONe10qdm/kGbQVMXoE6KJB2VuNy/akRDPRvS6+tEt4v0XFSi7qQa4iXQ==}
     engines: {node: '>=6'}
+    deprecated: The `apollo-server-express` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023). This package's functionality is now found in the `@apollo/server` package. See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
     peerDependencies:
       graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
     dependencies:
@@ -1299,6 +1310,7 @@ packages:
   /apollo-server-plugin-base/0.13.0_graphql@15.5.1:
     resolution: {integrity: sha512-L3TMmq2YE6BU6I4Tmgygmd0W55L+6XfD9137k+cWEBFu50vRY4Re+d+fL5WuPkk5xSPKd/PIaqzidu5V/zz8Kg==}
     engines: {node: '>=6'}
+    deprecated: The `apollo-server-plugin-base` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023). This package's functionality is now found in the `@apollo/server` package. See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
     peerDependencies:
       graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
     dependencies:
@@ -1327,6 +1339,7 @@ packages:
   /apollo-server-types/0.7.0_graphql@15.5.1:
     resolution: {integrity: sha512-pJ6ri2N4xJ+e2PUUPHeCNpMDzHUagJyn0DDZGQmXDz6aoMlSd4B2KUvK81hHyHkw3wHk9clgcpfM9hKqbfZweA==}
     engines: {node: '>=6'}
+    deprecated: The `apollo-server-types` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023). This package's functionality is now found in the `@apollo/server` package. See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
     requiresBuild: true
     peerDependencies:
       graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
@@ -1343,6 +1356,7 @@ packages:
   /apollo-server-types/0.8.0_graphql@15.5.1:
     resolution: {integrity: sha512-adHJnHbRV2kWUY0VQY1M2KpSdGfm+4mX4w+2lROPExqOnkyTI7CGfpJCdEwYMKrIn3aH8HIcOH0SnpWRet6TNw==}
     engines: {node: '>=6'}
+    deprecated: The `apollo-server-types` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023). This package's functionality is now found in the `@apollo/server` package. See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
     peerDependencies:
       graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
     dependencies:
@@ -1357,6 +1371,7 @@ packages:
   /apollo-server-types/0.9.0_graphql@15.5.1:
     resolution: {integrity: sha512-qk9tg4Imwpk732JJHBkhW0jzfG0nFsLqK2DY6UhvJf7jLnRePYsPxWfPiNkxni27pLE2tiNlCwoDFSeWqpZyBg==}
     engines: {node: '>=6'}
+    deprecated: The `apollo-server-types` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023). This package's functionality is now found in the `@apollo/server` package. See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
     peerDependencies:
       graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
     dependencies:
@@ -1477,13 +1492,13 @@ packages:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
     dev: false
 
-  /bcrypt/5.0.1:
-    resolution: {integrity: sha512-9BTgmrhZM2t1bNuDtrtIMVSmmxZBrJ71n8Wg+YgdjHuIWYF7SjjmCPZFB+/5i/o/PIeRpwVJR3P+NrpIItUjqw==}
+  /bcrypt/5.1.0:
+    resolution: {integrity: sha512-RHBS7HI5N5tEnGTmtR/pppX0mmDSBpQ4aCBsj7CEQfYXDcO74A8sIBYcJMuCsis2E81zDxeENYhv66oZwLiA+Q==}
     engines: {node: '>= 10.0.0'}
     requiresBuild: true
     dependencies:
-      '@mapbox/node-pre-gyp': 1.0.9
-      node-addon-api: 3.2.1
+      '@mapbox/node-pre-gyp': 1.0.10
+      node-addon-api: 5.0.0
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -3978,12 +3993,12 @@ packages:
       semver: 7.3.7
     dev: false
 
-  /node-addon-api/3.2.1:
-    resolution: {integrity: sha512-mmcei9JghVNDYydghQmeDX8KoAm0FAiYyIcUt/N4nhyAipB17pllZQDOJD2fotxABnt4Mdz+dKTO7eftLg4d0A==}
-    dev: false
-
   /node-addon-api/4.3.0:
     resolution: {integrity: sha512-73sE9+3UaLYYFmDsFZnqCInzPyh3MqIwZO9cw58yIqAZhONrrabrYyYe3TuIqtIiOuTXVhsGau8hcrhhwSsDIQ==}
+    dev: false
+
+  /node-addon-api/5.0.0:
+    resolution: {integrity: sha512-CvkDw2OEnme7ybCykJpVcKH+uAOLV2qLqiyla128dN9TkEWfrYmxG6C2boDe5KcNQqZF3orkqzGgOMvZ/JNekA==}
     dev: false
 
   /node-fetch/2.6.7:
@@ -4965,25 +4980,25 @@ packages:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
     dev: false
 
-  /typeorm/0.2.41_better-sqlite3@7.6.2:
-    resolution: {integrity: sha512-/d8CLJJxKPgsnrZWiMyPI0rz2MFZnBQrnQ5XP3Vu3mswv2WPexb58QM6BEtmRmlTMYN5KFWUz8SKluze+wS9xw==}
+  /typeorm/0.2.45_better-sqlite3@7.6.2:
+    resolution: {integrity: sha512-c0rCO8VMJ3ER7JQ73xfk0zDnVv0WDjpsP6Q1m6CVKul7DB9iVdWLRjPzc8v2eaeBuomsbZ2+gTaYr8k1gm3bYA==}
     hasBin: true
     peerDependencies:
-      '@sap/hana-client': '*'
-      better-sqlite3: '*'
-      hdb-pool: '*'
-      ioredis: '*'
+      '@sap/hana-client': ^2.11.14
+      better-sqlite3: ^7.1.2
+      hdb-pool: ^0.1.6
+      ioredis: ^4.28.3
       mongodb: ^3.6.0
-      mssql: '*'
-      mysql2: '*'
-      oracledb: '*'
-      pg: '*'
-      pg-native: '*'
-      pg-query-stream: '*'
-      redis: '*'
-      sql.js: '*'
-      sqlite3: '*'
-      typeorm-aurora-data-api-driver: '*'
+      mssql: ^6.3.1
+      mysql2: ^2.2.5
+      oracledb: ^5.1.0
+      pg: ^8.5.1
+      pg-native: ^3.0.0
+      pg-query-stream: ^4.0.0
+      redis: ^3.1.1
+      sql.js: ^1.4.0
+      sqlite3: ^5.0.2
+      typeorm-aurora-data-api-driver: ^2.0.0
     peerDependenciesMeta:
       '@sap/hana-client':
         optional: true
@@ -5030,6 +5045,7 @@ packages:
       reflect-metadata: 0.1.13
       sha.js: 2.4.11
       tslib: 2.4.0
+      uuid: 8.3.2
       xml2js: 0.4.23
       yargs: 17.5.1
       zen-observable-ts: 1.1.0
