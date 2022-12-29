@@ -1,3 +1,11 @@
 {
-  "cSpell.words": ["Parens", "sveltejs"]
+  "css.validate": false,
+  "cSpell.words": [
+    "Color",
+    "daisyui",
+    "kitql",
+    "nostroke",
+    "sveltejs",
+    "VITE"
+  ]
 }

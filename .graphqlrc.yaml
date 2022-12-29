@@ -1,8 +1,9 @@
 projects:
   default:
     schema:
-      - "./storefront/schema.graphql"
-      - "./storefront/$houdini/graphql/schema.graphql"
+      - ./schema.graphql
+      - ./$houdini/graphql/schema.graphql
     documents:
-      - "./storefront/**/*.gql"
-      - "./storefront/$houdini/graphql/documents.gql"
+      - '**/*.gql'
+      - '**/*.svelte'
+      - ./$houdini/graphql/documents.gql

@@ -1,0 +1,55 @@
+query GetProductDetail($slug: String!) {
+  product(slug: $slug) {
+    id
+    name
+    description
+    variants {
+      # fragment Variant on ProductVariant {
+      id
+      name
+      options {
+        code
+        name
+      }
+      price
+      priceWithTax
+      sku
+      # }
+    }
+    featuredAsset {
+      # fragment Asset on Asset {
+      id
+      width
+      height
+      name
+      preview
+      focalPoint {
+        x
+        y
+      }
+      # }
+    }
+    assets {
+      # fragment Asset on Asset {
+      id
+      width
+      height
+      name
+      preview
+      focalPoint {
+        x
+        y
+      }
+      # }
+    }
+    collections {
+      id
+      slug
+      breadcrumbs {
+        id
+        name
+        slug
+      }
+    }
+  }
+}

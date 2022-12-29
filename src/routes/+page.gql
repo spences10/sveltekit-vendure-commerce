@@ -1,0 +1,9 @@
+query GetTopSellers {
+  search(
+    input: { take: 8, groupByProduct: true, sort: { price: ASC } }
+  ) {
+    items {
+      ...productCartDetail
+    }
+  }
+}

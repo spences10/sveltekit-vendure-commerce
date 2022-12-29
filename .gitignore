@@ -1,3 +1,14 @@
+.DS_Store
 node_modules
-.vercel
+/build
+/.svelte-kit
+/package
+.env
+.env.*
+!.env.example
 .pnpm-debug.log
+.vercel_build_output
+.vercel
+
+$houdini
+$kitql
