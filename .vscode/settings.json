@@ -1,11 +1,13 @@
 {
-  "css.validate": false,
-  "cSpell.words": [
-    "Color",
-    "daisyui",
-    "kitql",
-    "nostroke",
-    "sveltejs",
-    "VITE"
-  ]
+	"git.enableSmartCommit": true,
+	"git.postCommitCommand": "sync",
+	"css.validate": false,
+	"cSpell.words": [
+		"Color",
+		"daisyui",
+		"kitql",
+		"nostroke",
+		"sveltejs",
+		"VITE"
+	]
 }
