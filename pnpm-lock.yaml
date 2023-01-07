@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@kitql/all-in': 0.8.3
   '@sveltejs/adapter-vercel': 1.0.0
-  '@sveltejs/kit': 1.0.1
+  '@sveltejs/kit': 1.0.7
   '@typescript-eslint/eslint-plugin': 5.48.0
   '@typescript-eslint/parser': 5.48.0
   autoprefixer: 10.4.13
@@ -30,8 +30,8 @@ specifiers:
 
 devDependencies:
   '@kitql/all-in': 0.8.3_fi2unsm2uqmoikyi4dmwfwvz5i
-  '@sveltejs/adapter-vercel': 1.0.0_@sveltejs+kit@1.0.1
-  '@sveltejs/kit': 1.0.1_svelte@3.55.0+vite@4.0.4
+  '@sveltejs/adapter-vercel': 1.0.0_@sveltejs+kit@1.0.7
+  '@sveltejs/kit': 1.0.7_svelte@3.55.0+vite@4.0.4
   '@typescript-eslint/eslint-plugin': 5.48.0_k73wpmdolxikpyqun3p36akaaq
   '@typescript-eslint/parser': 5.48.0_iukboom6ndih5an6iafl45j2fe
   autoprefixer: 10.4.13_postcss@8.4.20
@@ -1872,12 +1872,12 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@sveltejs/adapter-vercel/1.0.0_@sveltejs+kit@1.0.1:
+  /@sveltejs/adapter-vercel/1.0.0_@sveltejs+kit@1.0.7:
     resolution: {integrity: sha512-3zM/7BJbtxBo02J4/2mpZyiHZtH6HAggND/xRaBiKjSsKSMYvKC4ipqVfHoESuW5NQNAnJVf1zMAQY2PPxv91w==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
-      '@sveltejs/kit': 1.0.1_svelte@3.55.0+vite@4.0.4
+      '@sveltejs/kit': 1.0.7_svelte@3.55.0+vite@4.0.4
       '@vercel/nft': 0.22.6
       esbuild: 0.16.12
     transitivePeerDependencies:
@@ -1885,8 +1885,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.1_svelte@3.55.0+vite@4.0.4:
-    resolution: {integrity: sha512-C41aCaDjA7xoUdsrc/lSdU1059UdLPIRE1vEIRRynzpMujNgp82bTMHkDosb6vykH6LrLf3tT2w2/5NYQhKYGQ==}
+  /@sveltejs/kit/1.0.7_svelte@3.55.0+vite@4.0.4:
+    resolution: {integrity: sha512-u8JS4aXFWlrnu/tjl+EhJ/FvBEjLYDyMaLe7EAU4sW+PfDqnqyHBAPg/IQi5JuBg6l+Z816F4WrTe+zplUTQDg==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -3959,7 +3959,7 @@ packages:
       graphql: ^14.0.0 || ^15.0.0
     dependencies:
       '@kitql/helper': 0.5.0
-      '@sveltejs/kit': 1.0.1_svelte@3.55.0+vite@4.0.4
+      '@sveltejs/kit': 1.0.7_svelte@3.55.0+vite@4.0.4
       ast-types: 0.16.1
       estree-walker: 3.0.1
       graphql: 16.6.0
