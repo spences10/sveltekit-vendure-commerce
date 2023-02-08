@@ -21,7 +21,7 @@
   "type": "module",
   "devDependencies": {
     "@kitql/all-in": "0.8.5",
-    "@sveltejs/adapter-vercel": "1.0.6",
+    "@sveltejs/adapter-vercel": "2.0.1",
     "@sveltejs/kit": "1.5.0",
     "@typescript-eslint/eslint-plugin": "5.51.0",
     "@typescript-eslint/parser": "5.51.0",
