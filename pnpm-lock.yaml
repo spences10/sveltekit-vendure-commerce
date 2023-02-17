@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@kitql/all-in': 0.8.5
-  '@sveltejs/adapter-vercel': 2.0.1
+  '@sveltejs/adapter-vercel': 2.0.4
   '@sveltejs/kit': 1.5.0
   '@typescript-eslint/eslint-plugin': 5.51.0
   '@typescript-eslint/parser': 5.51.0
@@ -30,7 +30,7 @@ specifiers:
 
 devDependencies:
   '@kitql/all-in': 0.8.5_eazlma3y33dbvdncxeer5lwmsu
-  '@sveltejs/adapter-vercel': 2.0.1_@sveltejs+kit@1.5.0
+  '@sveltejs/adapter-vercel': 2.0.4_@sveltejs+kit@1.5.0
   '@sveltejs/kit': 1.5.0_svelte@3.55.1+vite@4.1.1
   '@typescript-eslint/eslint-plugin': 5.51.0_b635kmla6dsb4frxfihkw4m47e
   '@typescript-eslint/parser': 5.51.0_4vsywjlpuriuw3tl5oq6zy5a64
@@ -1883,8 +1883,8 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@sveltejs/adapter-vercel/2.0.1_@sveltejs+kit@1.5.0:
-    resolution: {integrity: sha512-pIFUcOui3jFGA12hvsgcCYWDhQc1XlvLZ/VScAxoRBvSgnGvIhXELmzB01AAm36MYZG16HZPn5LRA0TOwcjpcg==}
+  /@sveltejs/adapter-vercel/2.0.4_@sveltejs+kit@1.5.0:
+    resolution: {integrity: sha512-5tN3sCMQtN/ZV7O26hEVpylIZMMPNkDaDmXxDdEyUZGYpO9x9FOa2CN1CbMQBBGAiCuMxgmtjlWFz4GkYXRU+Q==}
     peerDependencies:
       '@sveltejs/kit': ^1.5.0
     dependencies:
