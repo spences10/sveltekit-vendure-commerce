@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@kitql/all-in': 0.8.7
   '@sveltejs/adapter-vercel': 2.2.1
-  '@sveltejs/kit': 1.8.5
+  '@sveltejs/kit': 1.11.0
   '@typescript-eslint/eslint-plugin': 5.54.1
   '@typescript-eslint/parser': 5.54.1
   autoprefixer: 10.4.13
@@ -30,8 +30,8 @@ specifiers:
 
 devDependencies:
   '@kitql/all-in': 0.8.7_eazlma3y33dbvdncxeer5lwmsu
-  '@sveltejs/adapter-vercel': 2.2.1_@sveltejs+kit@1.8.5
-  '@sveltejs/kit': 1.8.5_svelte@3.55.1+vite@4.1.4
+  '@sveltejs/adapter-vercel': 2.2.1_@sveltejs+kit@1.11.0
+  '@sveltejs/kit': 1.11.0_svelte@3.55.1+vite@4.1.4
   '@typescript-eslint/eslint-plugin': 5.54.1_mlk7dnz565t663n4razh6a6v6i
   '@typescript-eslint/parser': 5.54.1_ycpbpc6yetojsgtrx3mwntkhsu
   autoprefixer: 10.4.13_postcss@8.4.21
@@ -1870,12 +1870,12 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@sveltejs/adapter-vercel/2.2.1_@sveltejs+kit@1.8.5:
+  /@sveltejs/adapter-vercel/2.2.1_@sveltejs+kit@1.11.0:
     resolution: {integrity: sha512-W8+qytNSvFTr56CC4RLC/PeSuzB8m/LnnZlZD3v23qlgRrHHcYyN5mZJHaZmQvQeqsue7rby+LKfqqZiElstlg==}
     peerDependencies:
       '@sveltejs/kit': ^1.5.0
     dependencies:
-      '@sveltejs/kit': 1.8.5_svelte@3.55.1+vite@4.1.4
+      '@sveltejs/kit': 1.11.0_svelte@3.55.1+vite@4.1.4
       '@vercel/nft': 0.22.6
       esbuild: 0.16.17
     transitivePeerDependencies:
@@ -1883,8 +1883,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.8.5_svelte@3.55.1+vite@4.1.4:
-    resolution: {integrity: sha512-b6kbjVAivoPd3oL9IVBaZBWiuHeI0qBKfszSDXcqsPfiSMyUK7ilHDFVSWNn+2EMPO48+87iuho71yTCOXZE3w==}
+  /@sveltejs/kit/1.11.0_svelte@3.55.1+vite@4.1.4:
+    resolution: {integrity: sha512-PwViZcMoLgEU/jhLoSyjf5hSrHS67wvSm0ifBo4prP9irpGa5HuPOZeVDTL5tPDSBoKxtdYi1zlGdoiJfO86jA==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -3977,7 +3977,7 @@ packages:
       graphql: ^14.0.0 || ^15.0.0
     dependencies:
       '@kitql/helper': 0.5.0
-      '@sveltejs/kit': 1.8.5_svelte@3.55.1+vite@4.1.4
+      '@sveltejs/kit': 1.11.0_svelte@3.55.1+vite@4.1.4
       ast-types: 0.16.1
       estree-walker: 3.0.1
       graphql: 16.6.0
