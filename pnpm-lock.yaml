@@ -9,7 +9,7 @@ specifiers:
   autoprefixer: 10.4.14
   daisyui: 2.51.4
   eslint: 8.36.0
-  eslint-config-prettier: 8.7.0
+  eslint-config-prettier: 8.8.0
   eslint-plugin-svelte3: 4.0.0
   graphql: ^16.6.0
   houdini: ^0.18.3
@@ -37,7 +37,7 @@ devDependencies:
   autoprefixer: 10.4.14_postcss@8.4.21
   daisyui: 2.51.4_j7yt3jd32cwenjqavrrga47yr4
   eslint: 8.36.0
-  eslint-config-prettier: 8.7.0_eslint@8.36.0
+  eslint-config-prettier: 8.8.0_eslint@8.36.0
   eslint-plugin-svelte3: 4.0.0_wzem237sbvnwe7n34ytc5phasy
   graphql: 16.6.0
   houdini: 0.18.3
@@ -3241,8 +3241,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /eslint-config-prettier/8.7.0_eslint@8.36.0:
-    resolution: {integrity: sha512-HHVXLSlVUhMSmyW4ZzEuvjpwqamgmlfkutD53cYXLikh4pt/modINRcCIApJ84czDxM4GZInwUrromsDdTImTA==}
+  /eslint-config-prettier/8.8.0_eslint@8.36.0:
+    resolution: {integrity: sha512-wLbQiFre3tdGgpDv67NQKnJuTlcUVYHas3k+DZCc2U2BadthoEY4B7hLPvAxaqdyOGCzuLfii2fqGph10va7oA==}
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
