@@ -5,8 +5,8 @@ devDependencies:
     specifier: 0.9.3
     version: 0.9.3(@babel/core@7.20.7)(graphql@16.6.0)(typescript@5.0.4)
   '@sveltejs/adapter-vercel':
-    specifier: 2.4.1
-    version: 2.4.1(@sveltejs/kit@1.15.5)
+    specifier: 2.4.2
+    version: 2.4.2(@sveltejs/kit@1.15.5)
   '@sveltejs/kit':
     specifier: 1.15.5
     version: 1.15.5(svelte@3.58.0)(vite@4.2.1)
@@ -2063,8 +2063,8 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@sveltejs/adapter-vercel@2.4.1(@sveltejs/kit@1.15.5):
-    resolution: {integrity: sha512-7YOHBq8onxqD5ZshQhveuSzJg9ZOicKoNZQtOnAj++0MJmPElxQ5Mjqp6aQfIhHAHl8tn5UbacCpvR39mPejgw==}
+  /@sveltejs/adapter-vercel@2.4.2(@sveltejs/kit@1.15.5):
+    resolution: {integrity: sha512-HxItPKrt9DmSbKw2X4XVRYa4J2ueTEfQr79ijDcI/ZUtQ64d4X3ilUnLpmm1nXMBb1DyxaWJF4o8avwiV4O2Hw==}
     peerDependencies:
       '@sveltejs/kit': ^1.5.0
     dependencies:
