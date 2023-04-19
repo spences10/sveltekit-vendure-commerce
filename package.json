@@ -34,7 +34,7 @@
     "houdini": "^0.18.3",
     "houdini-svelte": "^0.18.3",
     "husky": "8.0.3",
-    "postcss": "8.4.21",
+    "postcss": "8.4.23",
     "postcss-load-config": "4.0.1",
     "prettier": "2.8.7",
     "prettier-plugin-svelte": "2.10.0",
