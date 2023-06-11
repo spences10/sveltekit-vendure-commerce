@@ -24,8 +24,8 @@ devDependencies:
     specifier: 10.4.14
     version: 10.4.14(postcss@8.4.24)
   daisyui:
-    specifier: 3.0.29
-    version: 3.0.29(postcss@8.4.24)(ts-node@10.9.1)
+    specifier: 3.1.0
+    version: 3.1.0(postcss@8.4.24)(ts-node@10.9.1)
   eslint:
     specifier: 8.42.0
     version: 8.42.0
@@ -2923,8 +2923,8 @@ packages:
     hasBin: true
     dev: true
 
-  /daisyui@3.0.29(postcss@8.4.24)(ts-node@10.9.1):
-    resolution: {integrity: sha512-fVMzcI4O4fDexCOkQeCt1fL5cxSgJExbBD0R/n5x4epbkF5Xk+P2F+IGRiEbYEOKNevIlPrOR79e7IdI4b2nGQ==}
+  /daisyui@3.1.0(postcss@8.4.24)(ts-node@10.9.1):
+    resolution: {integrity: sha512-G4dz/bRZVvlhQ/FtezXSg0rXOXzDJ0PcnMqeLSwCYNWXxf46fNJ8LWeV5qwsYOdJbXiXoZLnwyy+BsNoWZ+Bjg==}
     engines: {node: '>=16.9.0'}
     peerDependencies:
       postcss: ^8
