@@ -9,8 +9,8 @@ devDependencies:
     specifier: 0.9.5
     version: 0.9.5(@babel/core@7.22.1)(graphql@16.6.0)(typescript@5.1.6)
   '@sveltejs/adapter-vercel':
-    specifier: 3.0.1
-    version: 3.0.1(@sveltejs/kit@1.22.1)
+    specifier: 3.0.2
+    version: 3.0.2(@sveltejs/kit@1.22.1)
   '@sveltejs/kit':
     specifier: 1.22.1
     version: 1.22.1(svelte@4.0.4)(vite@4.4.3)
@@ -2045,14 +2045,14 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@sveltejs/adapter-vercel@3.0.1(@sveltejs/kit@1.22.1):
-    resolution: {integrity: sha512-PBY3YRm7Q7Prax07mxD/rvcho2CntGkYncAIkz2DtG5NTcVG5JZ1RM627it5zYYtc2/RB3YjMkZuCMBqDCiPkA==}
+  /@sveltejs/adapter-vercel@3.0.2(@sveltejs/kit@1.22.1):
+    resolution: {integrity: sha512-CQcLoKeVmF5Si+sJax0v8KMtXviJXfDXozJt3zfPHHYytCwMcGpJXsgqpqUbkdaF2xxgXuhTD7ClhQRFThbprw==}
     peerDependencies:
       '@sveltejs/kit': ^1.5.0
     dependencies:
       '@sveltejs/kit': 1.22.1(svelte@4.0.4)(vite@4.4.3)
       '@vercel/nft': 0.22.6
-      esbuild: 0.17.19
+      esbuild: 0.18.11
     transitivePeerDependencies:
       - encoding
       - supports-color
