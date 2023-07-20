@@ -72,8 +72,8 @@ devDependencies:
     specifier: 5.0.4
     version: 5.0.4(@babel/core@7.22.1)(postcss-load-config@4.0.1)(postcss@8.4.25)(svelte@4.0.4)(typescript@5.1.6)
   tailwindcss:
-    specifier: 3.3.2
-    version: 3.3.2(ts-node@10.9.1)
+    specifier: 3.3.3
+    version: 3.3.3(ts-node@10.9.1)
   tslib:
     specifier: 2.6.0
     version: 2.6.0
@@ -3028,7 +3028,7 @@ packages:
       css-selector-tokenizer: 0.8.0
       postcss: 8.4.25
       postcss-js: 4.0.1(postcss@8.4.25)
-      tailwindcss: 3.3.2(ts-node@10.9.1)
+      tailwindcss: 3.3.3(ts-node@10.9.1)
     transitivePeerDependencies:
       - ts-node
     dev: true
@@ -5770,8 +5770,8 @@ packages:
       tslib: 2.6.0
     dev: true
 
-  /tailwindcss@3.3.2(ts-node@10.9.1):
-    resolution: {integrity: sha512-9jPkMiIBXvPc2KywkraqsUfbfj+dHDb+JPWtSJa9MLFdrPyazI7q6WX2sUrm7R9eVR7qqv3Pas7EvQFzxKnI6w==}
+  /tailwindcss@3.3.3(ts-node@10.9.1):
+    resolution: {integrity: sha512-A0KgSkef7eE4Mf+nKJ83i75TMyq8HqY3qmFIJSWy8bNt0v1lG7jUcpGpoTFxAwYcWOphcTBLPPJg+bDfhDf52w==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
@@ -5795,7 +5795,6 @@ packages:
       postcss-load-config: 4.0.1(postcss@8.4.25)(ts-node@10.9.1)
       postcss-nested: 6.0.1(postcss@8.4.25)
       postcss-selector-parser: 6.0.13
-      postcss-value-parser: 4.2.0
       resolve: 1.22.2
       sucrase: 3.32.0
     transitivePeerDependencies:
