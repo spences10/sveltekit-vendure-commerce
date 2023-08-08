@@ -10,10 +10,10 @@ devDependencies:
     version: 0.9.5(@babel/core@7.22.9)(graphql@16.6.0)(typescript@5.1.6)
   '@sveltejs/adapter-vercel':
     specifier: 3.0.3
-    version: 3.0.3(@sveltejs/kit@1.22.3)
+    version: 3.0.3(@sveltejs/kit@1.22.4)
   '@sveltejs/kit':
-    specifier: 1.22.3
-    version: 1.22.3(svelte@4.1.2)(vite@4.4.8)
+    specifier: 1.22.4
+    version: 1.22.4(svelte@4.1.2)(vite@4.4.8)
   '@typescript-eslint/eslint-plugin':
     specifier: 6.2.1
     version: 6.2.1(@typescript-eslint/parser@6.2.1)(eslint@8.44.0)(typescript@5.1.6)
@@ -2027,12 +2027,12 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@sveltejs/adapter-vercel@3.0.3(@sveltejs/kit@1.22.3):
+  /@sveltejs/adapter-vercel@3.0.3(@sveltejs/kit@1.22.4):
     resolution: {integrity: sha512-0FQMjR6klW4627ewdclSr0lUe/DqiiyOaRTfgb5cXgNbVMsZMOA2fQ77TYQnJdvMfSEWe6y8uznV48XqKh9+vA==}
     peerDependencies:
       '@sveltejs/kit': ^1.5.0
     dependencies:
-      '@sveltejs/kit': 1.22.3(svelte@4.1.2)(vite@4.4.8)
+      '@sveltejs/kit': 1.22.4(svelte@4.1.2)(vite@4.4.8)
       '@vercel/nft': 0.23.0
       esbuild: 0.18.17
     transitivePeerDependencies:
@@ -2040,8 +2040,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit@1.22.3(svelte@3.59.2)(vite@4.4.8):
-    resolution: {integrity: sha512-IpHD5wvuoOIHYaHQUBJ1zERD2Iz+fB/rBXhXjl8InKw6X4VKE9BSus+ttHhE7Ke+Ie9ecfilzX8BnWE3FeQyng==}
+  /@sveltejs/kit@1.22.4(svelte@3.59.2)(vite@4.4.8):
+    resolution: {integrity: sha512-Opkqw1QXk4Cc25b/heJP2D7mX+OUBFAq4MXKfET58svTTxdeiHFKzmnuRsSF3nmxESqrLjqPAgHpib+knNGzRw==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -2067,8 +2067,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit@1.22.3(svelte@4.1.2)(vite@4.4.8):
-    resolution: {integrity: sha512-IpHD5wvuoOIHYaHQUBJ1zERD2Iz+fB/rBXhXjl8InKw6X4VKE9BSus+ttHhE7Ke+Ie9ecfilzX8BnWE3FeQyng==}
+  /@sveltejs/kit@1.22.4(svelte@4.1.2)(vite@4.4.8):
+    resolution: {integrity: sha512-Opkqw1QXk4Cc25b/heJP2D7mX+OUBFAq4MXKfET58svTTxdeiHFKzmnuRsSF3nmxESqrLjqPAgHpib+knNGzRw==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -4128,7 +4128,7 @@ packages:
       graphql: ^14.0.0 || ^15.0.0
     dependencies:
       '@kitql/helper': 0.5.0
-      '@sveltejs/kit': 1.22.3(svelte@3.59.2)(vite@4.4.8)
+      '@sveltejs/kit': 1.22.4(svelte@3.59.2)(vite@4.4.8)
       ast-types: 0.16.1
       estree-walker: 3.0.3
       graphql: 16.6.0
