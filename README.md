@@ -1,5 +1,7 @@
 # Vendure SvelteKit Storefront
 
+## This project is maintained over at https://github.com/vendure-ecommerce/storefront-sveltekit-starter
+
 ## Tools
 
 - ✅ [Vendure](https://www.vendure.io/)
