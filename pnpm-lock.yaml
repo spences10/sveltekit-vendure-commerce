@@ -10,10 +10,10 @@ devDependencies:
     version: 0.9.5(@babel/core@7.22.9)(graphql@16.6.0)(typescript@5.2.2)
   '@sveltejs/adapter-vercel':
     specifier: 3.0.3
-    version: 3.0.3(@sveltejs/kit@1.25.0)
+    version: 3.0.3(@sveltejs/kit@1.25.1)
   '@sveltejs/kit':
-    specifier: 1.25.0
-    version: 1.25.0(svelte@4.2.0)(vite@4.4.9)
+    specifier: 1.25.1
+    version: 1.25.1(svelte@4.2.0)(vite@4.4.9)
   '@typescript-eslint/eslint-plugin':
     specifier: 6.7.2
     version: 6.7.2(@typescript-eslint/parser@6.7.2)(eslint@8.50.0)(typescript@5.2.2)
@@ -2027,12 +2027,12 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@sveltejs/adapter-vercel@3.0.3(@sveltejs/kit@1.25.0):
+  /@sveltejs/adapter-vercel@3.0.3(@sveltejs/kit@1.25.1):
     resolution: {integrity: sha512-0FQMjR6klW4627ewdclSr0lUe/DqiiyOaRTfgb5cXgNbVMsZMOA2fQ77TYQnJdvMfSEWe6y8uznV48XqKh9+vA==}
     peerDependencies:
       '@sveltejs/kit': ^1.5.0
     dependencies:
-      '@sveltejs/kit': 1.25.0(svelte@4.2.0)(vite@4.4.9)
+      '@sveltejs/kit': 1.25.1(svelte@4.2.0)(vite@4.4.9)
       '@vercel/nft': 0.23.0
       esbuild: 0.18.17
     transitivePeerDependencies:
@@ -2040,8 +2040,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit@1.25.0(svelte@3.59.2)(vite@4.4.9):
-    resolution: {integrity: sha512-+VqMWJJYtcLoF8hYkdqY2qs/MPaawrMwA/gNBJW2o2UrcuYdNiy0ZZnjQQuPD33df/VcAulnoeyzF5ZtaajFEw==}
+  /@sveltejs/kit@1.25.1(svelte@3.59.2)(vite@4.4.9):
+    resolution: {integrity: sha512-pD8XsvNJNgTNkFngNlM60my/X8dXWPKVzN5RghEQr0NjGZmuCjy49AfFu2cGbZjNf5pBcqd2RCNMW912P5fkhA==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -2062,14 +2062,14 @@ packages:
       sirv: 2.0.3
       svelte: 3.59.2
       tiny-glob: 0.2.9
-      undici: 5.23.0
+      undici: 5.25.2
       vite: 4.4.9(@types/node@18.17.2)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@sveltejs/kit@1.25.0(svelte@4.2.0)(vite@4.4.9):
-    resolution: {integrity: sha512-+VqMWJJYtcLoF8hYkdqY2qs/MPaawrMwA/gNBJW2o2UrcuYdNiy0ZZnjQQuPD33df/VcAulnoeyzF5ZtaajFEw==}
+  /@sveltejs/kit@1.25.1(svelte@4.2.0)(vite@4.4.9):
+    resolution: {integrity: sha512-pD8XsvNJNgTNkFngNlM60my/X8dXWPKVzN5RghEQr0NjGZmuCjy49AfFu2cGbZjNf5pBcqd2RCNMW912P5fkhA==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -2090,7 +2090,7 @@ packages:
       sirv: 2.0.3
       svelte: 4.2.0
       tiny-glob: 0.2.9
-      undici: 5.23.0
+      undici: 5.25.2
       vite: 4.4.9(@types/node@18.17.2)
     transitivePeerDependencies:
       - supports-color
@@ -4135,7 +4135,7 @@ packages:
       graphql: ^14.0.0 || ^15.0.0
     dependencies:
       '@kitql/helper': 0.5.0
-      '@sveltejs/kit': 1.25.0(svelte@3.59.2)(vite@4.4.9)
+      '@sveltejs/kit': 1.25.1(svelte@3.59.2)(vite@4.4.9)
       ast-types: 0.16.1
       estree-walker: 3.0.3
       graphql: 16.6.0
@@ -6140,8 +6140,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /undici@5.23.0:
-    resolution: {integrity: sha512-1D7w+fvRsqlQ9GscLBwcAJinqcZGHUKjbOmXdlE/v8BvEGXjeWAax+341q44EuTcHXXnfyKNbKRq4Lg7OzhMmg==}
+  /undici@5.25.2:
+    resolution: {integrity: sha512-tch8RbCfn1UUH1PeVCXva4V8gDpGAud/w0WubD6sHC46vYQ3KDxL+xv1A2UxK0N6jrVedutuPHxe1XIoqerwMw==}
     engines: {node: '>=14.0'}
     dependencies:
       busboy: 1.6.0
