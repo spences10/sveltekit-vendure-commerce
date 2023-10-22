@@ -10,10 +10,10 @@ devDependencies:
     version: 0.9.6(@babel/core@7.22.9)(graphql@16.6.0)(typescript@5.2.2)
   '@sveltejs/adapter-vercel':
     specifier: 3.0.3
-    version: 3.0.3(@sveltejs/kit@1.25.2)
+    version: 3.0.3(@sveltejs/kit@1.26.0)
   '@sveltejs/kit':
-    specifier: 1.25.2
-    version: 1.25.2(svelte@4.2.1)(vite@4.5.0)
+    specifier: 1.26.0
+    version: 1.26.0(svelte@4.2.1)(vite@4.5.0)
   '@typescript-eslint/eslint-plugin':
     specifier: 6.8.0
     version: 6.8.0(@typescript-eslint/parser@6.8.0)(eslint@8.52.0)(typescript@5.2.2)
@@ -979,6 +979,11 @@ packages:
   /@eslint/js@8.52.0:
     resolution: {integrity: sha512-mjZVbpaeMZludF2fsWLD0Z9gCref1Tk4i9+wddjRvpUNqqcndPkBD09N/Mapey0b3jaXbLm2kICwFv2E64QinA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    dev: true
+
+  /@fastify/busboy@2.0.0:
+    resolution: {integrity: sha512-JUFJad5lv7jxj926GPgymrWQxxjPYuJNiNjNMzqT+HiuP6Vl3dk5xzG+8sTX96np0ZAluvaMzPsjhHZ5rNuNQQ==}
+    engines: {node: '>=14'}
     dev: true
 
   /@graphql-codegen/cli@3.3.1(@babel/core@7.22.9)(@types/node@18.17.2)(cosmiconfig-toml-loader@1.0.0)(graphql@16.6.0):
@@ -2035,12 +2040,12 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@sveltejs/adapter-vercel@3.0.3(@sveltejs/kit@1.25.2):
+  /@sveltejs/adapter-vercel@3.0.3(@sveltejs/kit@1.26.0):
     resolution: {integrity: sha512-0FQMjR6klW4627ewdclSr0lUe/DqiiyOaRTfgb5cXgNbVMsZMOA2fQ77TYQnJdvMfSEWe6y8uznV48XqKh9+vA==}
     peerDependencies:
       '@sveltejs/kit': ^1.5.0
     dependencies:
-      '@sveltejs/kit': 1.25.2(svelte@4.2.1)(vite@4.5.0)
+      '@sveltejs/kit': 1.26.0(svelte@4.2.1)(vite@4.5.0)
       '@vercel/nft': 0.23.0
       esbuild: 0.18.17
     transitivePeerDependencies:
@@ -2048,8 +2053,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit@1.25.2(svelte@3.59.2)(vite@4.5.0):
-    resolution: {integrity: sha512-USuuSpdAPFDiLi58N2Pwd/TG9bcUSPAlzE5iaAXaLyCTWa3l36HDKH6nV5NqBybwfeux1ZwgtIeITLZJDJ6HDg==}
+  /@sveltejs/kit@1.26.0(svelte@3.59.2)(vite@4.5.0):
+    resolution: {integrity: sha512-CV/AlTziC05yrz7UjVqEd0pH6+2dnrbmcnHGr2d3jXtmOgzNnlDkXtX8g3BfJ6nntsPD+0jtS2PzhvRHblRz4A==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -2064,20 +2069,20 @@ packages:
       esm-env: 1.0.0
       kleur: 4.1.5
       magic-string: 0.30.2
-      mime: 3.0.0
+      mrmime: 1.0.1
       sade: 1.8.1
       set-cookie-parser: 2.6.0
       sirv: 2.0.3
       svelte: 3.59.2
       tiny-glob: 0.2.9
-      undici: 5.25.2
+      undici: 5.26.4
       vite: 4.5.0(@types/node@18.17.2)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@sveltejs/kit@1.25.2(svelte@4.2.1)(vite@4.5.0):
-    resolution: {integrity: sha512-USuuSpdAPFDiLi58N2Pwd/TG9bcUSPAlzE5iaAXaLyCTWa3l36HDKH6nV5NqBybwfeux1ZwgtIeITLZJDJ6HDg==}
+  /@sveltejs/kit@1.26.0(svelte@4.2.1)(vite@4.5.0):
+    resolution: {integrity: sha512-CV/AlTziC05yrz7UjVqEd0pH6+2dnrbmcnHGr2d3jXtmOgzNnlDkXtX8g3BfJ6nntsPD+0jtS2PzhvRHblRz4A==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -2092,13 +2097,13 @@ packages:
       esm-env: 1.0.0
       kleur: 4.1.5
       magic-string: 0.30.2
-      mime: 3.0.0
+      mrmime: 1.0.1
       sade: 1.8.1
       set-cookie-parser: 2.6.0
       sirv: 2.0.3
       svelte: 4.2.1
       tiny-glob: 0.2.9
-      undici: 5.25.2
+      undici: 5.26.4
       vite: 4.5.0(@types/node@18.17.2)
     transitivePeerDependencies:
       - supports-color
@@ -4148,7 +4153,7 @@ packages:
       graphql: ^14.0.0 || ^15.0.0
     dependencies:
       '@kitql/helper': 0.5.0
-      '@sveltejs/kit': 1.25.2(svelte@3.59.2)(vite@4.5.0)
+      '@sveltejs/kit': 1.26.0(svelte@3.59.2)(vite@4.5.0)
       ast-types: 0.16.1
       estree-walker: 3.0.3
       graphql: 16.6.0
@@ -4760,12 +4765,6 @@ packages:
     dependencies:
       braces: 3.0.2
       picomatch: 2.3.1
-    dev: true
-
-  /mime@3.0.0:
-    resolution: {integrity: sha512-jSCU7/VB1loIWBZe14aEYHU/+1UMEHoaO7qxCOVJOw9GgH72VAWppxNcjU+x9a2k3GSIBXNKxXQFqRvvZ7vr3A==}
-    engines: {node: '>=10.0.0'}
-    hasBin: true
     dev: true
 
   /mimic-fn@2.1.0:
@@ -6153,11 +6152,11 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /undici@5.25.2:
-    resolution: {integrity: sha512-tch8RbCfn1UUH1PeVCXva4V8gDpGAud/w0WubD6sHC46vYQ3KDxL+xv1A2UxK0N6jrVedutuPHxe1XIoqerwMw==}
+  /undici@5.26.4:
+    resolution: {integrity: sha512-OG+QOf0fTLtazL9P9X7yqWxQ+Z0395Wk6DSkyTxtaq3wQEjIroVe7Y4asCX/vcCxYpNGMnwz8F0qbRYUoaQVMw==}
     engines: {node: '>=14.0'}
     dependencies:
-      busboy: 1.6.0
+      '@fastify/busboy': 2.0.0
     dev: true
 
   /universalify@2.0.0:
