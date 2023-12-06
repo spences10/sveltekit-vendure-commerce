@@ -72,8 +72,8 @@ devDependencies:
     specifier: 5.1.1
     version: 5.1.1(@babel/core@7.22.9)(postcss-load-config@4.0.2)(postcss@8.4.32)(svelte@4.2.2)(typescript@5.3.2)
   tailwindcss:
-    specifier: 3.3.5
-    version: 3.3.5(ts-node@10.9.1)
+    specifier: 3.3.6
+    version: 3.3.6(ts-node@10.9.1)
   tslib:
     specifier: 2.6.2
     version: 2.6.2
@@ -3226,7 +3226,7 @@ packages:
       css-selector-tokenizer: 0.8.0
       postcss: 8.4.32
       postcss-js: 4.0.1(postcss@8.4.32)
-      tailwindcss: 3.3.5(ts-node@10.9.1)
+      tailwindcss: 3.3.6(ts-node@10.9.1)
     transitivePeerDependencies:
       - ts-node
     dev: true
@@ -5964,8 +5964,8 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /tailwindcss@3.3.5(ts-node@10.9.1):
-    resolution: {integrity: sha512-5SEZU4J7pxZgSkv7FP1zY8i2TIAOooNZ1e/OGtxIEv6GltpoiXUqWvLy89+a10qYTB1N5Ifkuw9lqQkN9sscvA==}
+  /tailwindcss@3.3.6(ts-node@10.9.1):
+    resolution: {integrity: sha512-AKjF7qbbLvLaPieoKeTjG1+FyNZT6KaJMJPFeQyLfIp7l82ggH1fbHJSsYIvnbTFQOlkh+gBYpyby5GT1LIdLw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
