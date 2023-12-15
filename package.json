@@ -28,7 +28,7 @@
     "autoprefixer": "10.4.16",
     "daisyui": "3.9.4",
     "eslint": "8.55.0",
-    "eslint-config-prettier": "9.0.0",
+    "eslint-config-prettier": "9.1.0",
     "eslint-plugin-svelte3": "4.0.0",
     "graphql": "^16.6.0",
     "houdini": "^0.18.3",
