@@ -39,8 +39,8 @@ devDependencies:
     specifier: ^16.6.0
     version: 16.6.0
   houdini:
-    specifier: ^0.20.0
-    version: 0.20.4
+    specifier: ^1.0.0
+    version: 1.2.39
   houdini-svelte:
     specifier: ^1.0.0
     version: 1.2.39(@types/node@18.17.2)
@@ -2151,11 +2151,6 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@kitql/helper@0.5.0:
-    resolution: {integrity: sha512-qTDsv8qmbvSyZLb75hE9N4AnmZHtCi8JxgHYAj4dbgViEjs6HVYJKqHabGR7rZCAVQj7LwWu+cTfh52QhlNMcg==}
-    deprecated: It was renamed to @kitql/helpers, should be better!
-    dev: true
-
   /@kitql/helper@0.7.0:
     resolution: {integrity: sha512-3paDBu80JJyghoeRIR0f1D3ohGOW6QKO2+YgOg6nbqhPJSJprbBnJ5iILXtIcSGS5zq1hhyFdXx9yMG/s9QJnA==}
     dependencies:
@@ -2676,13 +2671,6 @@ packages:
 
   /@types/parse-json@4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
-    dev: true
-
-  /@types/prompts@2.4.4:
-    resolution: {integrity: sha512-p5N9uoTH76lLvSAaYSZtBCdEXzpOOufsRjnhjVSrZGXikVGHX9+cc9ERtHRV4hvBKHyZb1bg4K+56Bd2TqUn4A==}
-    dependencies:
-      '@types/node': 20.4.7
-      kleur: 3.0.3
     dev: true
 
   /@types/pug@2.0.6:
@@ -4414,6 +4402,7 @@ packages:
   /glob@8.1.0:
     resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
     engines: {node: '>=12'}
+    deprecated: Glob versions prior to v9 are no longer supported
     dependencies:
       fs.realpath: 1.0.0
       inflight: 1.0.6
@@ -4688,33 +4677,6 @@ packages:
       - sugarss
       - supports-color
       - terser
-    dev: true
-
-  /houdini@0.20.4:
-    resolution: {integrity: sha512-t1S4t596YaZUFLBxyjAYaaxBKEaeyOeYLL+3Etzwx+1FlY0of7taR0Veg0GesBe74ciznopri5ePDifnr5IBRQ==}
-    hasBin: true
-    dependencies:
-      '@babel/parser': 7.23.9
-      '@graphql-tools/schema': 9.0.19(graphql@15.8.0)
-      '@kitql/helper': 0.5.0
-      '@types/estree': 1.0.1
-      '@types/fs-extra': 9.0.13
-      '@types/micromatch': 4.0.2
-      '@types/prompts': 2.4.4
-      ast-types: 0.16.1
-      commander: 9.5.0
-      estree-walker: 3.0.3
-      fs-extra: 10.1.0
-      glob: 8.1.0
-      graphql: 15.8.0
-      memfs: 3.5.3
-      micromatch: 4.0.5
-      minimatch: 5.1.6
-      node-fetch: 3.3.2
-      npx-import: 1.1.4
-      prompts: 2.4.2
-      recast: 0.23.3
-      vite-plugin-watch-and-run: 1.6.0
     dev: true
 
   /houdini@1.2.39:
@@ -5118,11 +5080,6 @@ packages:
 
   /jsonify@0.0.1:
     resolution: {integrity: sha512-2/Ki0GcmuqSrgFyelQq9M05y7PS0mEwuIzrf3f1fPqkVDVRvZrPZtVSMHxdgo8Aq0sxAOb/cr2aqqA3LeWHVPg==}
-    dev: true
-
-  /kleur@3.0.3:
-    resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
-    engines: {node: '>=6'}
     dev: true
 
   /kleur@4.1.5:
@@ -5941,14 +5898,6 @@ packages:
     resolution: {integrity: sha512-nolQXZ/4L+bP/UGlkfaIujX9BKxGwmQ9OT4mOt5yvy8iK1h3wqTEJCijzGANTCCl9nWjY41juyAn2K3Q1hLLTg==}
     dependencies:
       asap: 2.0.6
-    dev: true
-
-  /prompts@2.4.2:
-    resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==}
-    engines: {node: '>= 6'}
-    dependencies:
-      kleur: 3.0.3
-      sisteransi: 1.0.5
     dev: true
 
   /punycode@1.4.1:
